@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Release Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5e6d3 0%, #d4b5a0 100%);
+            font-family: 'Arial', sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .game-card {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-content {
+            position: relative;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .date-badge {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 3px;
+        }
+
+        .fire-icon {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 35px;
+            filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.5));
+        }
+
+        .game-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+
+        .game-title h2 {
+            font-size: 48px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .update-badge {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 25px;
+            border-radius: 25px;
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .platform-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(89, 47, 58, 0.95);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .platform-icon {
+            font-size: 40px;
+            color: white;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #592f3a;
+            letter-spacing: 1px;
+        }
+
+        /* Specific game card styles */
+        .echoes {
+            background: linear-gradient(180deg, #87ceeb 0%, #4a90a4 100%);
+        }
+
+        .avatar {
+            background: linear-gradient(180deg, #2c5f8d 0%, #1a3a5c 100%);
+        }
+
+        .skate {
+            background: linear-gradient(180deg, #1a3a2e 0%, #0d1f1a 100%);
+        }
+
+        .yakuza {
+            background: linear-gradient(180deg, #d946a8 0%, #581c5c 100%);
+        }
+
+        .frostpunk {
+            background: linear-gradient(180deg, #4a5568 0%, #1a202c 100%);
+        }
+
+        .flight-sim {
+            background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            <!-- Echoes of Elysium -->
+            <div class="game-card">
+                <div class="card-content echoes">
+                    <div class="date-badge">04 | DEC</div>
+                    <div class="game-title">
+                        <h2>ECHOES<br>OF ELYSIUM</h2>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">🪟</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avatar: Frontiers of Pandora -->
+            <div class="game-card">
+                <div class="card-content avatar">
+                    <div class="date-badge">05 | DEC</div>
+                    <span class="fire-icon">🔥</span>
+                    <div class="game-title">
+                        <h2>AVATAR<br><small style="font-size:24px;">FRONTIERS OF PANDORA</small></h2>
+                        <span class="update-badge">TPS UPDATE</span>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">🎮</span>
+                        <span class="platform-icon">🪟</span>
+                        <span class="platform-icon">⭕</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skate Story -->
+            <div class="game-card">
+                <div class="card-content skate">
+                    <div class="date-badge">08 | DEC</div>
+                    <span class="fire-icon">🔥</span>
+                    <div class="game-title">
+                        <h2 style="color:#ff4444; font-style:italic;">SKATE<br>STORY</h2>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">🎮</span>
+                        <span class="platform-icon">🪟</span>
+                        <span class="platform-icon">🎮</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yakuza 0 Director's Cut -->
+            <div class="game-card">
+                <div class="card-content yakuza">
+                    <div class="date-badge">08 | DEC</div>
+                    <span class="fire-icon">🔥</span>
+                    <div class="game-title">
+                        <h2>YAKUZA 0<br><small style="font-size:20px;">DIRECTOR'S CUT</small></h2>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">⭕</span>
+                        <span class="platform-icon">🪟</span>
+                        <span class="platform-icon">🎮</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frostpunk 2: Fractured Utopias -->
+            <div class="game-card">
+                <div class="card-content frostpunk">
+                    <div class="date-badge">08 | DEC</div>
+                    <div class="game-title">
+                        <h2>FROSTPUNK 2<br><small style="font-size:24px;">FRACTURED UTOPIAS</small><br><small style="font-size:18px;">DLC</small></h2>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">🎮</span>
+                        <span class="platform-icon">🪟</span>
+                        <span class="platform-icon">⭕</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsoft Flight Simulator 2024 -->
+            <div class="game-card">
+                <div class="card-content flight-sim">
+                    <div class="date-badge">08 | DEC</div>
+                    <div class="game-title">
+                        <h2 style="font-size:36px;">Microsoft<br>FLIGHT SIMULATOR<br>2024</h2>
+                    </div>
+                    <div class="platform-bar">
+                        <span class="platform-icon">🎮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            @JUNKPANDA 📸 ONIGANDA ✖️ ONIMODES
+        </div>
+    </div>
+</body>
+</html>
