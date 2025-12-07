@@ -1,92 +1,265 @@
-<!DOCTYPE HTML>
-<!--
-	Identity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Mohammed Noor</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unisanda Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --maroon:#5b222b;
+  --maroon-dark:#3f151b;
+  --paper:#fff;
+}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+*{box-sizing:border-box;margin:0;padding:0;}
+body {
+  font-family:Poppins, sans-serif;
+  background:var(--paper);
+  overflow-x:hidden;
+  min-height:100vh;
+  opacity:0;
+  animation:pageFade 1s ease forwards;
+}
+@keyframes pageFade { to { opacity:1; } }
 
-				<!-- Main -->
-					<section id="main">
-						<header>
-							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
-							<h1>Moahmmed</h1>
-							<p>MAKE THE WORLD YOUR WEAPON</p>
-							<a href="mailto:a@agabous.com">help</a>
-						</header>
-						<!--
-						<hr />
-						<h2>Extra Stuff!</h2>
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field">
-									<input type="text" name="name" id="name" placeholder="Name" />
-								</div>
-								<div class="field">
-									<input type="email" name="email" id="email" placeholder="Email" />
-								</div>
-								<div class="field">
-									<select name="department" id="department">
-										<option value="">Department</option>
-										<option value="sales">Sales</option>
-										<option value="tech">Tech Support</option>
-										<option value="null">/dev/null</option>
-									</select>
-								</div>
-								<div class="field">
-									<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-								</div>
-								<div class="field">
-									<input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
-								</div>
-								<div class="field">
-									<label>But are you a robot?</label>
-									<input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
-									<input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
-								</div>
-							</div>
-							<ul class="actions special">
-								<li><a href="#" class="button">Get Started</a></li>
-							</ul>
-						</form>
-						<hr />
-						-->
-						<footer>
-							<ul class="icons">
-								<li><a href="" class="icon brands fa-twitter">Twitter</a></li>
-								<li><a href="https://Instagram.com/a.gabous" class="icon brands fa-instagram">Instagram</a></li>
-								<li><a href="" class="icon brands fa-facebook-f">Facebook</a></li>
-							</ul>
-						</footer>
-					</section>
+/* ==== Animated Background (soft diagonal parallax) ==== */
+.bg {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:url('https://unisanda.com/images/BACKGROUND.png') repeat;
+  background-size:cover;
+  opacity:0.7;
+  animation:bgDrift 120s linear infinite;
+}
+@keyframes bgDrift {
+  0%   {background-position:0 0;}
+  50%  {background-position:-300px 150px;}
+  100% {background-position:0 0;}
+}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="copyright">
-							<li>&copy; Moahmmed</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
+/* ==== Hamburger ==== */
+.hamburger {
+  position:fixed;top:14px;left:14px;z-index:50;
+  width:42px;height:42px;display:grid;place-items:center;
+  background:#fff8;backdrop-filter:blur(6px);
+  border-radius:8px;cursor:pointer;
+}
+.hamburger span, .hamburger::before, .hamburger::after {
+  content:"";width:24px;height:3px;border-radius:2px;
+  background:var(--maroon);transition:transform .4s ease,opacity .4s ease;
+  display:block;position:relative;
+}
+.hamburger::before{position:absolute;transform:translateY(-7px)}
+.hamburger::after{position:absolute;transform:translateY(7px)}
+.hamburger.active span{opacity:0}
+.hamburger.active::before{transform:rotate(45deg)}
+.hamburger.active::after{transform:rotate(-45deg)}
 
-			</div>
+/* ==== Drawer ==== */
+.drawer {
+  position:fixed;inset:0 auto 0 0;width:75%;max-width:320px;
+  background:#fff;padding:24px;transform:translateX(-100%);
+  transition:.3s;z-index:45;box-shadow:12px 0 30px #0003;
+}
+.drawer.open {transform:translateX(0)}
+.drawer a {
+  display:block;padding:14px;margin:8px 0;border-radius:10px;
+  background:#f6f4f5;text-decoration:none;font-weight:600;color:var(--maroon);
+}
+.scrim {
+  position:fixed;inset:0;background:#0008;opacity:0;pointer-events:none;z-index:40;transition:.3s;
+}
+.scrim.show {opacity:1;pointer-events:auto;}
 
-		<!-- Scripts -->
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
+/* ==== Hero (Circular Header with Dynamic Gradient) ==== */
+.hero {
+  text-align:center;
+  background:linear-gradient(160deg, var(--maroon) 0%, #702f39 100%);
+  background-size:300% 300%;
+  animation:gradientShift 18s ease infinite;
+  color:#fff;
+  padding:120px 16px 120px;
+  position:relative;
+  overflow:hidden;
+  border-bottom-left-radius:50% 15%;
+  border-bottom-right-radius:50% 15%;
+}
+@keyframes gradientShift {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.hero::after {
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% -10%,#ffffff25,transparent 70%);
+}
 
-	</body>
+/* ==== Floating Logo with Glow Pulse ==== */
+.logo {
+  width:120px;height:120px;margin:0 auto 8px;position:relative;
+  animation:float 6s ease-in-out infinite, logoGlow 12s ease-in-out infinite;
+  border-radius:50%;
+  box-shadow:0 0 40px 8px rgba(255,140,190,0.3);
+}
+@keyframes logoGlow {
+  0%,100%{box-shadow:0 0 40px 8px rgba(255,140,190,0.25);}
+  50%{box-shadow:0 0 70px 16px rgba(255,190,220,0.55);}
+}
+.logo img {
+  width:100%;
+  border-radius:50%;
+  filter:drop-shadow(0 0 14px rgba(255,160,200,.6));
+  animation:hornFlash 8s infinite;
+}
+.logo::after {
+  content:"";position:absolute;inset:-20px;
+  background:radial-gradient(circle at 50% 0%,rgba(255,150,200,.3),transparent 60%);
+  animation:pulse 5s ease-in-out infinite;
+  border-radius:50%;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  }
+@keyframes pulse {
+  0%,100%{opacity:.2;transform:scale(1)}
+  50%{opacity:.45;transform:scale(1.1)}
+}
+@keyframes hornFlash {
+  0%,95%,100%{filter:drop-shadow(0 0 14px rgba(255,160,200,.6))}
+  96%{filter:drop-shadow(0 0 30px rgba(255,180,250,.9))}
+  98%{filter:drop-shadow(0 0 10px rgba(255,180,250,.4))}
+}
+
+/* ==== Subtitle ==== */
+.sub {color:#f2dfe3;font-weight:600;margin-top:6px}
+
+/* ==== Links ==== */
+main {
+  max-width:520px;margin:30px auto 80px;padding:0 18px;text-align:center;
+}
+h2 {color:var(--maroon);font-size:22px;margin:12px 0}
+.divider {
+  width:160px;height:4px;background:#7a3440;margin:8px auto 20px;
+  border-radius:3px;opacity:.35;
+}
+a.link-btn {
+  display:block;padding:14px;margin:18px 0;
+  background: linear-gradient(160deg, var(--maroon) 0%, #712f3a 100%);
+  color:#fff;border-radius:28px;
+  text-decoration:none;font-weight:800;letter-spacing:.06em;
+  box-shadow:0 10px 0 var(--maroon-dark),0 18px 24px #0002;
+  opacity:0;transform:translateY(30px);
+  animation:fadeUp .6s ease forwards;
+  transition: transform .15s ease, box-shadow .2s ease, filter .3s ease;
+}
+a.link-btn:nth-child(1){animation-delay:.2s}
+a.link-btn:nth-child(2){animation-delay:.35s}
+a.link-btn:nth-child(3){animation-delay:.5s}
+a.link-btn:nth-child(4){animation-delay:.65s}
+a.link-btn:nth-child(5){animation-delay:.8s}
+a.link-btn:nth-child(6){animation-delay:.95s}
+a.link-btn:nth-child(7){animation-delay:1.1s}
+@keyframes fadeUp { to{opacity:1;transform:translateY(0)} }
+a.link-btn:hover {
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 12px 18px rgba(0,0,0,.15);
+  filter:brightness(1.1);
+}
+a.link-btn:active {
+  transform:translateY(4px);
+  box-shadow:0 6px 0 var(--maroon-dark),0 12px 18px #0002;
+}
+
+/* ==== Footer Tooltip ==== */
+.footer {
+  font-size:12px;color:#777;margin-top:26px;position:relative;display:inline-block;cursor:default;
+}
+.footer::after {
+  content:"Made with ⚡ by Unisanda";
+  position:absolute;bottom:150%;left:50%;transform:translateX(-50%);
+  background:#333;color:#fff;padding:6px 10px;
+  border-radius:6px;font-size:12px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;
+}
+.footer:hover::after {opacity:1;transform:translateX(-50%) translateY(-4px);}
+
+/* ==== Twitter Feed ==== */
+.twitter-wrap {
+  max-width:400px;margin:20px auto;
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 0 12px #0001;
+}
+
+@media (min-width:760px){
+  .hero{padding-top:140px;padding-bottom:140px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<!-- Hamburger + Drawer -->
+<div class="hamburger" id="hamburger"><span></span></div>
+<nav class="drawer" id="drawer">
+  <a href="https://unisanda.com" target="_blank">🏠 Home</a>
+  <a href="https://unisanda.com/Reviews" target="_blank">⭐ Reviews</a>
+</nav>
+<div class="scrim" id="scrim"></div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="logo">
+    <img src="https://unisanda.com/images/Logo.png" alt="Unisanda Logo">
+  </div>
+  <p class="sub">Gaming content from news to reviews and more!</p>
+</header>
+
+<!-- Links -->
+<main>
+  <h2>All My Links</h2>
+  <div class="divider"></div>
+  <a class="link-btn" href="https://discord.com/invite/73e4kubpmB" target="_blank">DISCORD</a>
+  <a class="link-btn" href="https://www.tiktok.com/@iunisanda" target="_blank">TIKTOK</a>
+  <a class="link-btn" href="https://x.com/unimohdx" target="_blank">X</a>
+  <a class="link-btn" href="https://www.instagram.com/unisanda/" target="_blank">INSTAGRAM</a>
+  <a class="link-btn" href="https://www.twitch.tv/unimohd" target="_blank">TWITCH</a>
+  <a class="link-btn" href="https://steamcommunity.com/id/iimohd/" target="_blank">STEAM</a>
+  <a class="link-btn" href="https://tip.dokan.sa/iimohd" target="_blank">DONATE</a>
+
+  <div class="divider"></div>
+
+  <!-- Twitter timeline -->
+  <div class="twitter-wrap">
+    <a class="twitter-timeline"
+       data-theme="light"
+       data-chrome="noheader nofooter transparent"
+       href="https://x.com/unimohdx?ref_src=twsrc%5Etfw">
+       Tweets by @unimohdx
+    </a>
+  </div>
+
+  <p class="footer">© Unisanda</p>
+</main>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const drawer=document.getElementById('drawer');
+const scrim=document.getElementById('scrim');
+function toggleDrawer(show){
+  drawer.classList.toggle('open',show);
+  scrim.classList.toggle('show',show);
+  hamburger.classList.toggle('active',show);
+}
+hamburger.onclick=()=>toggleDrawer(!drawer.classList.contains('open'));
+scrim.onclick=()=>toggleDrawer(false);
+document.onkeydown=e=>{if(e.key==='Escape')toggleDrawer(false)};
+</script>
+
+</body>
 </html>
