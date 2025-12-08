@@ -1,0 +1,65 @@
+/* === Reviews Page === */
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 100px;
+  gap: 24px;
+}
+
+/* Review Card */
+.review-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 62, 208, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.review-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(255, 62, 208, 0.4);
+}
+
+/* Date */
+.review-date {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* Image */
+.review-box img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 200px;
+}
+
+/* Footer section */
+.review-footer {
+  background: rgba(91, 34, 43, 0.95);
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.review-footer i {
+  color: #fff;
+  font-size: 18px;
+}
