@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+  
 :root {
   --maroon:#5b222b;
   --maroon-dark:#3f151b;
@@ -62,7 +63,7 @@ body {
 /* ==== Drawer ==== */
 .drawer {
   position:fixed;inset:0 auto 0 0;width:75%;max-width:320px;
-  background:#fff;padding:24px;transform:translateX(-100%);
+  background:#fff;padding: 64px 16px 16px;transform:translateX(-100%);
   transition:.3s;z-index:45;box-shadow:12px 0 30px #0003;
 }
 .drawer.open {transform:translateX(0)}
@@ -101,11 +102,11 @@ body {
   background-size:300% 300%;
   animation:gradientShift 18s ease infinite;
   color:#fff;
-  padding:1px 16px 90px; /* reduced height */
+  padding:1px 16px 1px; /* reduced height */
   position:relative;
   overflow:hidden;
-  border-bottom-left-radius:45% 12%;
-  border-bottom-right-radius:45% 12%;
+  border-bottom-left-radius:35% 12%;
+  border-bottom-right-radius:35% 12%;
 }
 
 /* Add this 👇 */
@@ -282,6 +283,11 @@ body.dark .footer::after {
 }
 
 body.dark .dark-toggle { background: #3338; color: #faf8f6; }
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#5b222b">
 
 </style>
 </head>
