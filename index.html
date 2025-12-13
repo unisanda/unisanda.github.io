@@ -216,13 +216,31 @@ a.link-btn {
 .link-btn:hover i {
   transform: scale(1.3);
 }
-a.link-btn:nth-child(1){animation-delay:.2s}
-a.link-btn:nth-child(2){animation-delay:.35s}
-a.link-btn:nth-child(3){animation-delay:.5s}
-a.link-btn:nth-child(4){animation-delay:.65s}
-a.link-btn:nth-child(5){animation-delay:.8s}
-a.link-btn:nth-child(6){animation-delay:.95s}
-a.link-btn:nth-child(7){animation-delay:1.1s}
+a.link-btn {
+  display:block;
+  padding:14px;
+  margin:25px 0;
+  background: linear-gradient(160deg, var(--maroon) 0%, #712f3a 100%);
+  color:#fff;
+  border-radius:28px;
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.06em;
+  box-shadow:0 10px 0 var(--maroon-dark),0 18px 24px #0002;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp .6s ease forwards;
+  transition: transform .15s ease, box-shadow .2s ease, filter .3s ease;
+}
+
+/* Animate each button with increasing delay */
+a.link-btn:nth-of-type(1){animation-delay:.2s}
+a.link-btn:nth-of-type(2){animation-delay:.35s}
+a.link-btn:nth-of-type(3){animation-delay:.5s}
+a.link-btn:nth-of-type(4){animation-delay:.65s}
+a.link-btn:nth-of-type(5){animation-delay:.8s}
+a.link-btn:nth-of-type(6){animation-delay:.95s}
+a.link-btn:nth-of-type(7){animation-delay:1.1s}
 @keyframes fadeUp { to{opacity:1;transform:translateY(0)} }
 a.link-btn:hover {
   transform:translateY(-4px) scale(1.02);
