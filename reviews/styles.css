@@ -1,3 +1,28 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--paper);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animated thin-line background */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('https://unisanda.com/images/BACKGROUND.png') repeat;
+  background-size: cover;
+  opacity: 0.7;
+  animation: bgDrift 120s linear infinite;
+}
+
+@keyframes bgDrift {
+  0% { background-position: 0 0; }
+  50% { background-position: -300px 150px; }
+  100% { background-position: 0 0; }
+}
+
 /* === Reviews Page === */
 .reviews {
   display: flex;
