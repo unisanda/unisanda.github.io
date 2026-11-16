@@ -470,6 +470,23 @@ body {
   background: var(--glass);
   color: var(--ink);
 }
+a.soon-card { text-decoration: none; }
+.soon-card--live {
+  border-style: solid;
+  transition: transform .4s var(--ease), border-color .3s, background-color .3s, box-shadow .4s;
+}
+.soon-card--live:hover,
+.soon-card--live:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 18px 30px -18px rgba(0, 0, 0, .6);
+}
+.soon-card--live:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.soon-card--live .soon-pill {
+  border-color: transparent;
+  background: var(--ink);
+  color: var(--bg);
+}
 .soon-icon { flex: none; width: 30px; height: 30px; fill: currentColor; opacity: .8; }
 .soon-label {
   flex: 1;
