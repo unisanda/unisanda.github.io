@@ -18,6 +18,7 @@
 */
 window.UPCOMING = {
   month: 'November 2026',
+  month_ar: 'نوفمبر 2026',
   games: [
     {
       title: 'ArcheAge Chronicles',

@@ -445,3 +445,15 @@
 @media (prefers-reduced-motion: reduce) {
   .card.is-center .card-inner, .swap, .platform { animation: none; }
 }
+
+/* ---------- Arabic ---------- */
+
+/* the ring and its buttons keep their left-to-right order */
+.controls, .dots { direction: ltr; }
+html[lang="ar"] :is(.games-title, .now-title, .status, .back-link) { line-height: 1.3; }
+html[lang="ar"] .now-title { font-size: clamp(26px, 3.1vw, 42px); }
+html[lang="ar"] .games-kicker,
+html[lang="ar"] .now-date { font-size: 14px; }
+html[lang="ar"] .card-day { font-size: 11px; }
+html[lang="ar"] .status { padding: 7px 18px 6px; font-size: 18px; }
+html[lang="ar"] .back-link span { padding-top: 0; }

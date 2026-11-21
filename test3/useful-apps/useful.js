@@ -4,6 +4,12 @@
   var data = window.USEFUL_APPS || { sections: [] };
   var host = document.getElementById('sections');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var I = window.UniI18n || {
+    t: function (k) { return k; }, isAr: function () { return false; },
+    pick: function (o, f) { return o[f]; }, onChange: function () {},
+    count: function (n, w) { return n + ' ' + w + 's'; }
+  };
+  var refreshers = [];
 
   function el(tag, cls, html) {
     var e = document.createElement(tag);
@@ -47,25 +53,24 @@
     var head = el('div', 'sec-head');
     head.innerHTML =
       '<span class="sec-badge" aria-hidden="true"><svg><use href="#' + section.icon + '"/></svg></span>' +
-      '<div><h2 class="sec-title" id="sec-' + section.id + '">' + esc(section.title) + '</h2>' +
-      '<p class="sec-sub"><span class="sec-count">' + total + '</span> apps in ' + section.groups.length + ' groups</p></div>';
+      '<div><h2 class="sec-title" id="sec-' + section.id + '"></h2>' +
+      '<p class="sec-sub"></p></div>';
     sec.appendChild(head);
 
     // search + category chips
     var bar = el('div', 'toolbar');
     var search = el('label', 'search');
     search.innerHTML = '<svg aria-hidden="true"><use href="#i-search"/></svg>' +
-      '<input type="search" placeholder="Search apps" autocomplete="off" spellcheck="false" aria-label="Search ' + esc(section.title) + '">';
+      '<input type="search" autocomplete="off" spellcheck="false">';
     var chips = el('div', 'chips');
     chips.setAttribute('role', 'group');
-    chips.setAttribute('aria-label', 'Filter by category');
-    var chipAll = el('button', 'chip is-active', 'All');
+    var chipAll = el('button', 'chip is-active');
     chipAll.type = 'button';
     chipAll.dataset.group = '';
     chipAll.setAttribute('aria-pressed', 'true');
     chips.appendChild(chipAll);
     section.groups.forEach(function (g) {
-      var c = el('button', 'chip', '<span class="chip-dot" aria-hidden="true"></span>' + esc(g.title));
+      var c = el('button', 'chip', '<span class="chip-dot" aria-hidden="true"></span><span class="chip-text"></span>');
       c.type = 'button';
       c.dataset.group = g.id;
       c.style.setProperty('--c', g.color);
@@ -86,7 +91,7 @@
       gs.style.setProperty('--c', g.color);
       gs.setAttribute('aria-labelledby', 'grp-' + g.id);
       gs.innerHTML = '<h3 class="group-title" id="grp-' + g.id + '"><span class="group-dot" aria-hidden="true"></span>' +
-        esc(g.title) + ' <span class="group-count">' + g.apps.length + '</span></h3>';
+        '<span class="group-name"></span> <span class="group-count">' + g.apps.length + '</span></h3>';
       var grid = el('div', 'app-grid');
 
       g.apps.forEach(function (a, k) {
@@ -111,9 +116,9 @@
             '<span class="app-name">' + esc(a.name) + '</span>' +
             '<span class="app-domain">' + esc(domain(a.url)) + '</span>' +
           '</span>' +
-          '<span class="app-desc">' + esc(a.desc) + '</span>';
+          '<span class="app-desc"></span>';
         grid.appendChild(item);
-        allApps.push({ el: item, group: g.id, text: (a.name + ' ' + a.desc).toLowerCase() });
+        allApps.push({ el: item, app: a, group: g.id, text: (a.name + ' ' + a.desc + ' ' + (a.desc_ar || '')).toLowerCase() });
       });
 
       gs.appendChild(grid);
@@ -121,7 +126,7 @@
       groupEls.push(gs);
     });
 
-    var empty = el('p', 'empty', 'No apps match that search.');
+    var empty = el('p', 'empty');
     empty.hidden = true;
     groupsWrap.appendChild(empty);
     sec.appendChild(groupsWrap);
@@ -131,7 +136,6 @@
 
     var input = search.querySelector('input');
     var activeGroup = '';
-    var countEl = head.querySelector('.sec-count');
 
     function apply() {
       var q = input.value.trim().toLowerCase();
@@ -148,9 +152,36 @@
         gs.hidden = inGroup === 0;
         shown += inGroup;
       });
-      countEl.textContent = shown;
+      lastShown = shown;
+      subText();
       empty.hidden = shown !== 0;
     }
+
+    var lastShown = total;
+    var subEl = head.querySelector('.sec-sub');
+    function subText() {
+      subEl.textContent = I.count(lastShown, 'app') + (I.isAr() ? ' في ' : ' in ') + I.count(section.groups.length, 'group');
+    }
+
+    // everything in this section that changes with the language
+    function texts() {
+      head.querySelector('.sec-title').textContent = I.pick(section, 'title');
+      subText();
+      input.placeholder = I.t('apps.search');
+      input.setAttribute('aria-label', I.t('apps.search'));
+      chips.setAttribute('aria-label', I.t('apps.filter'));
+      chipAll.textContent = I.t('apps.all');
+      section.groups.forEach(function (g, k) {
+        chips.querySelector('.chip[data-group="' + g.id + '"] .chip-text').textContent = I.pick(g, 'title');
+        groupEls[k].querySelector('.group-name').textContent = I.pick(g, 'title');
+      });
+      allApps.forEach(function (rec) {
+        rec.el.querySelector('.app-desc').textContent = I.pick(rec.app, 'desc');
+      });
+      empty.textContent = I.t('apps.empty');
+    }
+    texts();
+    refreshers.push(texts);
 
     input.addEventListener('input', apply);
     chips.addEventListener('click', function (e) {
@@ -165,6 +196,8 @@
       apply();
     });
   });
+
+  I.onChange(function () { refreshers.forEach(function (fn) { fn(); }); });
 
   /* ---------- cards follow the mouse ---------- */
 

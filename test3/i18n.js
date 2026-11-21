@@ -1,0 +1,179 @@
+/*
+  English / Arabic switch shared by every page under test3/.
+
+  - Text in the page is marked with data-i18n="key" (text) or
+    data-i18n-attr="aria-label:key;title:key;placeholder:key" (attributes).
+  - The choice is saved in localStorage ("uni-lang") and applied before
+    first paint by the small script in each page's <head>.
+  - Page scripts call UniI18n.onChange(fn) to redraw text they build
+    themselves (dates, counts, posters, app descriptions).
+*/
+(function () {
+  'use strict';
+
+  var KEY = 'uni-lang';
+  var root = document.documentElement;
+
+  // key: [English, Arabic]
+  var S = {
+    'lang.label': ['Language', 'اللغة'],
+    'lang.en': ['English', 'English'],
+    'lang.ar': ['العربية', 'العربية'],
+    'theme': ['Switch background colour', 'تبديل لون الخلفية'],
+    'back': ['Links', 'الروابط'],
+    'back.aria': ['Back to links', 'رجوع إلى الروابط'],
+
+    /* links page */
+    'home.doc': ['Unisanda — Links', 'Unisanda — الروابط'],
+    'home.h1': ['Unisanda links', 'روابط Unisanda'],
+    'tile.twitch.sub': ['Live streams · /unimohd', 'بث مباشر · \u2068/unimohd\u2069'],
+    'tile.discord.sub': ['Join the server', 'انضم إلى السيرفر'],
+    'tile.email': ['Email', 'البريد'],
+    'tile.donate': ['Donate here', 'ادعمني'],
+    'tile.donate.sub': ['Support the stream', 'ادعم البث'],
+    'explore': ['Explore', 'استكشف'],
+    'nav.upcoming': ['Upcoming games of this month', 'الألعاب القادمة هذا الشهر'],
+    'nav.free': ['Free games', 'ألعاب مجانية'],
+    'nav.apps': ['Useful apps', 'برامج مفيدة'],
+    'nav.accounts': ['Accounts worth following', 'حسابات تستحق المتابعة'],
+    'pill.new': ['New', 'جديد'],
+    'pill.locked': ['Locked', 'مقفل'],
+    'soon': ['Coming soon', 'قريبًا'],
+    'footer': ['Made with love by Unisanda', 'صُنع بحب من Unisanda'],
+
+    /* upcoming games */
+    'up.doc': ['Upcoming Games — Unisanda', 'الألعاب القادمة — Unisanda'],
+    'up.h1': ['Upcoming games', 'الألعاب القادمة'],
+    'up.ring': ['Games releasing this month', 'ألعاب تصدر هذا الشهر'],
+    'up.prev': ['Previous game', 'اللعبة السابقة'],
+    'up.next': ['Next game', 'اللعبة التالية'],
+    'up.platforms': ['Platforms', 'المنصات'],
+    'up.note': ['Dates can shift by region. Posters belong to their publishers.', 'قد تختلف المواعيد حسب المنطقة. البوسترات ملك لناشريها.'],
+    'up.poster': ['poster', 'بوستر'],
+    'st.out': ['Out now', 'متوفرة الآن'],
+    'st.today': ['Out today', 'تصدر اليوم'],
+    'st.tomorrow': ['Tomorrow', 'غدًا'],
+
+    /* free games */
+    'free.doc': ['Free Games — Unisanda', 'ألعاب مجانية — Unisanda'],
+    'free.h1': ['Free games', 'ألعاب مجانية'],
+    'free.note': ['Offers change often. Check the store before you download. Posters belong to their publishers.', 'العروض تتغير باستمرار، تأكد من المتجر قبل التحميل. البوسترات ملك لناشريها.'],
+    'free.left': ['Scroll left', 'تمرير لليسار'],
+    'free.right': ['Scroll right', 'تمرير لليمين'],
+
+    /* useful apps */
+    'apps.doc': ['Useful Apps — Unisanda', 'برامج مفيدة — Unisanda'],
+    'apps.kicker': ['Hand-picked tools', 'أدوات مختارة'],
+    'apps.h1': ['Useful apps', 'برامج مفيدة'],
+    'apps.search': ['Search apps', 'ابحث عن برنامج'],
+    'apps.all': ['All', 'الكل'],
+    'apps.filter': ['Filter by category', 'تصفية حسب القسم'],
+    'apps.empty': ['No apps match that search.', 'لا توجد برامج تطابق بحثك.'],
+    'apps.note': ["Every link goes to the app's official site or project page. Always download from there.", 'كل رابط يأخذك إلى الموقع الرسمي للبرنامج أو صفحة مشروعه، فحمّل منه دائمًا.']
+  };
+
+  // Arabic noun forms for counts: [1, 2, 3–10, 11+]
+  var NOUNS = {
+    game: { en: ['game', 'games'], ar: ['لعبة واحدة', 'لعبتان', 'ألعاب', 'لعبة'] },
+    app: { en: ['app', 'apps'], ar: ['برنامج واحد', 'برنامجان', 'برامج', 'برنامجًا'] },
+    group: { en: ['group', 'groups'], ar: ['قسم واحد', 'قسمان', 'أقسام', 'قسمًا'] },
+    day: { en: ['day', 'days'], ar: ['يوم واحد', 'يومين', 'أيام', 'يومًا'] }
+  };
+
+  var listeners = [];
+
+  function lang() { return root.lang === 'ar' ? 'ar' : 'en'; }
+  function isAr() { return lang() === 'ar'; }
+
+  function t(key) {
+    var e = S[key];
+    if (!e) return key;
+    return isAr() ? e[1] : e[0];
+  }
+
+  // "5 games" / "5 ألعاب", "2 days" / "يومين"
+  function count(n, noun) {
+    var f = NOUNS[noun];
+    if (!f) return String(n);
+    if (!isAr()) return n + ' ' + (n === 1 ? f.en[0] : f.en[1]);
+    var m = n % 100;
+    if (n === 1) return f.ar[0];
+    if (n === 2) return f.ar[1];
+    if (m >= 3 && m <= 10) return n + ' ' + f.ar[2];
+    return n + ' ' + f.ar[3];
+  }
+
+  // pick obj.field or obj.field_ar
+  function pick(obj, field) {
+    if (isAr() && obj[field + '_ar'] != null) return obj[field + '_ar'];
+    return obj[field];
+  }
+
+  var fmtCache = {};
+  function fmtDate(date, opts) {
+    var loc = isAr() ? 'ar-u-ca-gregory-nu-latn' : 'en-GB';
+    var k = loc + JSON.stringify(opts);
+    if (!fmtCache[k]) fmtCache[k] = new Intl.DateTimeFormat(loc, opts);
+    return fmtCache[k].format(date);
+  }
+
+  function apply() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      el.textContent = t(el.getAttribute('data-i18n'));
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+      el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+        var p = pair.split(':');
+        if (p.length === 2) el.setAttribute(p[0].trim(), t(p[1].trim()));
+      });
+    });
+  }
+
+  /* ---------- the switch ---------- */
+
+  var sw = document.createElement('div');
+  sw.className = 'lang-switch';
+  sw.setAttribute('role', 'group');
+  sw.setAttribute('data-i18n-attr', 'aria-label:lang.label');
+  sw.innerHTML =
+    '<span class="lang-thumb" aria-hidden="true"></span>' +
+    '<button type="button" data-lang="en" lang="en" aria-label="English">EN</button>' +
+    '<button type="button" data-lang="ar" lang="ar" aria-label="العربية">ع</button>';
+
+  function syncSwitch() {
+    var l = lang();
+    sw.dataset.active = l;
+    sw.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false');
+    });
+  }
+
+  sw.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (b) setLang(b.dataset.lang);
+  });
+
+  function setLang(l) {
+    l = l === 'ar' ? 'ar' : 'en';
+    if (l === lang() && sw.dataset.active === l) return;
+    root.lang = l;
+    root.dir = l === 'ar' ? 'rtl' : 'ltr';
+    try { localStorage.setItem(KEY, l); } catch (e) {}
+    root.classList.add('lang-swap');
+    apply();
+    syncSwitch();
+    listeners.forEach(function (fn) { fn(l); });
+    setTimeout(function () { root.classList.remove('lang-swap'); }, 500);
+  }
+
+  function onChange(fn) { listeners.push(fn); }
+
+  var theme = document.getElementById('themeToggle');
+  if (theme && theme.parentNode) theme.parentNode.insertBefore(sw, theme);
+  else document.body.appendChild(sw);
+
+  apply();
+  syncSwitch();
+
+  window.UniI18n = { lang: lang, isAr: isAr, t: t, count: count, pick: pick, fmtDate: fmtDate, setLang: setLang, onChange: onChange, apply: apply };
+})();
