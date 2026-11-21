@@ -455,7 +455,7 @@ body {
 
 .more-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap);
 }
 
@@ -487,6 +487,13 @@ a.soon-card { text-decoration: none; }
   background: var(--ink);
   color: var(--bg);
 }
+.soon-card--locked { cursor: not-allowed; opacity: .72; }
+.soon-card--locked .soon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.soon-card--locked .soon-pill svg { width: 11px; height: 11px; fill: currentColor; margin-top: -1px; }
 .soon-icon { flex: none; width: 30px; height: 30px; fill: currentColor; opacity: .8; }
 .soon-label {
   flex: 1;
@@ -533,9 +540,6 @@ a.soon-card { text-decoration: none; }
   .tile-mark { width: 150px; height: 150px; }
 }
 
-@media (max-width: 880px) {
-  .more-grid { grid-template-columns: 1fr; }
-}
 
 /* ---------- Phone ---------- */
 
