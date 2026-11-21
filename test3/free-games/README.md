@@ -18,3 +18,10 @@ Edit `data.js`. Each shelf has a title, an icon, a subtitle and a list of games;
 ## Posters
 
 All artwork belongs to its publishers. Steam library art for Palia, Marvel Rivals, Dead Island 2, Tomb Raider IV–VI Remastered, Monster Train 2, Halo Infinite and Call of Duty: Warzone. ROB RUN, Heartopia, AION 2, High On Life 2 and Gravhounds have no portrait art at Steam's standard path, so their posters are cropped Steam screenshots. Arkheron reuses the poster from `../upcoming-games/posters/`.
+
+## Free for a limited time (live)
+
+The section at the top lists games that are free for a limited time: 100% off to keep, or free to play for a while. It reads `live.json`, which the "Update game feeds" GitHub Action (`.github/workflows/update-feeds.yml`, script `scripts/update-feeds.mjs`) refreshes every 3 hours from the FreeStuff API v2.
+
+- Order is fixed: the offer ending soonest comes first. Each card shows the old price, a countdown and the exact end time in the visitor's time zone. Offers that end while the page is open disappear on their own.
+- The FreeStuff REST endpoint (`GET /v2/products`) is part of FreeStuff's paid "full" tier; the free tier only offers webhooks. Add the API key as a repository secret named `FREESTUFF_API_KEY`. Until then the section says the feed is not connected yet.

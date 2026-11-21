@@ -21,3 +21,7 @@ All artwork belongs to its publishers. Local copies are used so the page works o
 - Steam library art (600×900): ArcheAge Chronicles, Airframe Ultra, Tanuki: Pon's Summer, Arkheron, Metaphor: ReFantazio, Stellar Blade.
 - Cropped from Steam screenshots (those games have no portrait art at the standard path): Void/Breaker, Warhammer Survivors, Sonic Pico Park.
 - From the Wikipedia cover images, placed on a blurred copy of themselves to fill the 2:3 frame: Grand Theft Auto VI, The Legend of Zelda: Ocarina of Time. These are low resolution and look soft on large screens; swap them for official art when you can.
+
+## Top Steam games (live)
+
+On top of the hand-picked list in `games.js`, the page loads `steam.json`: the most popular Steam games releasing this month, refreshed every 3 hours by the "Update game feeds" GitHub Action (`scripts/update-feeds.mjs`) from Steam's public `IStoreQueryService/Query` endpoint (no key needed). It takes the 4 best-selling games already out this month and the 3 most-wishlisted games still to come, skips adult-only titles, and drops any game already in `games.js`. Everything is then shown in release-date order. When the month changes, the page switches to the new month automatically.
