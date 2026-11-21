@@ -59,6 +59,19 @@
     'free.h1': ['Free games', 'ألعاب مجانية'],
     'free.note': ['Offers change often. Check the store before you download. Posters belong to their publishers.', 'العروض تتغير باستمرار، تأكد من المتجر قبل التحميل. البوسترات ملك لناشريها.'],
     'free.left': ['Scroll left', 'تمرير لليسار'],
+    'live.title': ['Free for a limited time', 'مجانية لفترة محدودة'],
+    'live.sub': ['Claim them before the timer runs out', 'احصل عليها قبل انتهاء الوقت'],
+    'live.updated': ['Updated', 'آخر تحديث'],
+    'live.keep': ['Free to keep', 'مجانية للأبد'],
+    'live.timed': ['Free to play', 'مجانية للتجربة'],
+    'live.free': ['Free', 'مجانًا'],
+    'live.ends': ['Ends in', 'تنتهي بعد'],
+    'live.until': ['Until', 'حتى'],
+    'live.noend': ['No end date', 'بدون تاريخ انتهاء'],
+    'live.soon': ['Ending soon', 'تنتهي قريبًا'],
+    'live.empty': ['No limited-time free games right now. Check back soon.', 'لا توجد ألعاب مجانية مؤقتة حاليًا. ارجع لاحقًا.'],
+    'live.waiting': ['Live deals will show up here once the feed is connected.', 'ستظهر العروض المباشرة هنا بعد ربط مصدر البيانات.'],
+    'live.claim': ['Claim', 'احصل عليها'],
     'free.right': ['Scroll right', 'تمرير لليمين'],
 
     /* useful apps */
@@ -77,7 +90,9 @@
     game: { en: ['game', 'games'], ar: ['لعبة واحدة', 'لعبتان', 'ألعاب', 'لعبة'] },
     app: { en: ['app', 'apps'], ar: ['برنامج واحد', 'برنامجان', 'برامج', 'برنامجًا'] },
     group: { en: ['group', 'groups'], ar: ['قسم واحد', 'قسمان', 'أقسام', 'قسمًا'] },
-    day: { en: ['day', 'days'], ar: ['يوم واحد', 'يومين', 'أيام', 'يومًا'] }
+    day: { en: ['day', 'days'], ar: ['يوم واحد', 'يومين', 'أيام', 'يومًا'] },
+    hour: { en: ['hour', 'hours'], ar: ['ساعة واحدة', 'ساعتين', 'ساعات', 'ساعة'] },
+    minute: { en: ['minute', 'minutes'], ar: ['دقيقة واحدة', 'دقيقتين', 'دقائق', 'دقيقة'] }
   };
 
   var listeners = [];

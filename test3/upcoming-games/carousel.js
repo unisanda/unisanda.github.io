@@ -2,7 +2,75 @@
   'use strict';
 
   var data = window.UPCOMING || { month: '', games: [] };
-  var games = data.games.slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+
+  /* ---------- hand-picked games + this month's top Steam games ---------- */
+
+  function appidOf(url) {
+    var m = /store\.steampowered\.com\/app\/(\d+)/.exec(url || '');
+    return m ? +m[1] : null;
+  }
+  function norm(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, ''); }
+  function monthOf(date) { return String(date).slice(0, 7); }
+
+  // steam.json is refreshed every few hours by a GitHub Action. Its games are
+  // added to the hand-picked list (no duplicates), limited to one month, and
+  // everything is ordered by release date.
+  function merge(feed) {
+    var curated = data.games.slice();
+    var month = feed && feed.month;
+    if (!month) {
+      month = curated.length ? monthOf(curated[0].date) : '';
+    }
+    var list = curated.filter(function (g) { return monthOf(g.date) === month; });
+    if (!list.length && !(feed && feed.games && feed.games.length)) {
+      // nothing for the feed's month yet: fall back to the hand-picked list
+      list = curated;
+      month = curated.length ? monthOf(curated[0].date) : month;
+    }
+    var ids = {}, names = {};
+    list.forEach(function (g) {
+      var id = appidOf(g.url);
+      if (id) ids[id] = true;
+      names[norm(g.title)] = true;
+    });
+    ((feed && feed.games) || []).forEach(function (g) {
+      if (monthOf(g.date) !== month || ids[g.appid] || names[norm(g.title)]) return;
+      list.push({
+        title: g.title,
+        date: g.date,
+        platforms: g.platforms || ['pc'],
+        poster: g.poster,
+        accent: '#66c0f4',
+        url: g.url,
+        rank: g.rank,
+        steam: true
+      });
+    });
+    list.sort(function (a, b) {
+      if (a.date !== b.date) return a.date < b.date ? -1 : 1;
+      if (!!a.steam !== !!b.steam) return a.steam ? 1 : -1;
+      return (a.rank || 0) - (b.rank || 0);
+    });
+    return { games: list, month: month };
+  }
+
+  var booted = false;
+  function go(feed) {
+    if (booted) return;
+    booted = true;
+    var m = merge(feed);
+    boot(m.games, m.month);
+  }
+  if (window.fetch) {
+    fetch('steam.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(go, function () { go(null); });
+    setTimeout(function () { go(null); }, 4000);
+  } else {
+    go(null);
+  }
+
+  function boot(games, month) {
   var N = games.length;
   if (!N) return;
 
@@ -24,7 +92,11 @@
     fmtDate: function (d, o) { return d.toLocaleDateString('en-GB', o); }
   };
   var monthLabel = document.getElementById('monthLabel');
-  monthLabel.textContent = I.pick(data, 'month');
+  function monthText() {
+    var p = month.split('-');
+    return I.fmtDate(new Date(+p[0], +p[1] - 1, 1), { month: 'long', year: 'numeric' });
+  }
+  monthLabel.textContent = monthText();
 
   var PLATFORM = {
     ps5:     { label: 'PS5',      icon: 'p-ps5' },
@@ -391,7 +463,7 @@
 
   // language switch: redraw the text this script builds
   I.onChange(function () {
-    monthLabel.textContent = I.pick(data, 'month');
+    monthLabel.textContent = monthText();
     cards.forEach(function (card, k) {
       var g = games[k];
       card.querySelector('.card-day').innerHTML = dayBadge(g);
@@ -409,4 +481,5 @@
   });
 
   requestAnimationFrame(function () { document.body.classList.add('is-ready'); });
+  }
 })();

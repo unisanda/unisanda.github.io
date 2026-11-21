@@ -1,0 +1,84 @@
+{
+  "source": "Steam store (IStoreQueryService/Query)",
+  "month": "2026-11",
+  "updated": "2026-11-21T21:29:31.662Z",
+  "games": [
+    {
+      "appid": 4262460,
+      "title": "ROB RUN",
+      "date": "2026-11-04",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/69a7d94807fcdea67f649ecfa3da0aab369bd767/library_capsule_2x.jpg?t=1793811654",
+      "url": "https://store.steampowered.com/app/4262460/",
+      "rank": 1
+    },
+    {
+      "appid": 4251460,
+      "title": "Godzilla: Destroy All Monsters Melee Remastered",
+      "date": "2026-11-03",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
+      "url": "https://store.steampowered.com/app/4251460/",
+      "rank": 2
+    },
+    {
+      "appid": 4576490,
+      "title": "Casualties: Unknown",
+      "date": "2026-11-09",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
+      "url": "https://store.steampowered.com/app/4576490/",
+      "rank": 3
+    },
+    {
+      "appid": 5185890,
+      "title": "Zombies Aren't Real",
+      "date": "2026-11-13",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795201679",
+      "url": "https://store.steampowered.com/app/5185890/",
+      "rank": 4
+    },
+    {
+      "appid": 3333850,
+      "title": "Arkheron",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1794946102",
+      "url": "https://store.steampowered.com/app/3333850/",
+      "rank": 5
+    },
+    {
+      "appid": 3224600,
+      "title": "Am I Nima",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1793672035",
+      "url": "https://store.steampowered.com/app/3224600/",
+      "rank": 6
+    },
+    {
+      "appid": 4253570,
+      "title": "Reshine",
+      "date": "2026-11-26",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1794848311",
+      "url": "https://store.steampowered.com/app/4253570/",
+      "rank": 7
+    }
+  ]
+}
