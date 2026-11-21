@@ -4,7 +4,13 @@
   var data = window.FREE_GAMES || { month: '', rows: [] };
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var host = document.getElementById('shelves');
-  document.getElementById('monthLabel').textContent = data.month;
+  var I = window.UniI18n || {
+    t: function (k) { return k; }, isAr: function () { return false; },
+    pick: function (o, f) { return o[f]; }, onChange: function () {},
+    count: function (n, w) { return n + ' ' + w + 's'; }
+  };
+  var monthLabel = document.getElementById('monthLabel');
+  monthLabel.textContent = I.pick(data, 'month');
 
   var GAP = 18;
   var FRICTION = 0.92;           // per 16 ms frame
@@ -39,15 +45,17 @@
     head.innerHTML =
       '<span class="shelf-badge" aria-hidden="true"><svg><use href="#' + r.icon + '"/></svg></span>' +
       '<div class="shelf-text">' +
-        '<h2 class="shelf-title" id="shelf-' + r.id + '">' + esc(r.title) + '</h2>' +
-        '<p class="shelf-sub">' + esc(r.sub) + ' · ' + r.games.length + ' games</p>' +
+        '<h2 class="shelf-title" id="shelf-' + r.id + '"></h2>' +
+        '<p class="shelf-sub"></p>' +
       '</div>';
     var nav = el('div', 'shelf-nav');
     var prev = el('button', 'shelf-btn', '<svg aria-hidden="true"><use href="#i-chev"/></svg>');
     var next = el('button', 'shelf-btn shelf-btn--next', '<svg aria-hidden="true"><use href="#i-chev"/></svg>');
     prev.type = next.type = 'button';
-    prev.setAttribute('aria-label', 'Scroll ' + r.title + ' left');
-    next.setAttribute('aria-label', 'Scroll ' + r.title + ' right');
+    prev.dataset.i18nAttr = 'aria-label:free.left';
+    next.dataset.i18nAttr = 'aria-label:free.right';
+    prev.setAttribute('aria-label', I.t('free.left'));
+    next.setAttribute('aria-label', I.t('free.right'));
     nav.appendChild(prev);
     nav.appendChild(next);
     head.appendChild(nav);
@@ -63,6 +71,7 @@
 
     var row = {
       data: r,
+      head: head,
       section: section,
       view: view,
       track: track,
@@ -103,14 +112,33 @@
       '<span class="fcard-inner">' +
         '<img src="' + esc(g.poster) + '" alt="" width="600" height="900" decoding="async" draggable="false">' +
         '<span class="fcard-shine"></span>' +
-        '<span class="fcard-tag">' + esc(g.label) + '</span>' +
+        '<span class="fcard-tag"></span>' +
         '<span class="fcard-info">' +
           '<span class="fcard-title">' + esc(g.title) + '</span>' +
-          (g.note ? '<span class="fcard-note">' + esc(g.note) + '</span>' : '') +
+          (g.note ? '<span class="fcard-note"></span>' : '') +
         '</span>' +
       '</span>';
-    a.setAttribute('aria-label', g.title + ', ' + g.label + (g.note ? ', ' + g.note : ''));
+    a._game = g;
+    cardText(a);
     return a;
+  }
+
+  // text that changes with the language
+  function cardText(a) {
+    var g = a._game;
+    var label = I.pick(g, 'label');
+    var note = g.note ? I.pick(g, 'note') : '';
+    a.querySelector('.fcard-tag').textContent = label;
+    if (note) a.querySelector('.fcard-note').textContent = note;
+    a.setAttribute('aria-label', g.title + ', ' + label + (note ? ', ' + note : ''));
+  }
+
+  function headText(row) {
+    var r = row.data;
+    row.head.querySelector('.shelf-title').textContent = I.pick(r, 'title');
+    // \u2068…\u2069 keep each part's own direction when Arabic and English mix
+    row.head.querySelector('.shelf-sub').textContent =
+      '\u2068' + I.pick(r, 'sub') + '\u2069 · \u2068' + I.count(r.games.length, 'game') + '\u2069';
   }
 
   /* ---------- layout ---------- */
@@ -359,6 +387,15 @@
     resizeTimer = setTimeout(function () { rows.forEach(function (row) { layout(row); render(row); }); }, 80);
   });
   document.addEventListener('visibilitychange', start);
+
+  rows.forEach(headText);
+  I.onChange(function () {
+    monthLabel.textContent = I.pick(data, 'month');
+    rows.forEach(function (row) {
+      headText(row);
+      row.cards.forEach(cardText);
+    });
+  });
 
   start();
   requestAnimationFrame(function () { document.body.classList.add('is-ready'); });

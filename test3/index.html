@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Unisanda — Links</title>
+<title data-i18n="home.doc">Unisanda — Links</title>
 <meta name="description" content="All of Unisanda's links in one place: Twitch, Discord, Instagram, X, TikTok, YouTube and more.">
 <meta name="theme-color" content="#5a2530">
 <link rel="icon" type="image/png" href="../favicon.png.png">
@@ -11,10 +11,14 @@
 <link rel="preload" href="assets/luckiest-guy.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script>
-  // Apply the saved background choice before first paint.
+  // Apply the saved background colour and language before first paint.
   try {
     var t = localStorage.getItem('uni-theme');
     if (t === 'paper' || t === 'maroon') document.documentElement.dataset.theme = t;
+    if (localStorage.getItem('uni-lang') === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+    }
   } catch (e) {}
 </script>
 </head>
@@ -56,7 +60,7 @@
 <canvas class="waves" id="waves" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch background colour" title="Switch background colour">
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch background colour" title="Switch background colour" data-i18n-attr="aria-label:theme;title:theme">
   <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
   <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
 </button>
@@ -77,7 +81,7 @@
 
   <main>
     <section class="links" aria-labelledby="links-title">
-      <h1 class="visually-hidden" id="links-title">Unisanda links</h1>
+      <h1 class="visually-hidden" id="links-title" data-i18n="home.h1">Unisanda links</h1>
 
       <div class="grid">
 
@@ -89,7 +93,7 @@
           </span>
           <span class="tile-text">
             <span class="tile-label">Twitch</span>
-            <span class="tile-sub">Live streams · /unimohd</span>
+            <span class="tile-sub" data-i18n="tile.twitch.sub">Live streams · /unimohd</span>
           </span>
         </a>
 
@@ -100,7 +104,7 @@
           </span>
           <span class="tile-text">
             <span class="tile-label">Discord</span>
-            <span class="tile-sub">Join the server</span>
+            <span class="tile-sub" data-i18n="tile.discord.sub">Join the server</span>
           </span>
         </a>
 
@@ -154,7 +158,7 @@
             <svg class="tile-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
           </span>
           <span class="tile-text">
-            <span class="tile-label">Email</span>
+            <span class="tile-label" data-i18n="tile.email">Email</span>
             <span class="tile-sub">mohd@unisanda.com</span>
           </span>
         </a>
@@ -166,8 +170,8 @@
             <svg class="tile-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
           </span>
           <span class="tile-text">
-            <span class="tile-label">Donate here</span>
-            <span class="tile-sub">Support the stream</span>
+            <span class="tile-label" data-i18n="tile.donate">Donate here</span>
+            <span class="tile-sub" data-i18n="tile.donate.sub">Support the stream</span>
           </span>
         </a>
 
@@ -176,35 +180,36 @@
 
     <!-- Placeholder for the pages that will be added later -->
     <section class="more" aria-labelledby="more-title">
-      <h2 class="section-title section-title--sm" id="more-title">Explore</h2>
+      <h2 class="section-title section-title--sm" id="more-title" data-i18n="explore">Explore</h2>
       <div class="more-grid">
         <a class="soon-card soon-card--live" href="upcoming-games/">
           <svg class="soon-icon" aria-hidden="true"><use href="#i-calendar"/></svg>
-          <span class="soon-label">Upcoming games of this month</span>
-          <span class="soon-pill">New</span>
+          <span class="soon-label" data-i18n="nav.upcoming">Upcoming games of this month</span>
+          <span class="soon-pill" data-i18n="pill.new">New</span>
         </a>
         <a class="soon-card soon-card--live" href="free-games/">
           <svg class="soon-icon" aria-hidden="true"><use href="#i-gift"/></svg>
-          <span class="soon-label">Free games</span>
-          <span class="soon-pill">New</span>
+          <span class="soon-label" data-i18n="nav.free">Free games</span>
+          <span class="soon-pill" data-i18n="pill.new">New</span>
         </a>
         <a class="soon-card soon-card--live" href="useful-apps/">
           <svg class="soon-icon" aria-hidden="true"><use href="#i-apps"/></svg>
-          <span class="soon-label">Useful apps</span>
-          <span class="soon-pill">New</span>
+          <span class="soon-label" data-i18n="nav.apps">Useful apps</span>
+          <span class="soon-pill" data-i18n="pill.new">New</span>
         </a>
-        <div class="soon-card soon-card--locked" aria-disabled="true" title="Coming soon">
+        <div class="soon-card soon-card--locked" aria-disabled="true" title="Coming soon" data-i18n-attr="title:soon">
           <svg class="soon-icon" aria-hidden="true"><use href="#i-users"/></svg>
-          <span class="soon-label">Accounts worth following</span>
-          <span class="soon-pill"><svg aria-hidden="true"><use href="#i-lock"/></svg>Locked</span>
+          <span class="soon-label" data-i18n="nav.accounts">Accounts worth following</span>
+          <span class="soon-pill"><svg aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="pill.locked">Locked</span></span>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">Made with love by Unisanda</footer>
+  <footer class="footer" data-i18n="footer">Made with love by Unisanda</footer>
 </div>
 
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

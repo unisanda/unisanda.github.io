@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Useful Apps — Unisanda</title>
+<title data-i18n="apps.doc">Useful Apps — Unisanda</title>
 <meta name="description" content="Hand-picked PC apps and tools, each with a short note and a link to its official site.">
 <meta name="theme-color" content="#5a2530">
 <link rel="icon" type="image/png" href="../../favicon.png.png">
@@ -11,9 +11,14 @@
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="useful.css">
 <script>
+  // Apply the saved background colour and language before first paint.
   try {
     var t = localStorage.getItem('uni-theme');
     if (t === 'paper' || t === 'maroon') document.documentElement.dataset.theme = t;
+    if (localStorage.getItem('uni-lang') === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+    }
   } catch (e) {}
 </script>
 </head>
@@ -31,27 +36,28 @@
 <canvas class="waves" id="waves" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 
-<a class="back-link" href="../">
+<a class="back-link" href="../" data-i18n-attr="aria-label:back.aria">
   <svg aria-hidden="true"><use href="#i-chev"/></svg>
-  <span>Links</span>
+  <span data-i18n="back">Links</span>
 </a>
 
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch background colour" title="Switch background colour">
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch background colour" title="Switch background colour" data-i18n-attr="aria-label:theme;title:theme">
   <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
   <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
 </button>
 
 <main class="apps">
   <header class="apps-head">
-    <p class="apps-kicker">Hand-picked tools</p>
-    <h1 class="apps-title">Useful apps</h1>
+    <p class="apps-kicker" data-i18n="apps.kicker">Hand-picked tools</p>
+    <h1 class="apps-title" data-i18n="apps.h1">Useful apps</h1>
   </header>
 
   <div id="sections"></div>
 
-  <p class="apps-note">Every link goes to the app's official site or project page. Always download from there.</p>
+  <p class="apps-note" data-i18n="apps.note">Every link goes to the app's official site or project page. Always download from there.</p>
 </main>
 
+<script src="../i18n.js"></script>
 <script src="../app.js"></script>
 <script src="apps.js"></script>
 <script src="useful.js"></script>

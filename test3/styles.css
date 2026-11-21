@@ -10,9 +10,45 @@
   font-display: swap;
 }
 
+/* Arabic: a heavy display face to match Luckiest Guy, and a rounded bold
+   body face. unicode-range keeps them for Arabic letters only, so English
+   text keeps its own fonts and these files load only when Arabic shows. */
+@font-face {
+  font-family: "Uni Display Ar";
+  src: url("assets/fonts-ar/lalezar-arabic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Uni Body Ar";
+  src: url("assets/fonts-ar/baloo-bhaijaan-2-arabic-500.woff2") format("woff2");
+  font-weight: 100 549;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Uni Body Ar";
+  src: url("assets/fonts-ar/baloo-bhaijaan-2-arabic-700.woff2") format("woff2");
+  font-weight: 550 749;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Uni Body Ar";
+  src: url("assets/fonts-ar/baloo-bhaijaan-2-arabic-800.woff2") format("woff2");
+  font-weight: 750 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
+}
+
 :root {
-  --font-display: "Luckiest Guy", "Arial Black", Impact, system-ui, sans-serif;
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Uni Display Ar", "Luckiest Guy", "Arial Black", Impact, system-ui, sans-serif;
+  --font-body: "Uni Body Ar", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   /* maroon theme (default) */
   --bg: #5a2530;
@@ -109,7 +145,7 @@ body {
 .theme-toggle {
   position: fixed;
   top: max(14px, env(safe-area-inset-top));
-  right: max(14px, env(safe-area-inset-right));
+  inset-inline-end: max(14px, env(safe-area-inset-right));
   z-index: 10;
   width: 44px;
   height: 44px;
@@ -240,7 +276,7 @@ body {
 
 .section-title {
   margin: 0 0 clamp(8px, 1.4vh, 14px);
-  padding-left: 14px;
+  padding-inline-start: 14px;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(26px, 2.7vw, 44px);
@@ -370,7 +406,7 @@ body {
 .tile-mark {
   position: absolute;
   z-index: -1;
-  right: 4%;
+  inset-inline-end: 4%;
   top: 50%;
   width: clamp(120px, 15vw, 250px);
   height: clamp(120px, 15vw, 250px);
@@ -548,7 +584,7 @@ a.soon-card { text-decoration: none; }
   .page { padding-top: 18px; }
   .logo { width: clamp(128px, 38vw, 168px); }
   .hero { padding-bottom: 14px; }
-  .section-title { font-size: 28px; padding-left: 8px; }
+  .section-title { font-size: 28px; padding-inline-start: 8px; }
   .section-title--sm { font-size: 21px; }
 
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); perspective: none; }
@@ -580,4 +616,108 @@ a.soon-card { text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .logo, .logo-glow, .bolt, .tile { animation: none; }
   .tile, .tile-icon, .tile-mark, .tile-label { transition-duration: .01s; }
+}
+
+/* ==========================================================
+   Language switch (English / Arabic) — shared by every page
+   ========================================================== */
+
+.lang-switch {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: calc(max(14px, env(safe-area-inset-right)) + 54px);
+  z-index: 10;
+  display: flex;
+  direction: ltr;
+  height: 44px;
+  padding: 4px;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.lang-switch button {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: .04em;
+  cursor: pointer;
+  opacity: .7;
+  transition: color .35s ease, opacity .3s ease;
+}
+.lang-switch button[data-lang="en"] { padding-top: 3px; }
+.lang-switch button[data-lang="ar"] { font-size: 22px; padding-bottom: 2px; }
+.lang-switch button:hover { opacity: 1; }
+.lang-switch button[aria-pressed="true"] { color: var(--bg); opacity: 1; }
+.lang-switch button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.lang-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 42px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, .45);
+  transition: transform .45s var(--ease), background-color .3s;
+}
+.lang-switch[data-active="ar"] .lang-thumb { transform: translateX(42px); }
+
+/* a soft fade while the text changes */
+.lang-swap body > :not(canvas):not(.vignette):not(.lang-switch):not(.theme-toggle) {
+  animation: lang-fade .45s ease;
+}
+@keyframes lang-fade {
+  from { opacity: .25; filter: blur(3px); }
+}
+
+/* ---------- Arabic tweaks ---------- */
+
+/* Arabic letters join up, so no extra letter spacing */
+html[lang="ar"] body * { letter-spacing: 0 !important; }
+html[lang="ar"] .lang-switch button[data-lang="en"] { letter-spacing: .04em !important; }
+
+/* the Arabic display face is taller than Luckiest Guy */
+html[lang="ar"] :is(.section-title, .tile-label, .soon-label, .footer) { line-height: 1.35; }
+html[lang="ar"] .soon-label { padding-top: 0; }
+html[lang="ar"] .tile-sub,
+html[lang="ar"] .footer { font-weight: 700; }
+
+/* in right-to-left the switch moves to the left, next to the colour button */
+html[dir="rtl"] .lang-switch {
+  right: auto;
+  left: calc(max(14px, env(safe-area-inset-left)) + 54px);
+}
+
+/* @handles and links keep their own direction inside Arabic text */
+.tile-sub { unicode-bidi: plaintext; }
+html[dir="rtl"] .tile-sub { text-align: right; }
+
+/* arrows that point "out" mirror in right-to-left */
+html[dir="rtl"] .tile-arrow { scale: -1 1; }
+
+/* back link sits on the right and points right */
+html[dir="rtl"] .back-link {
+  left: auto;
+  right: max(14px, env(safe-area-inset-right));
+}
+html[dir="rtl"] .back-link svg { scale: -1 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-thumb { transition: none; }
+  .lang-swap body > * { animation: none !important; }
 }

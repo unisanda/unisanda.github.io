@@ -17,7 +17,14 @@
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
 
-  document.getElementById('monthLabel').textContent = data.month;
+  var I = window.UniI18n || {
+    t: function (k) { return k; }, isAr: function () { return false; },
+    pick: function (o, f) { return o[f]; }, onChange: function () {},
+    count: function (n, w) { return n + ' ' + w + 's'; },
+    fmtDate: function (d, o) { return d.toLocaleDateString('en-GB', o); }
+  };
+  var monthLabel = document.getElementById('monthLabel');
+  monthLabel.textContent = I.pick(data, 'month');
 
   var PLATFORM = {
     ps5:     { label: 'PS5',      icon: 'p-ps5' },
@@ -40,13 +47,20 @@
   function daysUntil(g) { return Math.round((parseDate(g.date) - today) / DAY); }
 
   function statusText(days) {
-    if (days > 1) return 'In ' + days + ' days';
-    if (days === 1) return 'Tomorrow';
-    if (days === 0) return 'Out today';
-    return 'Out now';
+    if (days > 1) return I.isAr() ? 'بعد ' + I.count(days, 'day') : 'In ' + I.count(days, 'day');
+    if (days === 1) return I.t('st.tomorrow');
+    if (days === 0) return I.t('st.today');
+    return I.t('st.out');
   }
 
-  var dateFmt = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+  function longDate(g) {
+    return I.fmtDate(parseDate(g.date), { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function dayBadge(g) {
+    var d = parseDate(g.date);
+    return '<b>' + d.getDate() + '</b>' + I.fmtDate(d, { month: 'short' });
+  }
 
   /* ---------- build cards ---------- */
 
@@ -64,7 +78,7 @@
 
     var img = document.createElement('img');
     img.src = g.poster;
-    img.alt = g.title + ' poster';
+    img.alt = I.isAr() ? I.t('up.poster') + ' ' + g.title : g.title + ' ' + I.t('up.poster');
     img.width = 600;
     img.height = 900;
     img.decoding = 'async';
@@ -77,8 +91,7 @@
 
     var day = document.createElement('span');
     day.className = 'card-day';
-    var d = parseDate(g.date);
-    day.innerHTML = '<b>' + d.getDate() + '</b>' + d.toLocaleString('en-GB', { month: 'short' });
+    day.innerHTML = dayBadge(g);
 
     inner.appendChild(img);
     inner.appendChild(shine);
@@ -171,7 +184,7 @@
 
     // swap the text with a small slide
     var dir = prev === -1 ? 0 : (wrap(i - prev) > 0 ? 1 : -1);
-    swapText(elDate, dateFmt.format(parseDate(g.date)), dir);
+    swapText(elDate, longDate(g), dir);
     swapText(elTitle, g.title, dir);
 
     elStatus.textContent = statusText(days);
@@ -375,6 +388,19 @@
   pos = target = start;
   render();
   setActive(start);
+
+  // language switch: redraw the text this script builds
+  I.onChange(function () {
+    monthLabel.textContent = I.pick(data, 'month');
+    cards.forEach(function (card, k) {
+      var g = games[k];
+      card.querySelector('.card-day').innerHTML = dayBadge(g);
+      card.querySelector('img').alt = I.isAr() ? I.t('up.poster') + ' ' + g.title : g.title + ' ' + I.t('up.poster');
+    });
+    var keep = active;
+    active = -1;
+    setActive(keep);
+  });
 
   var resizeTimer = 0;
   window.addEventListener('resize', function () {
