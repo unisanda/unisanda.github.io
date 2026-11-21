@@ -1,0 +1,331 @@
+/* ==========================================================
+   Free games — poster shelves
+   Uses the tokens, background and theme switch from ../styles.css
+   ========================================================== */
+
+:root {
+  --fcard-w: clamp(140px, 13vw, 200px);
+  --tag-free: #4ade80;
+  --tag-plus: #ffcc33;
+  --tag-gamepass: #7ed957;
+}
+
+.free-page { overflow-x: hidden; }
+
+/* ---------- back link (same as the upcoming games page) ---------- */
+
+.back-link {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  left: max(14px, env(safe-area-inset-left));
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  padding: 0 16px 0 10px;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.back-link span { padding-top: 3px; }
+.back-link svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+.back-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- page ---------- */
+
+.free {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(16px, 3vh, 30px) 0 24px;
+}
+
+.free-head {
+  text-align: center;
+  padding: 0 16px;
+  margin-bottom: clamp(10px, 2.4vh, 26px);
+}
+
+.free-kicker {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.free-title {
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 50px);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, .18);
+}
+:root[data-theme="paper"] .free-title { text-shadow: none; }
+
+/* ---------- one shelf per platform ---------- */
+
+.shelf {
+  margin-bottom: clamp(18px, 3.4vh, 34px);
+  opacity: 0;
+  transform: translateY(18px);
+}
+.is-ready .shelf {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s ease var(--delay, 0ms), transform .8s var(--ease) var(--delay, 0ms);
+}
+
+.shelf-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(1320px, 100%);
+  margin: 0 auto 10px;
+  padding: 0 clamp(16px, 3.1vw, 42px);
+}
+
+.shelf-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  color: var(--ink);
+}
+.shelf-badge svg { width: 22px; height: 22px; fill: currentColor; }
+.shelf--ps .shelf-badge { background: #0b46b8; border-color: #2f6fe6; color: #fff; }
+.shelf--xbox .shelf-badge { background: #107c10; border-color: #2ea12e; color: #fff; }
+
+.shelf-text { flex: 1; min-width: 0; }
+
+.shelf-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+
+.shelf-sub {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shelf-nav { flex: none; display: flex; gap: 8px; }
+
+.shelf-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--glass-line);
+  border-radius: 50%;
+  background: var(--glass);
+  color: var(--ink);
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform .3s var(--ease), border-color .3s;
+}
+.shelf-btn svg { width: 20px; height: 20px; }
+.shelf-btn--next svg { transform: scaleX(-1); }
+.shelf-btn:hover { transform: scale(1.08); border-color: var(--ink); }
+.shelf-btn:active { transform: scale(.94); }
+.shelf-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* the moving strip */
+.shelf-view {
+  position: relative;
+  padding: 14px 0 18px;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+  overflow-x: clip;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+.is-dragging .shelf-view { cursor: grabbing; }
+
+.shelf-track {
+  position: relative;
+  height: calc(var(--fcard-w) * 1.5);
+  transform-style: preserve-3d;
+}
+
+/* ---------- poster ---------- */
+
+.fcard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--fcard-w);
+  aspect-ratio: 2 / 3;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+}
+.fcard:focus-visible { outline: none; }
+.fcard:focus-visible .fcard-inner { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.fcard-inner {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 30%;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #120a0d;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .08),
+    0 18px 30px -18px rgba(0, 0, 0, .85);
+  transform: translateY(0) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .55s var(--ease), box-shadow .4s ease;
+}
+.fcard.is-hover .fcard-inner {
+  transform: translateY(-8px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.04);
+  transition: transform .15s linear, box-shadow .4s ease;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .22),
+    0 30px 44px -20px rgba(0, 0, 0, .9),
+    0 0 40px -12px var(--tag-color, #fff);
+}
+.fcard:active .fcard-inner { transform: scale(.97); }
+
+.fcard img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform .8s var(--ease);
+}
+.fcard.is-hover img { transform: scale(1.05); }
+
+.fcard-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--mx) var(--my), rgba(255, 255, 255, .34), transparent 55%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.fcard.is-hover .fcard-shine { opacity: 1; }
+
+.fcard-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 9px 4px;
+  border-radius: 999px;
+  background: var(--tag-color, #fff);
+  color: #0f0a0c;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+.fcard-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  padding: 46px 12px 12px;
+  background: linear-gradient(to top, rgba(8, 3, 5, .92), rgba(8, 3, 5, .6) 55%, transparent);
+}
+
+.fcard-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.05;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.fcard-note {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: rgba(255, 255, 255, .72);
+}
+
+.fcard--free     { --tag-color: var(--tag-free); }
+.fcard--plus     { --tag-color: var(--tag-plus); }
+.fcard--gamepass { --tag-color: var(--tag-gamepass); }
+
+/* ---------- footer note ---------- */
+
+.free-note {
+  margin: 8px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+
+/* ---------- phone ---------- */
+
+@media (max-width: 640px) {
+  :root { --fcard-w: 40vw; }
+  .free { padding-top: 70px; }
+  .free-title { font-size: 34px; }
+  .shelf-head { gap: 10px; padding: 0 16px; margin-bottom: 4px; }
+  .shelf-badge { width: 38px; height: 38px; border-radius: 12px; }
+  .shelf-badge svg { width: 20px; height: 20px; }
+  .shelf-title { font-size: 22px; }
+  .shelf-sub { font-size: 11.5px; white-space: normal; line-height: 1.3; }
+  .shelf-btn { width: 36px; height: 36px; }
+  .shelf-view { padding: 10px 0 14px; perspective: 800px; }
+  .fcard-inner { border-radius: 14px; }
+  .fcard-title { font-size: 15px; }
+  .fcard-tag { font-size: 9.5px; padding: 4px 8px 3px; top: 8px; left: 8px; }
+  .back-link { height: 42px; font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf, .is-ready .shelf { opacity: 1; transform: none; transition: none; }
+}
