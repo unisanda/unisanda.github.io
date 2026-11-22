@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="maroon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title data-i18n="acc.doc">Accounts Worth Following — Unisanda</title>
+<meta name="description" content="Creators and accounts worth following, picked by Unisanda.">
+<meta name="theme-color" content="#5a2530">
+<link rel="icon" type="image/png" href="../../favicon.png.png">
+<link rel="preload" href="../assets/luckiest-guy.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="accounts.css">
+<script>
+  // Apply the saved background colour and language before first paint.
+  try {
+    var t = localStorage.getItem('uni-theme');
+    if (t === 'paper' || t === 'maroon') document.documentElement.dataset.theme = t;
+    if (localStorage.getItem('uni-lang') === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+    }
+  } catch (e) {}
+</script>
+</head>
+<body class="acc-page">
+
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0-6a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1zM4.2 4.2a1 1 0 0 1 1.4 0L7 5.6A1 1 0 1 1 5.6 7L4.2 5.6a1 1 0 0 1 0-1.4zM17 17a1 1 0 0 1 1.4 0l1.4 1.4a1 1 0 1 1-1.4 1.4L17 18.4A1 1 0 0 1 17 17zm2.8-12.8a1 1 0 0 1 0 1.4L18.4 7A1 1 0 1 1 17 5.6l1.4-1.4a1 1 0 0 1 1.4 0zM7 17a1 1 0 0 1 0 1.4l-1.4 1.4a1 1 0 1 1-1.4-1.4L5.6 17A1 1 0 0 1 7 17z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.7 14.6A9 9 0 0 1 9.4 3.3a1 1 0 0 0-1.3-1.2 10.5 10.5 0 1 0 13.8 13.8 1 1 0 0 0-1.2-1.3z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M14.5 5.5 8 12l6.5 6.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></symbol>
+  <symbol id="i-verified" viewBox="0 0 24 24"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91c-1.31.67-2.2 1.91-2.2 3.34s.89 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 3.5a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm8 1.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM9 13c4.1 0 7 2.2 7 5.2V20a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1.8C2 15.2 4.9 13 9 13zm8.4.2c2.7.3 4.6 2 4.6 4.3V19a1 1 0 0 1-1 1h-3v-1.8c0-1.9-.9-3.6-2.4-4.8.6-.1 1.2-.2 1.8-.2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 1.5a8 8 0 0 1 8 8c0 5.4-6.6 12-7.3 12.7a1 1 0 0 1-1.4 0C10.6 21.5 4 14.9 4 9.5a8 8 0 0 1 8-8zm0 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L12 5.6M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.2-1.2"/></symbol>
+</svg>
+
+<canvas class="waves" id="waves" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<a class="back-link" href="../" data-i18n-attr="aria-label:back.aria">
+  <svg aria-hidden="true"><use href="#i-chev"/></svg>
+  <span data-i18n="back">Links</span>
+</a>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch background colour" title="Switch background colour" data-i18n-attr="aria-label:theme;title:theme">
+  <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+  <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+</button>
+
+<main class="acc">
+  <header class="acc-head">
+    <p class="acc-kicker" data-i18n="acc.kicker">Creators I recommend</p>
+    <h1 class="acc-title" data-i18n="acc.h1">Accounts worth following</h1>
+  </header>
+
+  <div class="acc-grid" id="accounts" role="list"></div>
+
+  <p class="acc-note" data-i18n="acc.note">Profiles update automatically from X.</p>
+</main>
+
+<script src="../i18n.js"></script>
+<script src="../app.js"></script>
+<script src="accounts.js"></script>
+</body>
+</html>

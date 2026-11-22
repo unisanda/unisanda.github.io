@@ -2,7 +2,8 @@ name: Update game feeds
 
 # Refreshes test3/upcoming-games/steam.json (popular Steam games this month)
 # and test3/free-games/live.json (limited-time free games from GamerPower,
-# plus FreeStuff when a FREESTUFF_API_KEY repository secret is set).
+# plus FreeStuff when a FREESTUFF_API_KEY repository secret is set) and
+# test3/accounts/profiles.json (X profiles for the accounts page).
 
 on:
   schedule:
@@ -36,7 +37,7 @@ jobs:
       - name: Commit changes
         id: commit
         run: |
-          git add test3/upcoming-games/steam.json test3/free-games/live.json
+          git add test3/upcoming-games/steam.json test3/free-games/live.json test3/accounts/profiles.json
           if git diff --cached --quiet; then
             echo "No changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"
