@@ -2,26 +2,8 @@
   "sources": [
     "GamerPower"
   ],
-  "updated": "2026-11-22T16:05:11.746Z",
+  "updated": "2026-11-22T22:38:18.107Z",
   "items": [
-    {
-      "id": "gp-3830",
-      "title": "Free itch.io Games Bundle",
-      "type": "keep",
-      "kind": "game",
-      "store": "itch",
-      "storeLabel": null,
-      "until": 1795391940000,
-      "untilPrecision": "day",
-      "price": {
-        "currency": "USD",
-        "old": 38400
-      },
-      "image": "https://www.gamerpower.com/offers/1b/6ae264e50edb5.jpg",
-      "url": "https://www.gamerpower.com/open/free-itch-io-games-bundle",
-      "published": 1793207461000,
-      "source": "gamerpower"
-    },
     {
       "id": "gp-3853",
       "title": "Mark of the Deep",
