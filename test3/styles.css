@@ -79,7 +79,7 @@
   --vignette: rgba(120, 60, 70, .16);
   --glass: rgba(90, 37, 48, .07);
   --glass-line: rgba(90, 37, 48, .22);
-  --glow: 255, 120, 150;
+  --glow: 122, 44, 60;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -225,14 +225,12 @@ body {
 .bolt-b { animation: bolt-b 7s linear infinite; }
 .bolt-c { animation: bolt-c 7s linear infinite; }
 
-/* in the paper theme the white logo needs a dark disc to sit on */
-:root[data-theme="paper"] .logo::before {
-  content: "";
-  position: absolute;
-  inset: -6%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 28%, #7a3541, #4a1a24 72%);
-  box-shadow: 0 16px 34px -12px rgba(74, 26, 36, .65), inset 0 0 0 3px rgba(255, 255, 255, .08);
+/* in the paper theme a maroon shadow (no disc) keeps the white logo readable */
+:root[data-theme="paper"] .logo img {
+  filter:
+    drop-shadow(0 0 1.5px rgba(90, 37, 48, .9))
+    drop-shadow(0 6px 12px rgba(90, 37, 48, .45))
+    drop-shadow(0 0 24px rgba(90, 37, 48, .45));
 }
 :root[data-theme="paper"] .bolt { stroke: #c2405c; }
 
@@ -581,7 +579,7 @@ a.soon-card { text-decoration: none; }
 
 @media (max-width: 640px) {
   :root { --tile-h: 132px; --gap: 12px; --radius: 24px; }
-  .page { padding-top: 18px; }
+  .page { padding-top: 64px; }   /* clear of the colour and language buttons */
   .logo { width: clamp(128px, 38vw, 168px); }
   .hero { padding-bottom: 14px; }
   .section-title { font-size: 28px; padding-inline-start: 8px; }
@@ -720,4 +718,55 @@ html[dir="rtl"] .back-link svg { scale: -1 1; }
 @media (prefers-reduced-motion: reduce) {
   .lang-thumb { transition: none; }
   .lang-swap body > * { animation: none !important; }
+}
+
+/* ==========================================================
+   Light tiles on the maroon background
+   (the paper background keeps the dark tiles)
+   ========================================================== */
+
+:root[data-theme="maroon"] .tile {
+  --tile-bg: #fbf6f7;
+  color: #1a0c11;
+  box-shadow:
+    inset 0 0 0 1px rgba(90, 37, 48, .08),
+    0 16px 30px -18px rgba(20, 4, 8, .75);
+}
+:root[data-theme="maroon"] .tile::before { opacity: .16; }
+:root[data-theme="maroon"] .tile:hover::before,
+:root[data-theme="maroon"] .tile:focus-visible::before { opacity: .26; }
+:root[data-theme="maroon"] .tile--instagram::before { opacity: .14; }
+:root[data-theme="maroon"] .tile--instagram:hover::before { opacity: .24; }
+/* the light that follows the pointer becomes a soft brand tint */
+:root[data-theme="maroon"] .tile::after { mix-blend-mode: multiply; }
+:root[data-theme="maroon"] .tile:hover::after { opacity: .2; }
+:root[data-theme="maroon"] .tile:hover,
+:root[data-theme="maroon"] .tile:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px rgba(90, 37, 48, .12),
+    0 26px 40px -18px rgba(20, 4, 8, .8),
+    0 0 44px -14px var(--c1);
+}
+:root[data-theme="maroon"] .tile-sub { color: rgba(26, 12, 17, .55); }
+:root[data-theme="maroon"] .tile:hover .tile-sub,
+:root[data-theme="maroon"] .tile:focus-visible .tile-sub { color: rgba(26, 12, 17, .8); }
+:root[data-theme="maroon"] .tile-arrow { color: #1a0c11; }
+:root[data-theme="maroon"] .tile-mark { opacity: .08; }
+:root[data-theme="maroon"] .tile:hover .tile-mark { opacity: .13; }
+:root[data-theme="maroon"] .tile-icon { filter: drop-shadow(0 4px 10px rgba(26, 12, 17, .16)); }
+
+/* icon colours that read on white */
+:root[data-theme="maroon"] .tile--twitch  { --icon: #9146ff; }
+:root[data-theme="maroon"] .tile--discord { --icon: #5865f2; }
+:root[data-theme="maroon"] .tile--x       { --icon: #0f1419; }
+:root[data-theme="maroon"] .tile--tiktok  { --icon: #111111; }
+:root[data-theme="maroon"] .tile--youtube { --icon: #ff0033; }
+:root[data-theme="maroon"] .tile--email   { --icon: #e5536f; }
+:root[data-theme="maroon"] .tile--tiktok .tile-icon {
+  filter: drop-shadow(-2px -1.5px 0 #25f4ee) drop-shadow(2px 1.5px 0 #fe2c55);
+}
+
+@media (hover: none) {
+  :root[data-theme="maroon"] .tile::before { opacity: .2; }
+  :root[data-theme="maroon"] .tile-arrow { opacity: .4; }
 }
