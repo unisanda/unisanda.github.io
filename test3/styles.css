@@ -721,52 +721,54 @@ html[dir="rtl"] .back-link svg { scale: -1 1; }
 }
 
 /* ==========================================================
-   Light tiles on the maroon background
-   (the paper background keeps the dark tiles)
+   Maroon link tiles
+   - white background: deep maroon tiles
+   - maroon background: lighter maroon tiles
+   Each tile has its own wave lines (tile-waves.js) that bend
+   towards the mouse or finger.
    ========================================================== */
 
-:root[data-theme="maroon"] .tile {
-  --tile-bg: #fbf6f7;
-  color: #1a0c11;
+:root {
+  --tile-bg: linear-gradient(160deg, #6e2f3c 0%, #5a2430 100%);
+  --tile-line: rgba(255, 225, 232, .16);
+  --tile-line-hi: rgba(255, 225, 232, .34);
+}
+:root[data-theme="paper"] {
+  --tile-bg: linear-gradient(160deg, #4a1a25 0%, #34111a 100%);
+  --tile-line: rgba(255, 210, 222, .13);
+  --tile-line-hi: rgba(255, 210, 222, .3);
+}
+
+.tile {
   box-shadow:
-    inset 0 0 0 1px rgba(90, 37, 48, .08),
+    inset 0 0 0 1px rgba(255, 230, 236, .12),
     0 16px 30px -18px rgba(20, 4, 8, .75);
 }
-:root[data-theme="maroon"] .tile::before { opacity: .16; }
-:root[data-theme="maroon"] .tile:hover::before,
-:root[data-theme="maroon"] .tile:focus-visible::before { opacity: .26; }
-:root[data-theme="maroon"] .tile--instagram::before { opacity: .14; }
-:root[data-theme="maroon"] .tile--instagram:hover::before { opacity: .24; }
-/* the light that follows the pointer becomes a soft brand tint */
-:root[data-theme="maroon"] .tile::after { mix-blend-mode: multiply; }
-:root[data-theme="maroon"] .tile:hover::after { opacity: .2; }
-:root[data-theme="maroon"] .tile:hover,
-:root[data-theme="maroon"] .tile:focus-visible {
+/* brand colours become a soft tint on the maroon */
+.tile::before { opacity: .22; }
+.tile:hover::before, .tile:focus-visible::before { opacity: .34; }
+.tile--instagram::before { opacity: .2; }
+.tile--instagram:hover::before { opacity: .32; }
+.tile:hover,
+.tile:focus-visible {
   box-shadow:
-    inset 0 0 0 1px rgba(90, 37, 48, .12),
+    inset 0 0 0 1px rgba(255, 230, 236, .22),
     0 26px 40px -18px rgba(20, 4, 8, .8),
     0 0 44px -14px var(--c1);
 }
-:root[data-theme="maroon"] .tile-sub { color: rgba(26, 12, 17, .55); }
-:root[data-theme="maroon"] .tile:hover .tile-sub,
-:root[data-theme="maroon"] .tile:focus-visible .tile-sub { color: rgba(26, 12, 17, .8); }
-:root[data-theme="maroon"] .tile-arrow { color: #1a0c11; }
-:root[data-theme="maroon"] .tile-mark { opacity: .08; }
-:root[data-theme="maroon"] .tile:hover .tile-mark { opacity: .13; }
-:root[data-theme="maroon"] .tile-icon { filter: drop-shadow(0 4px 10px rgba(26, 12, 17, .16)); }
+.tile-sub { color: rgba(255, 236, 240, .62); }
+.tile:hover .tile-sub, .tile:focus-visible .tile-sub { color: rgba(255, 240, 243, .9); }
+.tile-mark { opacity: .12; }
 
-/* icon colours that read on white */
-:root[data-theme="maroon"] .tile--twitch  { --icon: #9146ff; }
-:root[data-theme="maroon"] .tile--discord { --icon: #5865f2; }
-:root[data-theme="maroon"] .tile--x       { --icon: #0f1419; }
-:root[data-theme="maroon"] .tile--tiktok  { --icon: #111111; }
-:root[data-theme="maroon"] .tile--youtube { --icon: #ff0033; }
-:root[data-theme="maroon"] .tile--email   { --icon: #e5536f; }
-:root[data-theme="maroon"] .tile--tiktok .tile-icon {
-  filter: drop-shadow(-2px -1.5px 0 #25f4ee) drop-shadow(2px 1.5px 0 #fe2c55);
+.tile-waves {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 @media (hover: none) {
-  :root[data-theme="maroon"] .tile::before { opacity: .2; }
-  :root[data-theme="maroon"] .tile-arrow { opacity: .4; }
+  .tile::before { opacity: .26; }
 }
