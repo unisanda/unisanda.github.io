@@ -1,8 +1,8 @@
 /*
   "Free for a limited time" section.
 
-  Reads live.json, which a GitHub Action refreshes every few hours from the
-  FreeStuff API (see scripts/update-feeds.mjs). Offers are shown in a fixed
+  Reads live.json, which a GitHub Action refreshes every hour from
+  GamerPower (and FreeStuff when a key is set; see scripts/update-feeds.mjs). Offers are shown in a fixed
   order — the one ending soonest first — with a live countdown and the exact
   end time in the visitor's own time zone. Offers that end while the page is
   open disappear on their own.
@@ -23,7 +23,8 @@
   var STORES = {
     steam: 'Steam', epic: 'Epic Games', gog: 'GOG', humble: 'Humble', itch: 'itch.io',
     ubi: 'Ubisoft', origin: 'EA app', prime: 'Prime Gaming', gamepass: 'Game Pass',
-    playstation: 'PlayStation', gplay: 'Google Play', other: ''
+    playstation: 'PlayStation', gplay: 'Google Play', indiegala: 'IndieGala',
+    stove: 'STOVE', drmfree: 'DRM-free', other: ''
   };
 
   var feed = null;
@@ -54,8 +55,12 @@
     return I.t('live.ends') + ' ' + parts.join(I.isAr() ? ' و' : ', ');
   }
 
-  function endText(until) {
-    return I.t('live.until') + ' ' + I.fmtDate(new Date(until), { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+  // GamerPower only gives a reliable end day, so those show the date alone
+  function endText(it) {
+    var opts = it.untilPrecision === 'day'
+      ? { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }
+      : { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' };
+    return I.t('live.until') + ' ' + I.fmtDate(new Date(it.until), opts);
   }
 
   function money(price) {
@@ -90,7 +95,7 @@
     a.setAttribute('role', 'listitem');
     a.style.setProperty('--i', index);
     a._item = item;
-    var store = STORES[item.store] != null ? STORES[item.store] : item.store;
+    var store = STORES[item.store] || item.storeLabel || '';
     a.innerHTML =
       '<span class="deal-media">' +
         (item.image ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" decoding="async">' : '') +
@@ -118,7 +123,7 @@
     if (it.until) {
       var hours = (it.until - Date.now()) / 3600000;
       left.textContent = timeLeft(it.until);
-      end.textContent = endText(it.until);
+      end.textContent = endText(it);
       a.classList.toggle('is-ending', hours < 24);
     } else {
       left.textContent = I.t('live.noend');
@@ -133,15 +138,27 @@
     if (feed && feed.updated) {
       sub += ' · ' + I.t('live.updated') + ' ' + I.fmtDate(new Date(feed.updated), { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
     }
-    head.querySelector('.live-sub').textContent = sub;
+    var subEl = head.querySelector('.live-sub');
+    subEl.textContent = sub;
+    // credit the data source
+    if (feed && feed.sources && feed.sources.indexOf('GamerPower') !== -1) {
+      subEl.appendChild(document.createTextNode(' · '));
+      var a = document.createElement('a');
+      a.href = 'https://www.gamerpower.com/';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = I.t('live.data') + ' GamerPower';
+      subEl.appendChild(a);
+    }
   }
 
   function current(items) {
     var now = Date.now();
     return items.filter(function (it) { return !it.until || it.until > now; })
       .sort(function (a, b) {
+        // stable sort: offers without an end date keep the feed's order (newest first)
         var ua = a.until || Infinity, ub = b.until || Infinity;
-        return ua - ub || String(a.title).localeCompare(String(b.title));
+        return ua === ub ? 0 : ua - ub;
       });
   }
 

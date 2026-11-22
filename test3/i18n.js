@@ -72,6 +72,7 @@
     'live.empty': ['No limited-time free games right now. Check back soon.', 'لا توجد ألعاب مجانية مؤقتة حاليًا. ارجع لاحقًا.'],
     'live.waiting': ['Live deals will show up here once the feed is connected.', 'ستظهر العروض المباشرة هنا بعد ربط مصدر البيانات.'],
     'live.claim': ['Claim', 'احصل عليها'],
+    'live.data': ['Data:', 'البيانات من'],
     'free.right': ['Scroll right', 'تمرير لليمين'],
 
     /* useful apps */

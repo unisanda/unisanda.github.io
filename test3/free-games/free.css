@@ -392,6 +392,7 @@ html[lang="ar"] .back-link span { padding-top: 0; }
   letter-spacing: .02em;
   text-transform: uppercase;
 }
+.live-sub a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .live-sub {
   margin: 3px 0 0;
   font-size: 12.5px;

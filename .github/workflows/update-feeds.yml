@@ -1,12 +1,12 @@
 name: Update game feeds
 
 # Refreshes test3/upcoming-games/steam.json (popular Steam games this month)
-# and test3/free-games/live.json (limited-time free games from FreeStuff).
-# The FreeStuff part needs a repository secret named FREESTUFF_API_KEY.
+# and test3/free-games/live.json (limited-time free games from GamerPower,
+# plus FreeStuff when a FREESTUFF_API_KEY repository secret is set).
 
 on:
   schedule:
-    - cron: '23 */3 * * *'   # every 3 hours
+    - cron: '23 * * * *'   # every hour
   workflow_dispatch:          # "Run workflow" button in the Actions tab
 
 permissions:

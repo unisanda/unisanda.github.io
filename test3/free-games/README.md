@@ -21,7 +21,7 @@ All artwork belongs to its publishers. Steam library art for Palia, Marvel Rival
 
 ## Free for a limited time (live)
 
-The section at the top lists games that are free for a limited time: 100% off to keep, or free to play for a while. It reads `live.json`, which the "Update game feeds" GitHub Action (`.github/workflows/update-feeds.yml`, script `scripts/update-feeds.mjs`) refreshes every 3 hours from the FreeStuff API v2.
+The section at the top lists PC games that are free to keep for a limited time. It reads `live.json`, which the "Update game feeds" GitHub Action (`.github/workflows/update-feeds.yml`, script `scripts/update-feeds.mjs`) refreshes every hour.
 
-- Order is fixed: the offer ending soonest comes first. Each card shows the old price, a countdown and the exact end time in the visitor's time zone. Offers that end while the page is open disappear on their own.
-- The FreeStuff REST endpoint (`GET /v2/products`) is part of FreeStuff's paid "full" tier; the free tier only offers webhooks. Add the API key as a repository secret named `FREESTUFF_API_KEY`. Until then the section says the feed is not connected yet.
+- Source: GamerPower's public giveaways API (no key), PC and Epic Games Store full-game giveaways, credited on the page. FreeStuff API v2 is added on top when a `FREESTUFF_API_KEY` repository secret is set (its REST endpoint is in FreeStuff's paid "full" tier). Duplicates are merged.
+- Order is fixed: the offer ending soonest comes first, then offers with no end date, newest first. Each card shows the old price, a countdown and the end date. GamerPower end times have no time zone and the time is often a placeholder, so those cards show the date only (read as UTC). Offers that end while the page is open disappear on their own.
