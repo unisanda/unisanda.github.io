@@ -1,5 +1,242 @@
 {
-  "source": "FreeStuff API v2",
-  "updated": null,
-  "items": []
+  "sources": [
+    "GamerPower"
+  ],
+  "updated": "2026-11-22T16:05:11.746Z",
+  "items": [
+    {
+      "id": "gp-3830",
+      "title": "Free itch.io Games Bundle",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": null,
+      "until": 1795391940000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 38400
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6ae264e50edb5.jpg",
+      "url": "https://www.gamerpower.com/open/free-itch-io-games-bundle",
+      "published": 1793207461000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3853",
+      "title": "Mark of the Deep",
+      "type": "keep",
+      "kind": "game",
+      "store": "epic",
+      "storeLabel": "Epic Games",
+      "until": 1795737540000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 1999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6aff1d0e4942d.jpg",
+      "url": "https://www.gamerpower.com/open/mark-of-the-deep-epic-games-giveaway",
+      "published": 1795086014000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3852",
+      "title": "Contractor: The Clean Up Part 2",
+      "type": "keep",
+      "kind": "game",
+      "store": "epic",
+      "storeLabel": "Epic Games",
+      "until": 1796255940000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6afc554f06761.jpg",
+      "url": "https://www.gamerpower.com/open/contractor-the-clean-up-part-2-epic-games-giveaway",
+      "published": 1794903807000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3346",
+      "title": "My Darkest Witch",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/69061997da81d.jpg",
+      "url": "https://www.gamerpower.com/open/my-darkest-witch-pc-giveaway",
+      "published": 1793367226000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3340",
+      "title": "ANCIENT EVIL",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/69024dade7c16.jpg",
+      "url": "https://www.gamerpower.com/open/ancient-evil-pc-giveaway",
+      "published": 1793012663000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3331",
+      "title": "Last Room",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 2999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68f91bd81c328.jpg",
+      "url": "https://www.gamerpower.com/open/last-room-pc-giveaway",
+      "published": 1792411090000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3328",
+      "title": "Best Plumber",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 2999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68f40b259de93.jpg",
+      "url": "https://www.gamerpower.com/open/best-plumber-pc-giveaway",
+      "published": 1790343661000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3322",
+      "title": "Sausage Hunter",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "Indiegala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 2999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68eadb2d6f0c4.jpg",
+      "url": "https://www.gamerpower.com/open/sausage-hunter-pc-giveaway",
+      "published": 1789809350000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3324",
+      "title": "Battle Ram",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 2999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68efabd65f913.jpg",
+      "url": "https://www.gamerpower.com/open/battle-ram-pc-giveaway",
+      "published": 1788342691000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3316",
+      "title": "Leaper",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68e6513c31514.jpg",
+      "url": "https://www.gamerpower.com/open/leaper-pc-giveaway",
+      "published": 1787730948000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3716",
+      "title": "Dwarven Realms",
+      "type": "keep",
+      "kind": "game",
+      "store": "steam",
+      "storeLabel": "Steam",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6a59119a8eb8d.jpg",
+      "url": "https://www.gamerpower.com/open/dwarven-realms-steam-key-giveaway",
+      "published": 1784207706000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3446",
+      "title": "GigaBash",
+      "type": "keep",
+      "kind": "game",
+      "store": "stove",
+      "storeLabel": "Stove",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 2499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/69567c4ee0fa3.jpg",
+      "url": "https://www.gamerpower.com/open/gigabash-pc-giveaway",
+      "published": 1767257598000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-2204",
+      "title": "Dual Chroma: Academy Carols",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 200
+      },
+      "image": "https://www.gamerpower.com/offers/1b/63c6f67bb9c8b.jpg",
+      "url": "https://www.gamerpower.com/open/dual-chroma-academy-carols-itch-io-giveaway",
+      "published": 1673987211000,
+      "source": "gamerpower"
+    }
+  ]
 }

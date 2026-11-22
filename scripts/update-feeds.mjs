@@ -13,11 +13,15 @@
      Adult-only titles are skipped. The page merges these with its own
      hand-picked list and sorts everything by release date.
 
-  2. FreeStuff -> test3/free-games/live.json
-     Games that are free for a limited time (100% off, or free weekends),
-     from the FreeStuff API v2 REST endpoint. Needs FREESTUFF_API_KEY (the
-     REST API is part of FreeStuff's paid "full" tier). Without a key the
-     file is left as it is.
+  2. Free games -> test3/free-games/live.json
+     PC games that are free to keep for a limited time, from:
+     - GamerPower's public giveaways API (no key): PC and Epic Games Store
+       giveaways of full games.
+     - FreeStuff API v2, only if FREESTUFF_API_KEY is set (its REST API is
+       part of FreeStuff's paid "full" tier).
+     Duplicates are merged, ended offers are dropped, and the list is
+     ordered: ending soonest first, then offers with no end date (newest
+     first).
 
   A file is only rewritten when its games actually change, so the scheduled
   run does not create a commit every time.
@@ -175,11 +179,11 @@ function usdPrice(prices = []) {
   return p ? { currency: p.currency, old: p.oldValue } : null;
 }
 
-async function updateFreeStuff() {
+async function fetchFreeStuff() {
   const key = process.env.FREESTUFF_API_KEY;
   if (!key) {
     console.log('skipped:   FreeStuff (no FREESTUFF_API_KEY)');
-    return;
+    return [];
   }
   const now = Date.now();
   const items = [];
@@ -205,16 +209,131 @@ async function updateFreeStuff() {
           image: img.wide || img.tall,
           poster: img.tall,
           url: bestUrl(p.urls),
-          rating: typeof p.rating === 'number' ? Math.round(p.rating * 100) / 100 : null
+          source: 'freestuff'
         });
       }
       offset += list.length;
       if (!list.length || offset >= (page.count ?? 0)) break;
     }
   }
-  // ending soonest first; offers with no end date go last
-  items.sort((a, b) => (a.until ?? Infinity) - (b.until ?? Infinity) || a.title.localeCompare(b.title));
-  const data = { source: 'FreeStuff API v2', updated: new Date().toISOString(), items };
+  return items;
+}
+
+/* ------------------------------------------------------------------ */
+/* GamerPower                                                          */
+/* ------------------------------------------------------------------ */
+
+const GP_FEEDS = [
+  'https://www.gamerpower.com/api/giveaways?platform=pc&type=game',
+  'https://www.gamerpower.com/api/giveaways?platform=epic-games-store&type=game'
+];
+
+// "Mark of the Deep (Epic Games) Giveaway" -> title "Mark of the Deep", store "Epic Games"
+function gpTitle(raw) {
+  let title = raw.replace(/\s+(key\s+)?giveaway$/i, '').trim();
+  let label = '';
+  const m = /\s*\(([^)]+)\)\s*$/.exec(title);
+  if (m) {
+    label = m[1].trim();
+    title = title.slice(0, m.index).trim();
+  }
+  return { title, label };
+}
+
+function gpStore(platforms, label) {
+  const p = platforms.toLowerCase();
+  const l = label.toLowerCase();
+  if (p.includes('epic games store') || l.startsWith('epic')) return 'epic';
+  if (p.includes('steam') || l === 'steam') return 'steam';
+  if (p.includes('gog') || l === 'gog') return 'gog';
+  if (p.includes('itch.io') || l === 'itch.io') return 'itch';
+  if (l.includes('indiegala')) return 'indiegala';
+  if (l === 'stove') return 'stove';
+  if (p.includes('drm-free')) return 'drmfree';
+  return 'other';
+}
+
+function gpPrice(worth) {
+  const m = /^\$(\d+(?:\.\d+)?)$/.exec(String(worth).trim());
+  return m ? { currency: 'USD', old: Math.round(parseFloat(m[1]) * 100) } : null;
+}
+
+// GamerPower gives end dates as "YYYY-MM-DD HH:MM:SS" without a zone;
+// they are read as UTC and shown as a date (the time is often a placeholder).
+function gpUntil(end) {
+  const m = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/.exec(String(end).trim());
+  return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : null;
+}
+
+async function fetchGamerPower() {
+  const byId = new Map();
+  for (const url of GP_FEEDS) {
+    const res = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (res.status === 201) continue; // GamerPower: no active giveaways
+    if (!res.ok) throw new Error(`GamerPower failed: ${res.status} ${url}`);
+    const list = await res.json();
+    if (!Array.isArray(list)) continue;
+    for (const g of list) byId.set(g.id, g);
+  }
+  const now = Date.now();
+  const items = [];
+  for (const g of byId.values()) {
+    if (g.status && g.status !== 'Active') continue;
+    const until = gpUntil(g.end_date);
+    if (until && until <= now) continue;
+    const { title, label } = gpTitle(g.title);
+    items.push({
+      id: 'gp-' + g.id,
+      title,
+      type: 'keep',
+      kind: 'game',
+      store: gpStore(g.platforms || '', label),
+      storeLabel: label || null,
+      until,
+      untilPrecision: until ? 'day' : null,
+      price: gpPrice(g.worth),
+      image: g.image || g.thumbnail || null,
+      url: g.open_giveaway_url || g.gamerpower_url,
+      published: g.published_date ? gpUntil(g.published_date) : null,
+      source: 'gamerpower'
+    });
+  }
+  console.log(`fetched:   GamerPower (${items.length} active)`);
+  return items;
+}
+
+/* ------------------------------------------------------------------ */
+/* live.json                                                           */
+/* ------------------------------------------------------------------ */
+
+function norm(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, ''); }
+
+async function updateLive() {
+  const lists = [];
+  const sources = [];
+  for (const [name, fn] of [['GamerPower', fetchGamerPower], ['FreeStuff', fetchFreeStuff]]) {
+    try {
+      const items = await fn();
+      if (items.length) sources.push(name);
+      lists.push(items);
+    } catch (err) {
+      console.log(`::warning title=${name} feed::${err.message}`);
+    }
+  }
+  if (!lists.length) throw new Error('no free-game source answered');
+  const seen = new Set();
+  const items = lists.flat().filter((it) => {
+    const k = norm(it.title);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+  // ending soonest first; offers with no end date after, newest first
+  items.sort((a, b) =>
+    (a.until ?? Infinity) - (b.until ?? Infinity) ||
+    (b.published ?? 0) - (a.published ?? 0) ||
+    a.title.localeCompare(b.title));
+  const data = { sources, updated: new Date().toISOString(), items };
   await writeIfChanged(FREE_FILE, data, (d) => d.items);
 }
 
@@ -222,7 +341,7 @@ async function updateFreeStuff() {
 
 // One feed failing should not stop the other from being saved, so errors are
 // reported as workflow warnings and the old file is kept.
-for (const [name, job] of [['Steam', updateSteam], ['FreeStuff', updateFreeStuff]]) {
+for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive]]) {
   try {
     await job();
   } catch (err) {
