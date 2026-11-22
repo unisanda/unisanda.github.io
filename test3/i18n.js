@@ -73,6 +73,8 @@
     'live.waiting': ['Live deals will show up here once the feed is connected.', 'ستظهر العروض المباشرة هنا بعد ربط مصدر البيانات.'],
     'live.claim': ['Claim', 'احصل عليها'],
     'live.data': ['Data:', 'البيانات من'],
+    'live.more': ['Show more', 'عرض المزيد'],
+    'live.less': ['Show less', 'عرض أقل'],
     'free.right': ['Scroll right', 'تمرير لليمين'],
 
     /* useful apps */

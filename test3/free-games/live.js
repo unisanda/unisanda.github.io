@@ -29,6 +29,8 @@
 
   var feed = null;
   var cards = [];
+  var VISIBLE = 3;       // cards shown before "Show more"
+  var expanded = false;
 
   function el(tag, cls, html) {
     var e = document.createElement(tag);
@@ -83,9 +85,46 @@
   var grid = el('div', 'live-grid');
   grid.setAttribute('role', 'list');
   var empty = el('p', 'live-empty');
+  grid.id = 'live-grid';
+  var more = el('button', 'live-more',
+    '<span class="live-more-text"></span>' +
+    '<svg class="live-more-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>');
+  more.type = 'button';
+  more.setAttribute('aria-controls', 'live-grid');
+  more.hidden = true;
   host.appendChild(head);
   host.appendChild(grid);
+  host.appendChild(more);
   host.appendChild(empty);
+
+  /* ---------- show the first few, the rest behind "Show more" ---------- */
+
+  function moreText() {
+    var extra = cards.length - VISIBLE;
+    more.querySelector('.live-more-text').textContent =
+      expanded ? I.t('live.less') : I.t('live.more') + ' (' + extra + ')';
+    more.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    more.classList.toggle('is-open', expanded);
+  }
+
+  function applyMore() {
+    more.hidden = cards.length <= VISIBLE;
+    cards.forEach(function (c, k) {
+      c.hidden = !expanded && k >= VISIBLE;
+      // newly shown cards come in one after another, starting right away
+      c.style.setProperty('--i', k >= VISIBLE ? k - VISIBLE : k);
+    });
+    moreText();
+  }
+
+  more.addEventListener('click', function () {
+    expanded = !expanded;
+    applyMore();
+    // when folding back up, bring the section top back into view if needed
+    if (!expanded && host.getBoundingClientRect().top < 0) {
+      host.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
 
   function makeCard(item, index) {
     var a = el('a', 'deal deal--' + (item.type === 'timed' ? 'timed' : 'keep'));
@@ -167,6 +206,7 @@
     grid.innerHTML = '';
     cards = items.map(makeCard);
     cards.forEach(function (c) { cardText(c); grid.appendChild(c); bindTilt(c); });
+    applyMore();
     empty.hidden = items.length > 0;
     empty.textContent = I.t(feed && feed.updated ? 'live.empty' : 'live.waiting');
     host.classList.toggle('is-empty', !items.length);
@@ -209,5 +249,5 @@
     .then(function (data) { feed = data || { items: [] }; render(); })
     .catch(function () { feed = null; render(); });
 
-  I.onChange(function () { headText(); cards.forEach(cardText); empty.textContent = I.t(feed && feed.updated ? 'live.empty' : 'live.waiting'); });
+  I.onChange(function () { headText(); cards.forEach(cardText); moreText(); empty.textContent = I.t(feed && feed.updated ? 'live.empty' : 'live.waiting'); });
 })();
