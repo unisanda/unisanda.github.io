@@ -1,7 +1,7 @@
 {
   "source": "Steam store (IStoreQueryService/Query)",
   "month": "2026-11",
-  "updated": "2026-11-21T21:29:31.662Z",
+  "updated": "2026-11-22T07:04:37.077Z",
   "games": [
     {
       "appid": 4262460,
@@ -65,7 +65,7 @@
       "platforms": [
         "pc"
       ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1793672035",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
       "url": "https://store.steampowered.com/app/3224600/",
       "rank": 6
     },
