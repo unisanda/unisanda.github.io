@@ -1,0 +1,43 @@
+{
+  "source": "FxTwitter (api.fxtwitter.com)",
+  "updated": "2026-11-22T17:28:04.650Z",
+  "profiles": [
+    {
+      "handle": "UniMohdx",
+      "screenName": "UniMohdx",
+      "name": "MOHD",
+      "bio": "Gaming, Graphic Designer, Content Creator, Music, Movies and i also do Reviews. EN/AR/URD | TikTok 50k | IG 25k | Indie Games Supporter • mohd@unisanda.com",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1741137021651791872/nKQ41Jl7_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1222409962342821888/1715656378/1500x500",
+      "followers": 32399,
+      "location": "🇸🇦🇵🇰",
+      "website": {
+        "url": "http://unisanda.com",
+        "display": "unisanda.com"
+      },
+      "verified": true,
+      "url": "https://x.com/UniMohdx"
+    },
+    {
+      "handle": "U7madX",
+      "screenName": "u7madx",
+      "name": "A7mad🇵🇸",
+      "bio": "https://t.co/WmwD0A5zNl",
+      "bioLinks": [
+        {
+          "text": "https://t.co/WmwD0A5zNl",
+          "url": "https://t.me/A7madx07",
+          "display": "t.me/A7madx07"
+        }
+      ],
+      "avatar": "https://pbs.twimg.com/profile_images/1984996926270377984/00Kx4Rhu_400x400.png",
+      "banner": "https://pbs.twimg.com/profile_banners/785331631/1762095129/1500x500",
+      "followers": 19518,
+      "location": "Palestine",
+      "website": null,
+      "verified": false,
+      "url": "https://x.com/u7madx"
+    }
+  ]
+}

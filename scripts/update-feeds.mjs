@@ -23,7 +23,11 @@
      ordered: ending soonest first, then offers with no end date (newest
      first).
 
-  A file is only rewritten when its games actually change, so the scheduled
+  3. X profiles -> test3/accounts/profiles.json
+     Name, bio, profile picture, banner and follower count for each handle
+     in test3/accounts/accounts.json, from FxTwitter's public API (no key).
+
+  A file is only rewritten when its content actually changes, so the scheduled
   run does not create a commit every time.
 */
 import { readFile, writeFile } from 'node:fs/promises';
@@ -31,6 +35,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 const ROOT = new URL('../', import.meta.url);
 const STEAM_FILE = new URL('test3/upcoming-games/steam.json', ROOT);
 const FREE_FILE = new URL('test3/free-games/live.json', ROOT);
+const ACCOUNTS_FILE = new URL('test3/accounts/accounts.json', ROOT);
+const PROFILES_FILE = new URL('test3/accounts/profiles.json', ROOT);
 
 const PICKS_RELEASED = 4;   // games already out this month
 const PICKS_UPCOMING = 3;   // games still to come this month
@@ -338,10 +344,66 @@ async function updateLive() {
 }
 
 /* ------------------------------------------------------------------ */
+/* X profiles (FxTwitter)                                              */
+/* ------------------------------------------------------------------ */
+
+// FxTwitter often answers "User not found" for an account that exists, and
+// can be picky about capital letters, so try a few times and both spellings.
+async function fxUser(handle) {
+  const spellings = [...new Set([handle, handle.toLowerCase()])];
+  let last = '';
+  for (let attempt = 0; attempt < 6; attempt++) {
+    for (const h of spellings) {
+      const res = await fetch('https://api.fxtwitter.com/' + encodeURIComponent(h), { headers: { 'User-Agent': UA } });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body.user) return body.user;
+      last = `${res.status} ${body.message || ''}`.trim();
+    }
+    await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+  }
+  throw new Error(last || 'no answer');
+}
+
+async function updateProfiles() {
+  const list = (await readJson(ACCOUNTS_FILE))?.accounts || [];
+  const old = (await readJson(PROFILES_FILE))?.profiles || [];
+  const profiles = [];
+  for (const { handle } of list) {
+    try {
+      const u = await fxUser(handle);
+      profiles.push({
+        handle,
+        screenName: u.screen_name,
+        name: u.name,
+        bio: u.raw_description?.text ?? u.description ?? '',
+        bioLinks: (u.raw_description?.facets || [])
+          .filter((f) => f.type === 'url' && f.original)
+          .map((f) => ({ text: f.original, url: f.replacement, display: f.display || f.replacement })),
+        // full-size images instead of the 48px thumbnail
+        avatar: u.avatar_url ? u.avatar_url.replace(/_normal(\.\w+)$/, '_400x400$1') : null,
+        banner: u.banner_url ? u.banner_url + '/1500x500' : null,
+        followers: u.followers ?? null,
+        location: u.location || null,
+        website: u.website?.url ? { url: u.website.url, display: u.website.display_url || u.website.url } : null,
+        verified: Boolean(u.verification?.verified),
+        url: `https://x.com/${u.screen_name || handle}`
+      });
+    } catch (err) {
+      // keep the last good copy of this profile
+      const prev = old.find((p) => p.handle === handle);
+      if (prev) profiles.push(prev);
+      console.log(`::warning title=X profile ${handle}::${err.message}`);
+    }
+  }
+  const data = { source: 'FxTwitter (api.fxtwitter.com)', updated: new Date().toISOString(), profiles };
+  await writeIfChanged(PROFILES_FILE, data, (d) => d.profiles);
+}
+
+/* ------------------------------------------------------------------ */
 
 // One feed failing should not stop the other from being saved, so errors are
 // reported as workflow warnings and the old file is kept.
-for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive]]) {
+for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive], ['X profiles', updateProfiles]]) {
   try {
     await job();
   } catch (err) {

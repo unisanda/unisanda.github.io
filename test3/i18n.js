@@ -77,6 +77,17 @@
     'live.less': ['Show less', 'عرض أقل'],
     'free.right': ['Scroll right', 'تمرير لليمين'],
 
+    /* accounts */
+    'acc.doc': ['Accounts Worth Following — Unisanda', 'حسابات تستحق المتابعة — Unisanda'],
+    'acc.kicker': ['Creators I recommend', 'حسابات أنصح بها'],
+    'acc.h1': ['Accounts worth following', 'حسابات تستحق المتابعة'],
+    'acc.follow': ['Follow on X', 'تابع على X'],
+    'acc.followers': ['followers', 'متابع'],
+    'acc.verified': ['Verified account', 'حساب موثّق'],
+    'acc.avatar': ['Profile picture of', 'صورة حساب'],
+    'acc.note': ['Profiles update automatically from X.', 'تتحدّث الحسابات تلقائيًا من X.'],
+    'acc.empty': ['Accounts will show up here soon.', 'ستظهر الحسابات هنا قريبًا.'],
+
     /* useful apps */
     'apps.doc': ['Useful Apps — Unisanda', 'برامج مفيدة — Unisanda'],
     'apps.kicker': ['Hand-picked tools', 'أدوات مختارة'],

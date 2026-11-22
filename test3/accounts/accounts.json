@@ -1,0 +1,7 @@
+{
+  "_note": "Accounts shown on the page, in this order. Use the handle exactly as FxTwitter accepts it (it can be picky about capital letters, e.g. U7madX works where u7madx does not). The hourly 'Update game feeds' workflow refreshes profiles.json from this list.",
+  "accounts": [
+    { "handle": "UniMohdx" },
+    { "handle": "U7madX" }
+  ]
+}
