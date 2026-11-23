@@ -54,6 +54,17 @@
     'st.today': ['Out today', 'تصدر اليوم'],
     'st.tomorrow': ['Tomorrow', 'غدًا'],
 
+    /* upcoming games, layout test 2 */
+    'up2.doc': ['Upcoming Games — Unisanda', 'الألعاب القادمة — Unisanda'],
+    'up2.title': ['Games of', 'ألعاب شهر'],
+    'up2.note': ['Dates can shift by region. Posters belong to their publishers.', 'قد تختلف المواعيد حسب المنطقة. البوسترات ملك لناشريها.'],
+    'up2.arabic.yes': ['Arabic supported', 'تدعم العربية'],
+    'up2.arabic.no': ['No Arabic', 'لا تدعم العربية'],
+    'up2.single': ['Single player', 'لاعب واحد'],
+    'up2.multi': ['Multiplayer', 'لعب جماعي'],
+    'up2.coop': ['Co-op', 'تعاوني'],
+    'up2.hot': ['Most anticipated', 'الأكثر ترقبًا'],
+
     /* free games */
     'free.doc': ['Free Games — Unisanda', 'ألعاب مجانية — Unisanda'],
     'free.h1': ['Free games', 'ألعاب مجانية'],

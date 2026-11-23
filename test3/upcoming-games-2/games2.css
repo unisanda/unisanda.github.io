@@ -1,0 +1,293 @@
+/* ==========================================================
+   Upcoming games — layout test 2
+   A static grid in the style of Unisanda's monthly posts:
+   the round month artwork on top, then one framed poster per
+   game in date order, with the date above and platforms below.
+   ========================================================== */
+
+:root {
+  --frame: #eee3e5;          /* the light card outline */
+  --frame-ink: #4a1d27;      /* text and icons on the light outline */
+  --well: #4e1f29;           /* maroon strip under the poster */
+}
+:root[data-theme="paper"] {
+  --frame: #5a2530;
+  --frame-ink: #fff4f6;
+  --well: #3d151d;
+}
+
+.up2-page { overflow-x: hidden; }
+
+/* ---------- back link (same as the other pages) ---------- */
+
+.back-link {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  left: max(14px, env(safe-area-inset-left));
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 44px;
+  padding: 0 16px 0 10px;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.back-link span { padding-top: 3px; }
+.back-link svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+.back-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- page ---------- */
+
+.up2 {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: clamp(56px, 8vh, 80px) clamp(16px, 3vw, 40px) 30px;
+}
+
+/* ---------- the round month artwork ---------- */
+
+.up2-hero {
+  display: grid;
+  place-items: center;
+  margin-bottom: clamp(30px, 6vh, 64px);
+}
+.up2-hero-art {
+  display: block;
+  width: min(560px, 86vw);
+  height: auto;
+  filter: drop-shadow(0 26px 40px rgba(20, 4, 8, .5));
+  animation: hero-in .9s var(--ease) backwards, hero-float 7s ease-in-out .9s infinite;
+}
+:root[data-theme="paper"] .up2-hero-art { filter: drop-shadow(0 22px 34px rgba(90, 37, 48, .35)); }
+@keyframes hero-in { from { opacity: 0; transform: translateY(20px) scale(.96); } }
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ---------- the grid ---------- */
+
+.up2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(26px, 4vw, 44px) clamp(18px, 3vw, 36px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.g2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: g2-in .6s var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+@keyframes g2-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* "10 | NOV" */
+.g2-date {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 800;
+  letter-spacing: .22em;
+  line-height: 1;
+}
+.g2-bar { width: 3px; height: 1em; border-radius: 2px; background: currentColor; }
+.g2-day { margin-inline-end: -.22em; }       /* drop the trailing letter space */
+.g2-month { letter-spacing: .26em; margin-inline-end: -.26em; }
+
+/* the framed card */
+.g2-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 30%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 0 0;
+  border: 3px solid var(--frame);
+  border-radius: 30px;
+  background: var(--well);
+  color: var(--frame-ink);
+  text-decoration: none;
+  box-shadow: 0 18px 32px -20px rgba(20, 4, 8, .85);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .6s var(--ease), box-shadow .4s ease;
+}
+.g2-card.is-hover {
+  transform: perspective(900px) translateY(-6px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .15s linear, box-shadow .4s ease;
+  box-shadow: 0 30px 44px -22px rgba(20, 4, 8, .95);
+}
+.g2-card:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+
+.g2-poster {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  margin: -3px -3px 0;
+  overflow: hidden;
+  border: 3px solid var(--frame);
+  border-radius: 30px;
+  background: #1a0d12;
+}
+.g2-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.g2-card.is-hover .g2-poster img { transform: scale(1.04); }
+.g2-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--mx) var(--my), rgba(255, 255, 255, .28), transparent 55%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.g2-card.is-hover .g2-poster::after { opacity: 1; }
+
+/* top-left: Arabic support + player count */
+.g2-badges {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: flex;
+  gap: 4px;
+  direction: ltr;
+}
+.g2-ar, .g2-players {
+  display: grid;
+  place-items: center;
+  height: 34px;
+  border: 2px solid #fff;
+  border-radius: 9px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+}
+.g2-ar {
+  width: 34px;
+  font-family: "Uni Body Ar", var(--font-body);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1;
+  padding-bottom: 3px;
+  color: #fff;
+}
+.g2-ar.is-no { background: #e5363b; }
+.g2-ar.is-yes { background: #2fb34a; }
+.g2-players {
+  display: flex;
+  gap: 1px;
+  padding: 0 5px;
+  background: #4e1f29;
+}
+.g2-pl { width: 20px; height: 20px; fill: #fff; }
+
+.g2-dlc {
+  position: absolute;
+  right: 18px;
+  bottom: -3px;
+  padding: 4px 14px 2px;
+  border: 3px solid var(--frame);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background: var(--frame);
+  color: var(--frame-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+/* platforms on the maroon strip */
+.g2-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 10px;
+  min-height: 72px;
+  padding: 14px 12px 16px;
+  direction: ltr;
+}
+.g2-plat { width: 34px; height: 34px; fill: var(--frame); }
+
+/* fire badge on the most anticipated games */
+.g2-hot {
+  position: absolute;
+  top: 8px;
+  right: -10px;
+  z-index: 2;
+  font-size: clamp(34px, 4.2vw, 48px);
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .35));
+  transform-origin: 50% 90%;
+  animation: flame 2.4s ease-in-out infinite;
+}
+@keyframes flame {
+  0%, 100% { transform: rotate(-4deg) scale(1); }
+  50%      { transform: rotate(4deg) scale(1.06); }
+}
+
+.up2-note {
+  margin: 40px 0 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+
+/* ---------- Arabic ---------- */
+
+html[lang="ar"] .g2-date { letter-spacing: 0; font-weight: 800; }
+html[lang="ar"] :is(.g2-day, .g2-month) { margin-inline-end: 0; }
+html[lang="ar"] .g2-month { font-family: "Uni Body Ar", var(--font-body); }
+html[lang="ar"] .back-link span { padding-top: 0; }
+html[lang="ar"] .up2-note { font-size: 13px; }
+html[dir="rtl"] .g2-hot { right: auto; left: -10px; }
+
+/* ---------- smaller screens ---------- */
+
+@media (max-width: 760px) {
+  .up2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
+  .g2-card, .g2-poster { border-radius: 22px; }
+  .g2-ar, .g2-players { height: 28px; border-radius: 8px; }
+  .g2-ar { width: 28px; font-size: 17px; }
+  .g2-pl { width: 16px; height: 16px; }
+  .g2-badges { top: 9px; left: 10px; }
+  .g2-plat { width: 20px; height: 20px; }
+  .g2-platforms { min-height: 48px; gap: 5px 5px; padding: 10px 6px 12px; }
+  .up2 { padding-top: 72px; }   /* clear of the top buttons */
+  .g2-date { gap: 10px; margin-bottom: 8px; }
+  .g2-hot { right: -6px; top: 4px; }
+  .g2-dlc { font-size: 12px; padding: 3px 10px 1px; right: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .up2-hero-art, .g2, .g2-hot { animation: none; }
+}
