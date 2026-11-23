@@ -1,6 +1,6 @@
 {
   "source": "FxTwitter (api.fxtwitter.com)",
-  "updated": "2026-11-23T03:51:23.061Z",
+  "updated": "2026-11-23T09:30:25.554Z",
   "profiles": [
     {
       "handle": "UniMohdx",
@@ -10,7 +10,7 @@
       "bioLinks": [],
       "avatar": "https://pbs.twimg.com/profile_images/1741137021651791872/nKQ41Jl7_400x400.jpg",
       "banner": "https://pbs.twimg.com/profile_banners/1222409962342821888/1715656378/1500x500",
-      "followers": 32541,
+      "followers": 32578,
       "location": "🇸🇦🇵🇰",
       "website": {
         "url": "http://unisanda.com",
@@ -33,11 +33,184 @@
       ],
       "avatar": "https://pbs.twimg.com/profile_images/1984996926270377984/00Kx4Rhu_400x400.png",
       "banner": "https://pbs.twimg.com/profile_banners/785331631/1762095129/1500x500",
-      "followers": 19522,
+      "followers": 19531,
       "location": "Palestine",
       "website": null,
       "verified": false,
       "url": "https://x.com/u7madx"
+    },
+    {
+      "handle": "oBasim",
+      "screenName": "oBasim",
+      "name": "oBasim 🧠",
+      "bio": "LFC | PC | TV | \nYoutube : https://t.co/PMKqLNsAmm",
+      "bioLinks": [
+        {
+          "text": "https://t.co/PMKqLNsAmm",
+          "url": "https://www.youtube.com/@oBasiiim?sub_confirmation=1",
+          "display": "youtube.com/@oBasiiim?sub_…"
+        }
+      ],
+      "avatar": "https://pbs.twimg.com/profile_images/2070452291711229952/04JqJ086_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/80652958/1786872185/1500x500",
+      "followers": 35579,
+      "location": null,
+      "website": {
+        "url": "https://creators.sa/obasim",
+        "display": "creators.sa/obasim"
+      },
+      "verified": true,
+      "url": "https://x.com/oBasim"
+    },
+    {
+      "handle": "AbuFajerr",
+      "screenName": "AbuFajerr",
+      "name": "🔸أبـو فـجـر🔸",
+      "bio": "لاعب مهتم باللاعبين وتجاربهم..\nاتكلم عن الالعاب ككل من تجربتي الشخصية\nواسلط الضوء على الألعاب المستقلة الفريدة.\nتذكر دائماً أن تعامل الناس كما تريد أن يعاملوك",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/2122363909768138752/4cfzz-mn_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1322373586926116867/1794883269/1500x500",
+      "followers": 4720,
+      "location": "here & there.. ",
+      "website": {
+        "url": "https://discord.gg/dBWkHjKatZ",
+        "display": "discord.gg/dBWkHjKatZ"
+      },
+      "verified": false,
+      "url": "https://x.com/AbuFajerr"
+    },
+    {
+      "handle": "pr_pirate",
+      "screenName": "pr_pirate",
+      "name": "Pirate PR",
+      "bio": "We put the 𝖆𝖗𝖗𝖗 in PR.\n\nPirate PR is a marketing & PR agency for the indie game industry. \n\nLet's parley: ahoy@piratepr.com",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1546970424264867840/mutxVBhl_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1511695919326060544/1729149314/1500x500",
+      "followers": 8644,
+      "location": "Seven Seas  🌊",
+      "website": {
+        "url": "http://piratepr.com",
+        "display": "piratepr.com"
+      },
+      "verified": true,
+      "url": "https://x.com/pr_pirate"
+    },
+    {
+      "handle": "GermanStrands",
+      "screenName": "GermanStrands",
+      "name": "GermanStrands",
+      "bio": "Gaming News, Reviews & Videos | Content Creator | PS5 & PC Coverage | Followed by PlayStationDE, KojiPro, Santa Monica Studio, Square Enix DE & more",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1253734683680047106/5EUeGF6-_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/2317802312/1579803198/1500x500",
+      "followers": 83356,
+      "location": "Germany",
+      "website": {
+        "url": "https://linktr.ee/GermanStrands",
+        "display": "linktr.ee/GermanStrands"
+      },
+      "verified": true,
+      "url": "https://x.com/GermanStrands"
+    },
+    {
+      "handle": "JaaferSh",
+      "screenName": "JaaferSh",
+      "name": "JAAFER'SH",
+      "bio": "لاعب PC من عام 2004 ، هدف حسابي هو نقل لكم الخبرة والمعرفة اللي اكتسبتها في هذا المجال بالإضافة لمشاركة آرائي وتجاربي مع الألعاب",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1959295906194309120/da_WChnl_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1047081310295142400/1755967520/1500x500",
+      "followers": 22399,
+      "location": "Games World",
+      "website": {
+        "url": "http://Solo.to/JaaferSh",
+        "display": "Solo.to/JaaferSh"
+      },
+      "verified": true,
+      "url": "https://x.com/JaaferSh"
+    },
+    {
+      "handle": "iExplosiveRage",
+      "screenName": "iExplosiveRage",
+      "name": "Musashi | 武蔵",
+      "bio": "Whatever happens, happens..\n\nسبحان الله وبحمده سبحان الله العظيم",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1638627659700662272/A_L47dgO_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1377571934704173056/1710021748/1500x500",
+      "followers": 27132,
+      "location": "Bebop",
+      "website": {
+        "url": "https://lnk.bio/iExplosiveRage",
+        "display": "lnk.bio/iExplosiveRage"
+      },
+      "verified": true,
+      "url": "https://x.com/iExplosiveRage"
+    },
+    {
+      "handle": "MaruChan878",
+      "screenName": "MaruChan878",
+      "name": "MaruChan 🎮",
+      "bio": "•|• Co founder @GamesUniteUs •|• Game Manager @indvcc  •|• Game Marketer 🎮\n\nSupport #indiegames #gamedev #تطوير_الالعاب \n\nTweets Eng/Ara \n\nShe/her 👩🏻",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1964775911540051968/PUndhXUE_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1322925740946587649/1756837736/1500x500",
+      "followers": 1945,
+      "location": "Riyadh, Kingdom of Saudi Arabi",
+      "website": {
+        "url": "https://linktr.ee/Maru878",
+        "display": "linktr.ee/Maru878"
+      },
+      "verified": true,
+      "url": "https://x.com/MaruChan878"
+    },
+    {
+      "handle": "SKY_UPz",
+      "screenName": "SKY_UPz",
+      "name": "SKY",
+      "bio": "Crimson Desert Fan | Gaming Creator\nCovering PC & PS5 Games\nGameplay, Guides, Discoveries & Gaming News\nskyzoneup@gmail.com",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/2073206250792169472/vi03hPkx_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/2037489684557737984/1795367419/1500x500",
+      "followers": 5176,
+      "location": null,
+      "website": null,
+      "verified": true,
+      "url": "https://x.com/SKY_UPz"
+    },
+    {
+      "handle": "A_A_L_T_",
+      "screenName": "A_A_L_T_",
+      "name": "A A L T",
+      "bio": "عبدالإله |\n\nLiving for high refresh rates & flawless builds. Monitor Expert | PC Builder | Tech Addict\n⠀  ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀\nللتجميعات 🖥️ ( @AALTtech )",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1575374468712734720/1U-Q-Hf9_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1354648266/1788210722/1500x500",
+      "followers": 32372,
+      "location": "aalt.ech@outlook.com",
+      "website": {
+        "url": "https://aaltech.sa/",
+        "display": "aaltech.sa"
+      },
+      "verified": true,
+      "url": "https://x.com/A_A_L_T_"
+    },
+    {
+      "handle": "TheAnnaji",
+      "screenName": "TheAnnaji",
+      "name": "GP游戏脉动 🎮",
+      "bio": "🎮 Game Reviewer-Content Creator | Video Essays| WRITER AT @LifeisaGameMag | Variety Gamer #PS5 #PC | GTA 6 for the rest of the year.\n📧 Wangzi.ziyad@gmail.com",
+      "bioLinks": [],
+      "avatar": "https://pbs.twimg.com/profile_images/1732781680795254784/aFCy0PXF_400x400.jpg",
+      "banner": "https://pbs.twimg.com/profile_banners/1277315354167922688/1790541496/1500x500",
+      "followers": 2279,
+      "location": "Lucia & I in VICE CITY ",
+      "website": {
+        "url": "https://youtube.com/channel/UCDc6C9fEaqueXv2u1KOPI5g?si=jnZ-7MsP14-4f9Ab",
+        "display": "youtube.com/channel/UCDc6C…"
+      },
+      "verified": true,
+      "url": "https://x.com/TheAnnaji"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "source": "Steam store (IStoreQueryService/Query)",
   "month": "2026-11",
-  "updated": "2026-11-23T03:51:12.750Z",
+  "updated": "2026-11-23T09:29:58.573Z",
   "games": [
     {
       "appid": 4262460,
@@ -26,17 +26,6 @@
       "rank": 2
     },
     {
-      "appid": 4576490,
-      "title": "Casualties: Unknown",
-      "date": "2026-11-09",
-      "platforms": [
-        "pc"
-      ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
-      "url": "https://store.steampowered.com/app/4576490/",
-      "rank": 3
-    },
-    {
       "appid": 5185890,
       "title": "Zombies Aren't Real",
       "date": "2026-11-13",
@@ -45,6 +34,17 @@
       ],
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795405182",
       "url": "https://store.steampowered.com/app/5185890/",
+      "rank": 3
+    },
+    {
+      "appid": 4576490,
+      "title": "Casualties: Unknown",
+      "date": "2026-11-09",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
+      "url": "https://store.steampowered.com/app/4576490/",
       "rank": 4
     },
     {
