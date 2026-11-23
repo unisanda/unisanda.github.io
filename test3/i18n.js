@@ -64,6 +64,7 @@
     'up2.multi': ['Multiplayer', 'لعب جماعي'],
     'up2.coop': ['Co-op', 'تعاوني'],
     'up2.hot': ['Most anticipated', 'الأكثر ترقبًا'],
+    'up2.gamepass': ['On Game Pass', 'متوفرة في Game Pass'],
 
     /* free games */
     'free.doc': ['Free Games — Unisanda', 'ألعاب مجانية — Unisanda'],

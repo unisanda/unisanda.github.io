@@ -53,7 +53,16 @@
   // were set by hand); Steam fills in the rest of the month.
   function merge(feed) {
     var month = (feed && feed.month) || data.month;
-    var list = data.games.filter(function (g) { return g.date.slice(0, 7) === month; });
+    // Game Pass for hand-picked games comes from the feed's check
+    var gp = {};
+    ((feed && feed.gamePassTitles) || []).forEach(function (t) { gp[key(t)] = 1; });
+    var list = data.games.filter(function (g) { return g.date.slice(0, 7) === month; })
+      .map(function (g) {
+        var c = {};
+        for (var k in g) c[k] = g[k];
+        if (c.gamePass == null) c.gamePass = !!gp[key(g.title)];
+        return c;
+      });
     var ids = {}, names = {};
     list.forEach(function (g) { var id = appidOf(g.url); if (id) ids[id] = 1; names[key(g.title)] = 1; });
     ((feed && feed.games) || []).forEach(function (g) {
@@ -96,6 +105,7 @@
             '<span class="g2-players">' + players(g).map(function (sym) {
               return '<svg class="g2-pl" aria-hidden="true"><use href="#' + sym + '"/></svg>';
             }).join('') + '</span>' +
+            (g.gamePass ? '<span class="g2-gp"><svg aria-hidden="true"><use href="#p-xbox"/></svg></span>' : '') +
             (g.dlc ? '<span class="g2-dlc">DLC</span>' : '') +
           '</span>' +
         '</span>' +
@@ -131,12 +141,14 @@
         : I.fmtDate(d, { month: 'short' }).replace('.', '').toUpperCase();
       var ar = li.querySelector('.g2-ar');
       ar.title = I.t(g.arabic ? 'up2.arabic.yes' : 'up2.arabic.no');
+      var gpEl = li.querySelector('.g2-gp');
+      if (gpEl) gpEl.title = I.t('up2.gamepass');
       var hot = li.querySelector('.g2-hot');
       if (hot) hot.title = I.t('up2.hot');
       var card = li.querySelector('.g2-card');
       card.setAttribute('aria-label', g.title + ', ' + I.fmtDate(d, { day: 'numeric', month: 'long' }) + ', ' +
         (g.platforms || []).map(function (p) { return (PLATFORM[p] || [0, p])[1]; }).join(', ') + ', ' +
-        I.t(g.arabic ? 'up2.arabic.yes' : 'up2.arabic.no'));
+        I.t(g.arabic ? 'up2.arabic.yes' : 'up2.arabic.no') + (g.gamePass ? ', ' + I.t('up2.gamepass') : ''));
     });
   }
 

@@ -219,6 +219,19 @@
 }
 .g2-pl { width: 15px; height: 15px; fill: #fff; }
 
+/* Game Pass: small Xbox-green square */
+.g2-gp {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #fff;
+  border-radius: 7px;
+  background: #107c10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+.g2-gp svg { width: 15px; height: 15px; fill: #fff; }
+
 .g2-dlc {
   padding: 1px 7px 0;
   background: #eee3e5;
@@ -292,6 +305,8 @@ html[dir="rtl"] .g2-hot { right: auto; left: -10px; }
   .g2-date { gap: 10px; margin-bottom: 8px; }
   .g2-hot { right: -6px; top: 4px; }
   .g2-dlc { font-size: 9.5px; padding: 1px 5px 0; }
+  .g2-gp { width: 21px; height: 21px; border-radius: 6px; }
+  .g2-gp svg { width: 12px; height: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

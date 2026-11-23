@@ -19,3 +19,7 @@ The page also loads `steam.json`, refreshed every hour by the "Update game feeds
 Games in `games.js` win over the same game from Steam, so hand-set badges stay. Everything is shown in date order. When the month changes, the page switches to the new month; until a round artwork for it is added to `games.js`, the month name is shown as a heading instead.
 
 SteamDB was tried but blocks automated requests with a browser check, so Steam's own store API is used.
+
+## Game Pass
+
+A small Xbox-green square joins the badges when a game is on Game Pass. The feed script loads Microsoft's public Game Pass lists (`catalog.gamepass.com`: PC, console, all games and "coming to Game Pass") and marks a game when one of its Microsoft Store products with the same name is in them. This is checked for the Steam games and for the hand-picked games in `games.js`; add `gamePass: true` or `false` to a hand-picked game to override it. Day-one games only show once Microsoft adds them to one of these lists.

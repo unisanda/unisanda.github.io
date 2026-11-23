@@ -387,14 +387,53 @@ async function onPlayStation(title) {
     (l.playable_platform || []).some((p) => /^PS[45]/.test(p)));
 }
 
-async function onXbox(title) {
+// Microsoft Store: is the game on Xbox, and is it in Game Pass?
+async function onMicrosoft(title, gamePassIds) {
   const s = await getJson('https://displaycatalog.mp.microsoft.com/v7.0/productFamilies/autosuggest?market=US&languages=en-US&productFamilyNames=Games&query=' +
     encodeURIComponent(searchText(title)));
   const ids = (s.Results || []).flatMap((r) => r.Products || [])
     .filter((p) => sameGame(p.Title, title)).map((p) => p.ProductId).slice(0, 4);
-  if (!ids.length) return false;
+  if (!ids.length) return { xbox: false, gamePass: false };
   const d = await getJson(`https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(',')}&market=US&languages=en-US`);
-  return /"PlatformName":"Windows\.Xbox"/.test(JSON.stringify(d));
+  return {
+    xbox: /"PlatformName":"Windows\.Xbox"/.test(JSON.stringify(d)),
+    gamePass: ids.some((id) => gamePassIds.has(id))
+  };
+}
+
+// Microsoft's public Game Pass lists: PC, console, all games, coming soon
+const GAME_PASS_LISTS = [
+  'fdd9e2a7-0fee-49f6-ad69-4354098401ff',
+  'f6f1f99f-9b49-4ccd-b3bf-4d9767a77f5e',
+  '29a81209-df6f-41fd-a528-2ae6b91f719c',
+  '609d944c-d395-4c0a-9ea4-e9f39b52c1ad',
+  '095bda36-f5cd-43f2-9ee1-0a72f371fb96'
+];
+async function gamePassCatalog() {
+  const ids = new Set();
+  for (const list of GAME_PASS_LISTS) {
+    try {
+      const d = await getJson(`https://catalog.gamepass.com/sigls/v2?id=${list}&language=en-us&market=US`);
+      for (const x of d) if (x.id) ids.add(x.id);
+    } catch (err) {
+      console.log(`::warning title=Game Pass list::${list}: ${err.message}`);
+    }
+  }
+  return ids;
+}
+
+// titles of the hand-picked games in test3/upcoming-games-2/games.js
+async function handPickedTitles() {
+  try {
+    const { runInNewContext } = await import('node:vm');
+    const src = await readFile(new URL('test3/upcoming-games-2/games.js', ROOT), 'utf8');
+    const sandbox = { window: {} };
+    runInNewContext(src, sandbox, { timeout: 1000 });
+    return (sandbox.window.UPCOMING2?.games || []).map((g) => g.title);
+  } catch (err) {
+    console.log(`::warning title=Hand-picked games::${err.message}`);
+    return [];
+  }
 }
 
 async function onSwitch(title) {
@@ -414,6 +453,8 @@ const STEAM_COOP = new Set([9, 38, 48, 39, 24]);    // co-op, online/LAN co-op, 
 
 async function updateUpcoming2() {
   const month = monthKey(new Date());
+  const gamePassIds = await gamePassCatalog();
+  console.log(`fetched:   Game Pass catalog (${gamePassIds.size} products)`);
   const released = await pickSteam(SORT_TOP_SELLERS, { released_only: true }, month, 4, 6);
   const upcoming = await pickSteam(SORT_WISHLISTED, { coming_soon_only: true }, month, 6, 6);
   const seen = new Set();
@@ -434,9 +475,13 @@ async function updateUpcoming2() {
     if ([...cats].some((c) => STEAM_COOP.has(c))) players.push('coop');
     const platforms = ['pc'];
     if (details.platforms?.mac) platforms.push('mac');
-    const [ps, xbox, sw] = await Promise.all([safe(onPlayStation, g.title), safe(onXbox, g.title), safe(onSwitch, g.title)]);
+    const [ps, ms, sw] = await Promise.all([
+      safe(onPlayStation, g.title),
+      safe((t) => onMicrosoft(t, gamePassIds), g.title),
+      safe(onSwitch, g.title)
+    ]);
     if (ps) platforms.push('ps');
-    if (xbox) platforms.push('xbox');
+    if (ms?.xbox) platforms.push('xbox');
     if (sw) platforms.push('switch');
     games.push({
       appid: g.appid,
@@ -446,14 +491,23 @@ async function updateUpcoming2() {
       players: players.length ? players : ['single'],
       arabic: /arabic/i.test(details.supported_languages || ''),
       dlc: details.type === 'dlc',
+      gamePass: Boolean(ms?.gamePass),
       hot: rank < 3 || (rank >= released.length && rank < released.length + 2),
       poster: g.poster,
       url: g.url,
       rank: rank + 1
     });
   }
-  const data = { source: 'Steam + PlayStation / Microsoft / Nintendo store search', month, updated: new Date().toISOString(), games };
-  await writeIfChanged(UP2_FILE, data, (d) => [d.month, d.games]);
+  // Game Pass check for the hand-picked games too
+  const gamePassTitles = [];
+  if (gamePassIds.size) {
+    for (const t of await handPickedTitles()) {
+      const ms = await safe((x) => onMicrosoft(x, gamePassIds), t);
+      if (ms?.gamePass) gamePassTitles.push(t);
+    }
+  }
+  const data = { source: 'Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog', month, updated: new Date().toISOString(), games, gamePassTitles };
+  await writeIfChanged(UP2_FILE, data, (d) => [d.month, d.games, d.gamePassTitles]);
 }
 
 /* ------------------------------------------------------------------ */
