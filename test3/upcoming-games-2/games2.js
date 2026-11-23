@@ -96,8 +96,8 @@
             '<span class="g2-players">' + players(g).map(function (sym) {
               return '<svg class="g2-pl" aria-hidden="true"><use href="#' + sym + '"/></svg>';
             }).join('') + '</span>' +
+            (g.dlc ? '<span class="g2-dlc">DLC</span>' : '') +
           '</span>' +
-          (g.dlc ? '<span class="g2-dlc">DLC</span>' : '') +
         '</span>' +
         '<span class="g2-platforms">' + platformOrder(g.platforms).map(function (p) {
           var info = PLATFORM[p];

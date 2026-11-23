@@ -182,27 +182,28 @@
 }
 .g2-card.is-hover .g2-poster::after { opacity: 1; }
 
-/* top-left: Arabic support + player count */
+/* bottom-left: Arabic support + player count (+ DLC) in one row */
 .g2-badges {
   position: absolute;
-  top: 14px;
   left: 18px;
+  bottom: 16px;
   display: flex;
+  align-items: center;
   gap: 4px;
   direction: ltr;
 }
-.g2-ar, .g2-players {
+.g2-ar, .g2-players, .g2-dlc {
   display: grid;
   place-items: center;
-  height: 34px;
-  border: 2px solid #fff;
-  border-radius: 9px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+  height: 26px;
+  border: 1.5px solid #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
 }
 .g2-ar {
-  width: 34px;
+  width: 26px;
   font-family: "Uni Body Ar", var(--font-body);
-  font-size: 21px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1;
   padding-bottom: 3px;
@@ -216,20 +217,14 @@
   padding: 0 5px;
   background: #4e1f29;
 }
-.g2-pl { width: 20px; height: 20px; fill: #fff; }
+.g2-pl { width: 15px; height: 15px; fill: #fff; }
 
 .g2-dlc {
-  position: absolute;
-  right: 18px;
-  bottom: -3px;
-  padding: 4px 14px 2px;
-  border: 3px solid var(--frame);
-  border-bottom: 0;
-  border-radius: 12px 12px 0 0;
-  background: var(--frame);
-  color: var(--frame-ink);
+  padding: 1px 7px 0;
+  background: #eee3e5;
+  color: #4a1d27;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 11.5px;
   font-weight: 900;
   letter-spacing: .04em;
 }
@@ -241,11 +236,11 @@
   justify-content: center;
   align-items: center;
   gap: 6px 10px;
-  min-height: 72px;
+  min-height: 84px;
   padding: 14px 12px 16px;
   direction: ltr;
 }
-.g2-plat { width: 34px; height: 34px; fill: #fff; }
+.g2-plat { width: 44px; height: 44px; fill: #fff; }
 
 /* fire badge on the most anticipated games */
 .g2-hot {
@@ -287,16 +282,16 @@ html[dir="rtl"] .g2-hot { right: auto; left: -10px; }
 @media (max-width: 760px) {
   .up2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
   .g2-card, .g2-poster { border-radius: 30px; }
-  .g2-ar, .g2-players { height: 28px; border-radius: 8px; }
-  .g2-ar { width: 28px; font-size: 17px; }
-  .g2-pl { width: 16px; height: 16px; }
-  .g2-badges { top: 11px; left: 14px; }
-  .g2-plat { width: 20px; height: 20px; }
-  .g2-platforms { min-height: 48px; gap: 5px 5px; padding: 10px 6px 12px; }
+  .g2-ar, .g2-players, .g2-dlc { height: 21px; border-radius: 6px; }
+  .g2-ar { width: 21px; font-size: 13px; padding-bottom: 2px; }
+  .g2-pl { width: 12px; height: 12px; }
+  .g2-badges { left: 12px; bottom: 11px; gap: 3px; }
+  .g2-plat { width: 26px; height: 26px; }
+  .g2-platforms { min-height: 56px; gap: 6px 6px; padding: 10px 6px 12px; }
   .up2 { padding-top: 72px; }   /* clear of the top buttons */
   .g2-date { gap: 10px; margin-bottom: 8px; }
   .g2-hot { right: -6px; top: 4px; }
-  .g2-dlc { font-size: 12px; padding: 3px 10px 1px; right: 12px; }
+  .g2-dlc { font-size: 9.5px; padding: 1px 5px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
