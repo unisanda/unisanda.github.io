@@ -163,9 +163,10 @@ body {
 }
 .theme-toggle:hover { transform: rotate(18deg) scale(1.08); }
 .theme-toggle svg { width: 20px; height: 20px; fill: currentColor; grid-area: 1 / 1; transition: opacity .3s, transform .4s var(--ease); }
-.theme-toggle .icon-moon { opacity: 0; transform: scale(.4) rotate(-60deg); }
-:root[data-theme="paper"] .theme-toggle .icon-sun { opacity: 0; transform: scale(.4) rotate(60deg); }
-:root[data-theme="paper"] .theme-toggle .icon-moon { opacity: 1; transform: none; }
+/* the icon shows the current background: moon on maroon, sun on white */
+.theme-toggle .icon-sun { opacity: 0; transform: scale(.4) rotate(60deg); }
+:root[data-theme="paper"] .theme-toggle .icon-moon { opacity: 0; transform: scale(.4) rotate(-60deg); }
+:root[data-theme="paper"] .theme-toggle .icon-sun { opacity: 1; transform: none; }
 
 /* ---------- Hero / logo ---------- */
 
