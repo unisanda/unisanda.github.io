@@ -14,15 +14,16 @@
     poster     image in ./posters (2:3 works best)
     url        store or official page (optional)
 
-  The 12 games, dates, platforms and badges follow Unisanda's November
-  2026 posts.
+  Games, platforms and badges follow Unisanda's November 2026 posts;
+  release dates follow Steam (checked 23 Nov 2026). UnderMire was taken
+  out: Steam now lists it for December 2026.
 */
 window.UPCOMING2 = {
   month: '2026-11',
   hero: 'hero-2026-11.webp',
   games: [
     { title: 'Gravhounds', date: '2026-11-02', platforms: ['xbox', 'pc'], players: ['multi'], arabic: false, poster: 'posters/gravhounds.jpg', url: 'https://store.steampowered.com/app/2440760/' },
-    { title: 'Wilderdark', date: '2026-11-03', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/wilderdark.jpg', url: 'https://store.steampowered.com/app/2735850/' },
+    { title: 'Wilderdark', date: '2026-11-10', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/wilderdark.jpg', url: 'https://store.steampowered.com/app/2735850/' },
     { title: 'Brotato: Primal Dread', date: '2026-11-02', platforms: ['pc'], players: ['single'], arabic: false, dlc: true, poster: 'posters/brotato-primal-dread.jpg', url: 'https://store.steampowered.com/app/4498220/' },
     { title: 'Death at Fleming Manor', date: '2026-11-03', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/death-at-fleming-manor.jpg', url: 'https://store.steampowered.com/app/3758950/' },
     { title: 'Kick', date: '2026-11-03', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/kick.jpg' },
@@ -31,7 +32,6 @@ window.UPCOMING2 = {
     { title: 'Warhammer Survivors', date: '2026-11-10', platforms: ['mac', 'switch', 'pc', 'xbox', 'ps', 'android'], players: ['single'], arabic: false, hot: true, poster: 'posters/warhammer-survivors.jpg', url: 'https://store.steampowered.com/app/3669620/' },
     { title: 'Barbie Rewind', date: '2026-11-12', platforms: ['switch', 'xbox', 'pc', 'ps'], players: ['single'], arabic: false, hot: true, poster: 'posters/barbie-rewind.jpg', url: 'https://store.steampowered.com/app/4082030/' },
     { title: 'Fat Goblins', date: '2026-11-12', platforms: ['pc'], players: ['single', 'multi'], arabic: false, poster: 'posters/fat-goblins.jpg', url: 'https://store.steampowered.com/app/2450350/' },
-    { title: 'UnderMire', date: '2026-11-13', platforms: ['pc'], players: ['single'], arabic: true, hot: true, poster: 'posters/undermire.jpg', url: 'https://store.steampowered.com/app/3366370/' },
     { title: 'Grand Theft Auto VI', date: '2026-11-19', platforms: ['xbox', 'ps'], players: ['single'], arabic: false, hot: true, poster: 'posters/gta6.jpg', url: 'https://www.rockstargames.com/VI' }
   ]
 };
