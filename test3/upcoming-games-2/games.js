@@ -11,6 +11,8 @@
     arabic     true when the game supports Arabic (green "ع"), false = red
     hot        true for a fire badge on the most anticipated games
     dlc        true to add a "DLC" tag
+    gamePass   true/false to force the Game Pass badge (normally found
+               automatically in Microsoft's Game Pass catalog)
     poster     image in ./posters (2:3 works best)
     url        store or official page (optional)
 

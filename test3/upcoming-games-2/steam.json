@@ -1,7 +1,7 @@
 {
-  "source": "Steam + PlayStation / Microsoft / Nintendo store search",
+  "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-23T15:04:29.560Z",
+  "updated": "2026-11-23T15:50:22.340Z",
   "games": [
     {
       "appid": 4262460,
@@ -16,6 +16,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/69a7d94807fcdea67f649ecfa3da0aab369bd767/library_capsule_2x.jpg?t=1793811654",
       "url": "https://store.steampowered.com/app/4262460/",
@@ -38,6 +39,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
       "url": "https://store.steampowered.com/app/4251460/",
@@ -48,7 +50,8 @@
       "title": "Zombies Aren't Real",
       "date": "2026-11-13",
       "platforms": [
-        "pc"
+        "pc",
+        "mac"
       ],
       "players": [
         "single",
@@ -57,6 +60,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795446021",
       "url": "https://store.steampowered.com/app/5185890/",
@@ -74,6 +78,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
       "url": "https://store.steampowered.com/app/4576490/",
@@ -95,6 +100,7 @@
       ],
       "arabic": true,
       "dlc": false,
+      "gamePass": true,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4530370/7ed4ea902189db0f278ae069ff5bfde4f601de93/library_capsule_2x.jpg?t=1794915487",
       "url": "https://store.steampowered.com/app/4530370/",
@@ -113,6 +119,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218350/4b8c5ecdbd2acfb8f0dfc4f005047f817034be2b/library_capsule_2x.jpg?t=1794955439",
       "url": "https://store.steampowered.com/app/3218350/",
@@ -131,6 +138,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795400954",
       "url": "https://store.steampowered.com/app/3333850/",
@@ -148,6 +156,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
       "url": "https://store.steampowered.com/app/3224600/",
@@ -166,6 +175,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1794848311",
       "url": "https://store.steampowered.com/app/4253570/",
@@ -184,6 +194,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954970/ba4832f642365912b5ac1546822e985e1d192095/library_capsule_2x.jpg?t=1795266287",
       "url": "https://store.steampowered.com/app/4954970/",
@@ -201,6 +212,7 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4738100/c6beba38878d8b7783cbb5186d90b6091cef6684/library_capsule_2x.jpg?t=1795100714",
       "url": "https://store.steampowered.com/app/4738100/",
@@ -221,10 +233,15 @@
       ],
       "arabic": false,
       "dlc": false,
+      "gamePass": false,
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4009490/80d90302c71ced5542a2400e5936f941544ad41d/library_capsule_2x.jpg?t=1795165088",
       "url": "https://store.steampowered.com/app/4009490/",
       "rank": 12
     }
+  ],
+  "gamePassTitles": [
+    "Gravhounds",
+    "Warhammer Survivors"
   ]
 }
