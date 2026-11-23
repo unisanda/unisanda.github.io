@@ -1,0 +1,230 @@
+{
+  "source": "Steam + PlayStation / Microsoft / Nintendo store search",
+  "month": "2026-11",
+  "updated": "2026-11-23T10:07:06.449Z",
+  "games": [
+    {
+      "appid": 4262460,
+      "title": "ROB RUN",
+      "date": "2026-11-04",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/69a7d94807fcdea67f649ecfa3da0aab369bd767/library_capsule_2x.jpg?t=1793811654",
+      "url": "https://store.steampowered.com/app/4262460/",
+      "rank": 1
+    },
+    {
+      "appid": 4251460,
+      "title": "Godzilla: Destroy All Monsters Melee Remastered",
+      "date": "2026-11-03",
+      "platforms": [
+        "pc",
+        "ps",
+        "xbox",
+        "switch"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
+      "url": "https://store.steampowered.com/app/4251460/",
+      "rank": 2
+    },
+    {
+      "appid": 5185890,
+      "title": "Zombies Aren't Real",
+      "date": "2026-11-13",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795405182",
+      "url": "https://store.steampowered.com/app/5185890/",
+      "rank": 3
+    },
+    {
+      "appid": 4576490,
+      "title": "Casualties: Unknown",
+      "date": "2026-11-09",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
+      "url": "https://store.steampowered.com/app/4576490/",
+      "rank": 4
+    },
+    {
+      "appid": 4530370,
+      "title": "Football Manager 27",
+      "date": "2026-11-10",
+      "platforms": [
+        "pc",
+        "mac",
+        "ps",
+        "xbox"
+      ],
+      "players": [
+        "single",
+        "multi"
+      ],
+      "arabic": true,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4530370/7ed4ea902189db0f278ae069ff5bfde4f601de93/library_capsule_2x.jpg?t=1794915487",
+      "url": "https://store.steampowered.com/app/4530370/",
+      "rank": 5
+    },
+    {
+      "appid": 3218350,
+      "title": "Melvor Idle 2: A RuneScape Adventure",
+      "date": "2026-11-17",
+      "platforms": [
+        "pc",
+        "mac"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218350/4b8c5ecdbd2acfb8f0dfc4f005047f817034be2b/library_capsule_2x.jpg?t=1794955439",
+      "url": "https://store.steampowered.com/app/3218350/",
+      "rank": 6
+    },
+    {
+      "appid": 3333850,
+      "title": "Arkheron",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc",
+        "xbox"
+      ],
+      "players": [
+        "multi"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795400954",
+      "url": "https://store.steampowered.com/app/3333850/",
+      "rank": 7
+    },
+    {
+      "appid": 3224600,
+      "title": "Am I Nima",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
+      "url": "https://store.steampowered.com/app/3224600/",
+      "rank": 8
+    },
+    {
+      "appid": 4253570,
+      "title": "Reshine",
+      "date": "2026-11-26",
+      "platforms": [
+        "pc",
+        "xbox"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1794848311",
+      "url": "https://store.steampowered.com/app/4253570/",
+      "rank": 9
+    },
+    {
+      "appid": 4954970,
+      "title": "No Body No Problem!",
+      "date": "2026-11-26",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954970/ba4832f642365912b5ac1546822e985e1d192095/library_capsule_2x.jpg?t=1795266287",
+      "url": "https://store.steampowered.com/app/4954970/",
+      "rank": 10
+    },
+    {
+      "appid": 4738100,
+      "title": "10 Million Pixels",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4738100/c6beba38878d8b7783cbb5186d90b6091cef6684/library_capsule_2x.jpg?t=1795100714",
+      "url": "https://store.steampowered.com/app/4738100/",
+      "rank": 11
+    },
+    {
+      "appid": 4009490,
+      "title": "Arctic Drive",
+      "date": "2026-11-25",
+      "platforms": [
+        "pc",
+        "xbox"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4009490/80d90302c71ced5542a2400e5936f941544ad41d/library_capsule_2x.jpg?t=1795165088",
+      "url": "https://store.steampowered.com/app/4009490/",
+      "rank": 12
+    }
+  ]
+}

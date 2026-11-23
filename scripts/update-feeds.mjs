@@ -27,6 +27,13 @@
      Name, bio, profile picture, banner and follower count for each handle
      in test3/accounts/accounts.json, from FxTwitter's public API (no key).
 
+  4. Upcoming games test 2 -> test3/upcoming-games-2/steam.json
+     The 12 most popular Steam games releasing this month (6 best-selling
+     already out, 6 most-wishlisted still to come). For each: Arabic
+     support and player modes from Steam, and the consoles it is also on,
+     checked by exact title in the public PlayStation Store, Microsoft
+     Store and Nintendo (Europe) searches. No keys needed.
+
   A file is only rewritten when its content actually changes, so the scheduled
   run does not create a commit every time.
 */
@@ -37,6 +44,7 @@ const STEAM_FILE = new URL('test3/upcoming-games/steam.json', ROOT);
 const FREE_FILE = new URL('test3/free-games/live.json', ROOT);
 const ACCOUNTS_FILE = new URL('test3/accounts/accounts.json', ROOT);
 const PROFILES_FILE = new URL('test3/accounts/profiles.json', ROOT);
+const UP2_FILE = new URL('test3/upcoming-games-2/steam.json', ROOT);
 
 const PICKS_RELEASED = 4;   // games already out this month
 const PICKS_UPCOMING = 3;   // games still to come this month
@@ -344,6 +352,111 @@ async function updateLive() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Upcoming games test 2: Steam + console availability                 */
+/* ------------------------------------------------------------------ */
+
+// compare titles loosely: case, ™/®, punctuation and spacing don't matter
+function titleKey(t) {
+  return String(t).toLowerCase().replace(/[™®©]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '');
+}
+
+// store listings often add an edition or label after the name,
+// e.g. "Football Manager 27 Console", "Arkheron (Game Preview)"
+const EDITION_SUFFIXES = new Set(['', 'console', 'consoleedition', 'gamepreview', 'standardedition', 'standard',
+  'deluxeedition', 'digitaldeluxeedition', 'ultimateedition', 'digitaledition', 'ps4', 'ps5', 'ps4ps5', 'ps4andps5',
+  'xboxseriesxs', 'forxboxseriesxs', 'xboxone', 'xboxonexboxseriesxs', 'nintendoswitch', 'nintendoswitch2edition', 'pc']);
+function sameGame(name, title) {
+  const n = titleKey(name), t = titleKey(title);
+  return n.startsWith(t) && EDITION_SUFFIXES.has(n.slice(t.length));
+}
+// punctuation confuses some store searches
+function searchText(title) {
+  return String(title).replace(/[™®©]/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+}
+
+async function getJson(url) {
+  const res = await fetch(url, { headers: { 'User-Agent': UA } });
+  if (!res.ok) throw new Error(`${res.status} ${url}`);
+  return res.json();
+}
+
+async function onPlayStation(title) {
+  const d = await getJson('https://store.playstation.com/store/api/chihiro/00_09_000/tumbler/US/en/999/' +
+    encodeURIComponent(searchText(title)) + '?suggested_size=20&mode=game');
+  return (d.links || []).some((l) => sameGame(l.name, title) &&
+    (l.playable_platform || []).some((p) => /^PS[45]/.test(p)));
+}
+
+async function onXbox(title) {
+  const s = await getJson('https://displaycatalog.mp.microsoft.com/v7.0/productFamilies/autosuggest?market=US&languages=en-US&productFamilyNames=Games&query=' +
+    encodeURIComponent(searchText(title)));
+  const ids = (s.Results || []).flatMap((r) => r.Products || [])
+    .filter((p) => sameGame(p.Title, title)).map((p) => p.ProductId).slice(0, 4);
+  if (!ids.length) return false;
+  const d = await getJson(`https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(',')}&market=US&languages=en-US`);
+  return /"PlatformName":"Windows\.Xbox"/.test(JSON.stringify(d));
+}
+
+async function onSwitch(title) {
+  const d = await getJson('https://searching.nintendo-europe.com/en/select?fq=type:GAME&rows=10&wt=json&fl=title,system_names_txt&q=' +
+    encodeURIComponent(searchText(title)));
+  return (d.response?.docs || []).some((doc) => sameGame(doc.title, title) &&
+    (doc.system_names_txt || []).some((n) => /switch/i.test(n)));
+}
+
+async function safe(fn, title) {
+  try { return await fn(title); } catch (err) { console.log(`::warning title=Platform check::${title}: ${err.message}`); return null; }
+}
+
+const STEAM_SINGLE = 2;
+const STEAM_MULTI = new Set([1, 36, 49, 47, 27]);   // multi-player, online/LAN PvP
+const STEAM_COOP = new Set([9, 38, 48, 39, 24]);    // co-op, online/LAN co-op, shared screen
+
+async function updateUpcoming2() {
+  const month = monthKey(new Date());
+  const released = await pickSteam(SORT_TOP_SELLERS, { released_only: true }, month, 4, 6);
+  const upcoming = await pickSteam(SORT_WISHLISTED, { coming_soon_only: true }, month, 6, 6);
+  const seen = new Set();
+  const picks = [...released, ...upcoming].filter((g) => !seen.has(g.appid) && seen.add(g.appid));
+  const games = [];
+  for (const [rank, g] of picks.entries()) {
+    let details = {};
+    try {
+      const d = await getJson(`https://store.steampowered.com/api/appdetails?appids=${g.appid}&cc=us&l=en`);
+      details = d[g.appid]?.data || {};
+    } catch (err) {
+      console.log(`::warning title=Steam details::${g.title}: ${err.message}`);
+    }
+    const cats = new Set((details.categories || []).map((c) => c.id));
+    const players = [];
+    if (cats.has(STEAM_SINGLE)) players.push('single');
+    if ([...cats].some((c) => STEAM_MULTI.has(c))) players.push('multi');
+    if ([...cats].some((c) => STEAM_COOP.has(c))) players.push('coop');
+    const platforms = ['pc'];
+    if (details.platforms?.mac) platforms.push('mac');
+    const [ps, xbox, sw] = await Promise.all([safe(onPlayStation, g.title), safe(onXbox, g.title), safe(onSwitch, g.title)]);
+    if (ps) platforms.push('ps');
+    if (xbox) platforms.push('xbox');
+    if (sw) platforms.push('switch');
+    games.push({
+      appid: g.appid,
+      title: g.title,
+      date: g.date,
+      platforms,
+      players: players.length ? players : ['single'],
+      arabic: /arabic/i.test(details.supported_languages || ''),
+      dlc: details.type === 'dlc',
+      hot: rank < 3 || (rank >= released.length && rank < released.length + 2),
+      poster: g.poster,
+      url: g.url,
+      rank: rank + 1
+    });
+  }
+  const data = { source: 'Steam + PlayStation / Microsoft / Nintendo store search', month, updated: new Date().toISOString(), games };
+  await writeIfChanged(UP2_FILE, data, (d) => [d.month, d.games]);
+}
+
+/* ------------------------------------------------------------------ */
 /* X profiles (FxTwitter)                                              */
 /* ------------------------------------------------------------------ */
 
@@ -403,7 +516,7 @@ async function updateProfiles() {
 
 // One feed failing should not stop the other from being saved, so errors are
 // reported as workflow warnings and the old file is kept.
-for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive], ['X profiles', updateProfiles]]) {
+for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive], ['X profiles', updateProfiles], ['Upcoming test 2', updateUpcoming2]]) {
   try {
     await job();
   } catch (err) {
