@@ -14,6 +14,11 @@
     poster     image in ./posters (2:3 works best)
     url        store or official page (optional)
 
+  The page also loads steam.json (refreshed hourly by a GitHub Action):
+  the month's 12 most popular Steam games, with Arabic support, player
+  modes and the consoles each one is also on. Games listed here win over
+  the same game from Steam.
+
   Games, platforms and badges follow Unisanda's November 2026 posts;
   release dates follow Steam (checked 23 Nov 2026). UnderMire was taken
   out: Steam now lists it for December 2026.

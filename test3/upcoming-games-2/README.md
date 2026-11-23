@@ -11,3 +11,11 @@ To make a new month, replace `hero` and the `games` list in `games.js` and add p
 Posters: Steam library art for most games. Brotato: Primal Dread (a DLC with no portrait art on Steam), Kick (not found on Steam) and Grand Theft Auto VI are cropped from the November post.
 
 Release dates follow Steam where the game is listed there (checked 23 November 2026): Wilderdark moved from 3 to 10 November, and UnderMire was removed because Steam now lists it for December 2026.
+
+## Top Steam games (live)
+
+The page also loads `steam.json`, refreshed every hour by the "Update game feeds" GitHub Action (`scripts/update-feeds.mjs`): this month's 6 best-selling released and 6 most-wishlisted upcoming Steam games. For each one the script reads Arabic support and single/multiplayer/co-op from Steam, and checks whether the same game is also on PlayStation, Xbox and Switch through the public PlayStation Store, Microsoft Store and Nintendo (Europe) searches. A console is only marked when the store has a game with the same name (store labels like "Console" or "Deluxe Edition" are allowed). The top 3 sellers and top 2 wishlisted get the fire badge.
+
+Games in `games.js` win over the same game from Steam, so hand-set badges stay. Everything is shown in date order. When the month changes, the page switches to the new month; until a round artwork for it is added to `games.js`, the month name is shown as a heading instead.
+
+SteamDB was tried but blocks automated requests with a browser check, so Steam's own store API is used.

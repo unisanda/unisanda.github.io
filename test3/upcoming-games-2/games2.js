@@ -20,6 +20,21 @@
     android: ['p-android', 'Android']
   };
   var PLAYERS = { single: 'pl-single', multi: 'pl-multi', coop: 'pl-multi' };
+  // one icon per kind: single and/or group (multiplayer and co-op share it)
+  function players(g) {
+    var out = [];
+    (g.players && g.players.length ? g.players : ['single']).forEach(function (p) {
+      var sym = PLAYERS[p] || 'pl-single';
+      if (out.indexOf(sym) === -1) out.push(sym);
+    });
+    return out;
+  }
+
+  // same order as the social posts, whatever order the data uses
+  var ORDER = ['mac', 'switch', 'xbox', 'pc', 'ps', 'android'];
+  function platformOrder(list) {
+    return (list || []).slice().sort(function (a, b) { return ORDER.indexOf(a) - ORDER.indexOf(b); });
+  }
 
   function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function esc(s) {
@@ -28,11 +43,43 @@
     });
   }
 
-  // day 1 → 30, then name for games on the same day
-  var games = data.games.slice().sort(function (a, b) {
-    return a.date < b.date ? -1 : a.date > b.date ? 1 : a.title.localeCompare(b.title);
-  });
+  /* ---------- hand-picked games + this month's top Steam games ---------- */
 
+  function key(t) { return String(t).toLowerCase().replace(/[™®©]/g, '').replace(/[^a-z0-9]+/g, ''); }
+  function appidOf(url) { var m = /store\.steampowered\.com\/app\/(\d+)/.exec(url || ''); return m ? +m[1] : null; }
+
+  // steam.json is refreshed every hour by a GitHub Action. Hand-picked
+  // entries in games.js win when both have the same game (their badges
+  // were set by hand); Steam fills in the rest of the month.
+  function merge(feed) {
+    var month = (feed && feed.month) || data.month;
+    var list = data.games.filter(function (g) { return g.date.slice(0, 7) === month; });
+    var ids = {}, names = {};
+    list.forEach(function (g) { var id = appidOf(g.url); if (id) ids[id] = 1; names[key(g.title)] = 1; });
+    ((feed && feed.games) || []).forEach(function (g) {
+      if (g.date.slice(0, 7) !== month || ids[g.appid] || names[key(g.title)]) return;
+      list.push(g);
+    });
+    // day 1 → 30, then name for games on the same day
+    list.sort(function (a, b) {
+      return a.date < b.date ? -1 : a.date > b.date ? 1 : a.title.localeCompare(b.title);
+    });
+    return { month: month, games: list };
+  }
+
+  var started = false;
+  function go(feed) {
+    if (started) return;
+    started = true;
+    var m = merge(feed);
+    build(m.games, m.month);
+  }
+  fetch('steam.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(go, function () { go(null); });
+  setTimeout(function () { go(null); }, 4000);
+
+  function build(games, month) {
   var cards = games.map(function (g, i) {
     var li = document.createElement('li');
     li.className = 'g2';
@@ -46,13 +93,13 @@
           '<img src="' + esc(g.poster) + '" alt="" loading="lazy" decoding="async">' +
           '<span class="g2-badges">' +
             '<span class="g2-ar ' + (g.arabic ? 'is-yes' : 'is-no') + '" aria-hidden="true">ع</span>' +
-            '<span class="g2-players">' + (g.players || []).map(function (p) {
-              return '<svg class="g2-pl" data-pl="' + p + '" aria-hidden="true"><use href="#' + (PLAYERS[p] || 'pl-single') + '"/></svg>';
+            '<span class="g2-players">' + players(g).map(function (sym) {
+              return '<svg class="g2-pl" aria-hidden="true"><use href="#' + sym + '"/></svg>';
             }).join('') + '</span>' +
           '</span>' +
           (g.dlc ? '<span class="g2-dlc">DLC</span>' : '') +
         '</span>' +
-        '<span class="g2-platforms">' + (g.platforms || []).map(function (p) {
+        '<span class="g2-platforms">' + platformOrder(g.platforms).map(function (p) {
           var info = PLATFORM[p];
           return info ? '<svg class="g2-plat" role="img" aria-label="' + info[1] + '"><use href="#' + info[0] + '"/></svg>' : '';
         }).join('') + '</span>' +
@@ -65,11 +112,16 @@
   });
 
   function texts() {
-    var p = data.month.split('-');
+    var p = month.split('-');
     var first = new Date(+p[0], +p[1] - 1, 1);
     title.textContent = I.t('up2.title') + ' ' + I.fmtDate(first, { month: 'long', year: 'numeric' });
-    hero.src = data.hero;
-    hero.alt = title.textContent;
+    // the round artwork is made by hand for one month; for any other month
+    // show the title as text until a new artwork is added to games.js
+    var hasArt = month === data.month && data.hero;
+    hero.hidden = !hasArt;
+    title.classList.toggle('visually-hidden', !!hasArt);
+    title.classList.toggle('up2-title', !hasArt);
+    if (hasArt) { hero.src = data.hero; hero.alt = title.textContent; }
     cards.forEach(function (li) {
       var g = li._g;
       var d = parse(g.date);
@@ -79,7 +131,6 @@
         : I.fmtDate(d, { month: 'short' }).replace('.', '').toUpperCase();
       var ar = li.querySelector('.g2-ar');
       ar.title = I.t(g.arabic ? 'up2.arabic.yes' : 'up2.arabic.no');
-      li.querySelectorAll('.g2-pl').forEach(function (s) { s.setAttribute('aria-label', I.t('up2.' + s.dataset.pl)); });
       var hot = li.querySelector('.g2-hot');
       if (hot) hot.title = I.t('up2.hot');
       var card = li.querySelector('.g2-card');
@@ -111,4 +162,5 @@
 
   texts();
   I.onChange(texts);
+  }
 })();

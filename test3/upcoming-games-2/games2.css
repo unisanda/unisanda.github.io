@@ -76,6 +76,17 @@
   50%      { transform: translateY(-8px); }
 }
 
+.up2-hero-art[hidden] { display: none; }
+.up2-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* ---------- the grid ---------- */
 
 .up2-grid {
