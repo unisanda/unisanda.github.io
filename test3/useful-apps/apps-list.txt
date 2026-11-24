@@ -1,0 +1,51 @@
+7-Zip
+AB Download Manager
+AnyTXT
+AutoHideMouseCursor
+AutoHotkey
+Brave
+Copy Handler
+Copyfish
+CPUSetSetter
+EarTrumpet
+Everything
+File Pilot
+Flameshot
+Format Factory
+Free Download Manager
+FreeFileSync
+Heroic Games Launcher
+Lightshot
+Listary
+LocalSend
+LootBar
+Malwarebytes
+Medal
+Mem Reduct
+Microsoft PC Manager
+Monitorian
+Neat Download Manager
+NextDNS
+Ninite
+Parsec
+Playnite
+Popup Blocker (strict)
+PowerToys
+Process Lasso
+qBittorrent
+QuickLook
+Revo Uninstaller
+Rufus
+SeaTools
+ShareX
+Snagit
+SponsorBlock
+StarDesk
+SteamDB extension
+TeraCopy
+The Marvellous Suspender
+TranslucentTB
+Twinkle Tray
+Voicemeeter Banana
+Windhawk
+WizTree

@@ -211,9 +211,76 @@
 
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));   /* 3 apps + the "+" tile in one row */
   gap: 26px 22px;
 }
+
+/* ---------- "+" tile that opens the rest of a group ---------- */
+
+.app-more {
+  align-self: start;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.app-more[hidden] { display: none; }
+.more-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 150px;
+  border: 2px dashed color-mix(in srgb, var(--c) 70%, transparent);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--c) 10%, var(--glass));
+  transition: transform .4s var(--ease), background-color .3s, border-color .3s;
+}
+.app-more:hover .more-card,
+.app-more:focus-visible .more-card {
+  transform: translateY(-4px);
+  border-style: solid;
+  background: color-mix(in srgb, var(--c) 20%, var(--glass));
+}
+.app-more:focus-visible { outline: none; }
+.app-more:focus-visible .more-card { outline: 3px solid var(--ink); outline-offset: 3px; }
+.more-plus {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 8px 20px -8px var(--c);
+  transition: transform .45s var(--ease);
+}
+.more-plus::before, .more-plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
+  background: #140a0e;
+  transform: translate(-50%, -50%);
+}
+.more-plus::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .45s var(--ease); }
+.app-more.is-open .more-plus::after { transform: translate(-50%, -50%) rotate(0deg); }   /* + becomes − */
+.app-more:hover .more-plus { transform: rotate(90deg); }
+.more-text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+html[lang="ar"] .more-text { font-size: 18px; line-height: 1.3; }
 
 /* ---------- one app ---------- */
 
@@ -386,6 +453,10 @@
   .chips::-webkit-scrollbar { display: none; }
   .chip { flex: none; }
   .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
+  .more-card { min-height: 124px; border-radius: 18px; gap: 8px; }
+  .more-plus { width: 40px; height: 40px; }
+  .more-plus::before, .more-plus::after { width: 18px; height: 3.5px; }
+  .more-text { font-size: 15px; }
   .app-card { min-height: 124px; padding: 12px 12px 11px 13px; border-radius: 18px; }
   .app-mono { width: 36px; height: 36px; border-radius: 11px; font-size: 16px; }
   .app-ext { width: 16px; height: 16px; }
@@ -414,4 +485,9 @@ html[dir="rtl"] .app-ext { scale: -1 1; }
 
 @media (max-width: 640px) {
   html[lang="ar"] .app-desc { font-size: 13.5px; }
+}
+
+/* tablets: two per row, so a group is 3 apps + "+" in two rows */
+@media (min-width: 641px) and (max-width: 900px) {
+  .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
