@@ -10,6 +10,7 @@
     count: function (n, w) { return n + ' ' + w + 's'; }
   };
   var refreshers = [];
+  var VISIBLE = 3;   // apps shown per group before the "+" tile
 
   function el(tag, cls, html) {
     var e = document.createElement(tag);
@@ -121,6 +122,23 @@
         allApps.push({ el: item, app: a, group: g.id, text: (a.name + ' ' + a.desc + ' ' + (a.desc_ar || '')).toLowerCase() });
       });
 
+      // "+" tile: the first VISIBLE apps show, the rest open from here
+      var more = el('button', 'app-more',
+        '<span class="more-card"><span class="more-plus" aria-hidden="true"></span><span class="more-text"></span></span>');
+      more.type = 'button';
+      more.setAttribute('aria-controls', 'grp-' + g.id + '-grid');
+      grid.id = 'grp-' + g.id + '-grid';
+      more.addEventListener('click', function () {
+        gs._open = !gs._open;
+        apply();
+        if (!gs._open && gs.getBoundingClientRect().top < 0) {
+          gs.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+        }
+      });
+      grid.appendChild(more);
+      gs._more = more;
+      gs._open = false;
+
       gs.appendChild(grid);
       groupsWrap.appendChild(gs);
       groupEls.push(gs);
@@ -143,18 +161,33 @@
       groupEls.forEach(function (gs) {
         var gid = gs.dataset.group;
         var inGroup = 0;
+        // while searching every match shows; otherwise only the first few
+        var fold = !q && !gs._open;
         gs.querySelectorAll('.app').forEach(function (item) {
           var rec = allApps.find(function (r) { return r.el === item; });
           var ok = (!activeGroup || activeGroup === gid) && (!q || rec.text.indexOf(q) !== -1);
-          item.hidden = !ok;
           if (ok) inGroup++;
+          item.hidden = !ok || (fold && inGroup > VISIBLE);
         });
+        var extra = inGroup - VISIBLE;
+        gs._more.hidden = !!q || extra <= 0;
+        gs._more.classList.toggle('is-open', !!gs._open);
+        gs._more.setAttribute('aria-expanded', gs._open ? 'true' : 'false');
+        gs._extra = extra;
+        moreText(gs);
         gs.hidden = inGroup === 0;
         shown += inGroup;
       });
       lastShown = shown;
       subText();
       empty.hidden = shown !== 0;
+    }
+
+    function moreText(gs) {
+      var t = gs._more.querySelector('.more-text');
+      // \u2066…\u2069 keeps "+7" reading left to right inside Arabic text
+      t.textContent = gs._open ? I.t('apps.less') : '\u2066+' + gs._extra + '\u2069 ' + I.t('apps.more');
+      gs._more.setAttribute('aria-label', gs._open ? I.t('apps.less') : I.t('apps.more') + ' (' + gs._extra + ')');
     }
 
     var lastShown = total;
@@ -179,8 +212,10 @@
         rec.el.querySelector('.app-desc').textContent = I.pick(rec.app, 'desc');
       });
       empty.textContent = I.t('apps.empty');
+      groupEls.forEach(function (gs) { if (gs._extra != null) moreText(gs); });
     }
     texts();
+    apply();          // fold each group to its first few apps
     refreshers.push(texts);
 
     input.addEventListener('input', apply);

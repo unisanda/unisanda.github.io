@@ -116,6 +116,8 @@
     'apps.all': ['All', 'الكل'],
     'apps.filter': ['Filter by category', 'تصفية حسب القسم'],
     'apps.empty': ['No apps match that search.', 'لا توجد برامج تطابق بحثك.'],
+    'apps.more': ['more', 'المزيد'],
+    'apps.less': ['Show less', 'عرض أقل'],
     'apps.note': ["Every link goes to the app's official site or project page. Always download from there.", 'كل رابط يأخذك إلى الموقع الرسمي للبرنامج أو صفحة مشروعه، فحمّل منه دائمًا.']
   };
 
