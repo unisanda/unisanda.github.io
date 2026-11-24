@@ -37,7 +37,7 @@ jobs:
       - name: Commit changes
         id: commit
         run: |
-          git add test3/upcoming-games/steam.json test3/free-games/live.json test3/accounts/profiles.json test3/upcoming-games-2/steam.json
+          git add test3/upcoming-games/steam.json test3/free-games/live.json test3/accounts/profiles.json test3/accounts/tiktok.json test3/accounts/avatars test3/upcoming-games-2/steam.json
           if git diff --cached --quiet; then
             echo "No changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"

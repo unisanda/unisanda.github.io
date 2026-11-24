@@ -286,3 +286,322 @@ html[lang="ar"] .acc-note { font-size: 13px; }
 @media (prefers-reduced-motion: reduce) {
   .acct { animation: none; }
 }
+
+/* ==========================================================
+   Platform tabs: X / Instagram / TikTok
+   ========================================================== */
+
+.acc-head { margin-bottom: 18px; }
+
+.acc-tabs {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin: 0 auto clamp(26px, 4vh, 40px);
+  padding: 5px;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: var(--glass);
+  direction: ltr;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.acc-tab-thumb {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc((100% - 10px) / 3);
+  border-radius: 999px;
+  background: var(--ink);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, .5);
+  transition: transform .45s var(--ease);
+}
+.acc-tabs[data-active="ig"] .acc-tab-thumb { transform: translateX(100%); }
+.acc-tabs[data-active="tt"] .acc-tab-thumb { transform: translateX(200%); }
+
+.acc-tab {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 150px;
+  height: 46px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: .75;
+  transition: color .35s ease, opacity .3s ease;
+}
+.acc-tab span { padding-top: 3px; }
+.acc-tab svg { flex: none; width: 18px; height: 18px; fill: currentColor; }
+.acc-tab:hover { opacity: 1; }
+.acc-tab[aria-selected="true"] { color: var(--bg); opacity: 1; }
+.acc-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.acc-panel[hidden] { display: none; }
+
+/* ==========================================================
+   Instagram card (layout of an Instagram profile header)
+   ========================================================== */
+
+.ig {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px 24px 22px;
+  border-radius: 26px;
+  background: #0e0a0c;
+  color: #f5f5f5;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 22px 40px -24px rgba(0, 0, 0, .9);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .6s var(--ease), box-shadow .4s ease;
+  animation: acct-in .7s var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 120ms);
+  font-family: -apple-system, "Segoe UI", Roboto, "Uni Body Ar", Arial, sans-serif;
+}
+/* Instagram's gradient along the top edge */
+.ig::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+.ig.is-hover {
+  transform: perspective(900px) translateY(-6px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .15s linear, box-shadow .4s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16), 0 30px 50px -24px rgba(0, 0, 0, .95), 0 0 50px -18px #d62976;
+}
+
+.ig-top { display: flex; align-items: center; gap: 20px; direction: ltr; }
+
+/* round picture with the story ring */
+.ig-avatar {
+  flex: none;
+  display: block;
+  width: 96px;
+  height: 96px;
+  padding: 3px;
+  border-radius: 50%;
+  text-decoration: none;
+  background: conic-gradient(from 200deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75);
+}
+.ig-avatar img, .ig-initial {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #0e0a0c;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #2a1a20;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.ig-id { flex: 1; min-width: 0; }
+.ig-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.ig-name a { color: inherit; text-decoration: none; }
+.ig-name a:hover { text-decoration: underline; }
+.ig-verified { width: 17px; height: 17px; fill: #3897f0; }
+.ig-handle { margin: 1px 0 0; font-size: 13px; color: rgba(255, 255, 255, .5); }
+
+.ig-stats {
+  display: flex;
+  gap: 18px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ig-stats li { display: flex; flex-direction: column; line-height: 1.15; }
+.ig-stats b { font-size: 17px; font-weight: 700; }
+.ig-stats span { font-size: 13px; color: rgba(255, 255, 255, .7); }
+
+.ig-body { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.ig-category { margin: 0; font-size: 14px; color: rgba(255, 255, 255, .5); }
+.ig-bio { margin: 0; font-size: 14.5px; line-height: 1.5; overflow-wrap: anywhere; }
+.ig-bio a, .ig-link { color: #e0f1ff; text-decoration: none; }
+.ig-bio a:hover, .ig-link:hover { text-decoration: underline; }
+.ig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8ec5ff;
+}
+.ig-link svg { width: 16px; height: 16px; }
+
+.ig-follow {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  height: 40px;
+  border-radius: 10px;
+  background: #0095f6;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color .2s, transform .3s var(--ease);
+}
+.ig-follow svg { width: 17px; height: 17px; fill: currentColor; }
+.ig-follow:hover { background: #1877f2; transform: translateY(-1px); }
+
+/* ==========================================================
+   TikTok card (layout of a TikTok profile header)
+   ========================================================== */
+
+.tt {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #121212;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 22px 40px -24px rgba(0, 0, 0, .9);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .6s var(--ease), box-shadow .4s ease;
+  animation: acct-in .7s var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 120ms);
+  font-family: "TikTok Sans", -apple-system, "Segoe UI", Roboto, "Uni Body Ar", Arial, sans-serif;
+}
+.tt.is-hover {
+  transform: perspective(900px) translateY(-6px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .15s linear, box-shadow .4s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16), 0 30px 50px -24px rgba(0, 0, 0, .95), -12px 0 50px -24px #25f4ee, 12px 0 50px -24px #fe2c55;
+}
+
+/* header: the picture, blurred and stretched, behind the name and numbers */
+.tt-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 22px 22px;
+  direction: ltr;
+}
+.tt-glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(36px) saturate(1.4);
+  opacity: .7;
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  pointer-events: none;
+}
+.tt-body { position: relative; }
+.tt-id, .tt-avatar { position: relative; z-index: 1; }
+.tt-id { flex: 1; min-width: 0; }
+
+.tt-name { margin: 0; font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -.01em; }
+.tt-name a { color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+.tt-name a:hover { text-decoration: underline; }
+.tt-handle { margin: 4px 0 0; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, .65); }
+
+.tt-stats {
+  display: flex;
+  gap: 18px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tt-stats li { display: flex; flex-direction: column; line-height: 1.15; }
+.tt-stats b { font-size: 19px; font-weight: 800; }
+.tt-stats span { font-size: 13px; color: rgba(255, 255, 255, .65); text-transform: capitalize; }
+
+.tt-avatar {
+  flex: none;
+  display: block;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .9), 0 10px 24px -8px rgba(0, 0, 0, .8);
+}
+.tt-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.tt-body { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 0 22px 22px; }
+.tt-bio { margin: 0; font-size: 14.5px; line-height: 1.5; overflow-wrap: anywhere; }
+.tt-bio a { color: #fff; font-weight: 700; text-decoration: none; }
+.tt-link { font-size: 14.5px; font-weight: 800; color: #fff; text-decoration: none; }
+.tt-link:hover, .tt-bio a:hover { text-decoration: underline; }
+
+.tt-follow {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  height: 44px;
+  border-radius: 8px;
+  background: #fe2c55;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15.5px;
+  font-weight: 700;
+  transition: background-color .2s, transform .3s var(--ease);
+}
+.tt-follow svg { width: 17px; height: 17px; fill: currentColor; }
+.tt-follow:hover { background: #ef2950; transform: translateY(-1px); }
+
+/* ---------- Arabic + phones ---------- */
+
+html[lang="ar"] .acc-tab { font-size: 17px; }
+html[lang="ar"] .acc-tab span { padding-top: 0; }
+html[dir="rtl"] .ig-body, html[dir="rtl"] .tt-body { align-items: flex-end; }
+
+@media (max-width: 640px) {
+  .acc-tab { width: auto; min-width: 0; padding: 0 14px; font-size: 14px; height: 42px; }
+  .acc-tabs { width: 100%; }
+  .acc-tab { flex: 1; }
+  .ig { padding: 20px 18px 18px; }
+  .ig-top { gap: 14px; }
+  .ig-avatar, .tt-avatar { width: 80px; height: 80px; }
+  .ig-stats, .tt-stats { gap: 14px; }
+  .ig-stats b { font-size: 16px; }
+  .tt-name { font-size: 22px; }
+  .tt-head { padding: 22px 18px 18px; }
+  .tt-body { padding: 0 18px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ig, .tt { animation: none; }
+  .acc-tab-thumb { transition: none; }
+}

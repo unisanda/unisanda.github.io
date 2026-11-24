@@ -1,5 +1,5 @@
 {
-  "_note": "Accounts shown on the page, in this order. Use the handle exactly as FxTwitter accepts it (it can be picky about capital letters, e.g. U7madX works where u7madx does not). The hourly 'Update game feeds' workflow refreshes profiles.json from this list.",
+  "_note": "Accounts shown on the page, per platform, in this order. X ('accounts'): use the handle exactly as FxTwitter accepts it (it can be picky about capital letters, e.g. U7madX works where u7madx does not); profiles.json is refreshed hourly. TikTok: profiles are refreshed hourly into tiktok.json. Instagram does not show profiles without logging in, so its details are written here by hand: name, category, bio, posts, followers, following, website and an avatar image in avatars/.",
   "accounts": [
     {
       "handle": "UniMohdx"
@@ -36,6 +36,31 @@
     },
     {
       "handle": "TheAnnaji"
+    }
+  ],
+  "instagram": [
+    {
+      "handle": "unisanda",
+      "name": "MOHD",
+      "category": "Gaming video creator",
+      "bio": "Games Reviews and More\nمراجعات العاب واكثر !\nجميع الروابط + للدعم 👇🏻",
+      "posts": 735,
+      "followers": 26100,
+      "following": 310,
+      "website": "unisanda.com",
+      "avatar": "avatars/ig-unisanda.jpg",
+      "verified": true
+    },
+    {
+      "handle": "yazan3gaj"
+    }
+  ],
+  "tiktok": [
+    {
+      "handle": "iunisanda"
+    },
+    {
+      "handle": "rage.thereal"
     }
   ]
 }

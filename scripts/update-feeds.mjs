@@ -23,7 +23,8 @@
      ordered: ending soonest first, then offers with no end date (newest
      first).
 
-  3. X profiles -> test3/accounts/profiles.json
+  3. X and TikTok profiles -> test3/accounts/profiles.json, tiktok.json
+     (TikTok pictures are saved in test3/accounts/avatars/)
      Name, bio, profile picture, banner and follower count for each handle
      in test3/accounts/accounts.json, from FxTwitter's public API (no key).
 
@@ -37,7 +38,7 @@
   A file is only rewritten when its content actually changes, so the scheduled
   run does not create a commit every time.
 */
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
 const STEAM_FILE = new URL('test3/upcoming-games/steam.json', ROOT);
@@ -45,6 +46,8 @@ const FREE_FILE = new URL('test3/free-games/live.json', ROOT);
 const ACCOUNTS_FILE = new URL('test3/accounts/accounts.json', ROOT);
 const PROFILES_FILE = new URL('test3/accounts/profiles.json', ROOT);
 const UP2_FILE = new URL('test3/upcoming-games-2/steam.json', ROOT);
+const TIKTOK_FILE = new URL('test3/accounts/tiktok.json', ROOT);
+const AVATAR_DIR = new URL('test3/accounts/avatars/', ROOT);
 
 const PICKS_RELEASED = 4;   // games already out this month
 const PICKS_UPCOMING = 3;   // games still to come this month
@@ -567,10 +570,81 @@ async function updateProfiles() {
 }
 
 /* ------------------------------------------------------------------ */
+/* TikTok profiles                                                     */
+/* ------------------------------------------------------------------ */
+
+// TikTok's public profile page carries the profile as JSON. Picture links
+// expire, so the picture is saved next to the page.
+async function tiktokProfile(handle) {
+  const res = await fetch('https://www.tiktok.com/@' + encodeURIComponent(handle), {
+    headers: { 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36' }
+  });
+  if (!res.ok) throw new Error(`${res.status}`);
+  const html = await res.text();
+  const m = /<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>([\s\S]*?)<\/script>/.exec(html);
+  if (!m) throw new Error('no profile data on the page');
+  const info = JSON.parse(m[1])?.__DEFAULT_SCOPE__?.['webapp.user-detail']?.userInfo;
+  if (!info?.user?.uniqueId) throw new Error('profile not found');
+  const u = info.user, st = info.statsV2 || info.stats || {};
+  return {
+    handle,
+    uniqueId: u.uniqueId,
+    name: u.nickname || u.uniqueId,
+    bio: u.signature || '',
+    link: u.bioLink?.link || null,
+    verified: Boolean(u.verified),
+    following: Number(st.followingCount) || 0,
+    followers: Number(st.followerCount) || 0,
+    likes: Number(st.heartCount ?? st.heart) || 0,
+    videos: Number(st.videoCount) || 0,
+    avatarSource: u.avatarLarger || u.avatarMedium || null,
+    url: `https://www.tiktok.com/@${u.uniqueId}`
+  };
+}
+
+// the part of a TikTok picture link that changes only when the picture does
+function avatarKey(url) { return url ? url.split('~')[0].split('?')[0] : null; }
+
+async function updateTikTok() {
+  const list = (await readJson(ACCOUNTS_FILE))?.tiktok || [];
+  const old = (await readJson(TIKTOK_FILE))?.profiles || [];
+  await mkdir(AVATAR_DIR, { recursive: true });
+  const profiles = [];
+  for (const { handle } of list) {
+    const prev = old.find((p) => p.handle === handle);
+    try {
+      let p, last;
+      for (let attempt = 0; attempt < 3 && !p; attempt++) {
+        try { p = await tiktokProfile(handle); } catch (err) { last = err; await new Promise((r) => setTimeout(r, 2000 * (attempt + 1))); }
+      }
+      if (!p) throw last;
+      const file = 'tt-' + handle.replace(/[^a-z0-9_.-]/gi, '_') + '.jpg';
+      p.avatarKey = avatarKey(p.avatarSource);
+      if (p.avatarSource && (!prev || prev.avatarKey !== p.avatarKey || !prev.avatar)) {
+        const img = await fetch(p.avatarSource, { headers: { 'User-Agent': UA } });
+        if (img.ok) {
+          await writeFile(new URL(file, AVATAR_DIR), Buffer.from(await img.arrayBuffer()));
+          p.avatar = 'avatars/' + file;
+        }
+      } else if (prev?.avatar) {
+        p.avatar = prev.avatar;
+      }
+      delete p.avatarSource;
+      profiles.push(p);
+    } catch (err) {
+      if (prev) profiles.push(prev);
+      console.log(`::warning title=TikTok ${handle}::${err.message}`);
+    }
+  }
+  const data = { source: 'TikTok public profile pages', updated: new Date().toISOString(), profiles };
+  await writeIfChanged(TIKTOK_FILE, data, (d) => d.profiles);
+}
+
+/* ------------------------------------------------------------------ */
 
 // One feed failing should not stop the other from being saved, so errors are
 // reported as workflow warnings and the old file is kept.
-for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive], ['X profiles', updateProfiles], ['Upcoming test 2', updateUpcoming2]]) {
+for (const [name, job] of [['Steam', updateSteam], ['Free games', updateLive], ['X profiles', updateProfiles], ['TikTok profiles', updateTikTok], ['Upcoming test 2', updateUpcoming2]]) {
   try {
     await job();
   } catch (err) {
