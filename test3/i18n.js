@@ -99,6 +99,14 @@
     'acc.avatar': ['Profile picture of', 'صورة حساب'],
     'acc.note': ['Profiles update automatically from X.', 'تتحدّث الحسابات تلقائيًا من X.'],
     'acc.empty': ['Accounts will show up here soon.', 'ستظهر الحسابات هنا قريبًا.'],
+    'acc.tabs': ['Platform', 'المنصة'],
+    'acc.note.tt': ['Profiles update automatically from TikTok.', 'تتحدّث الحسابات تلقائيًا من TikTok.'],
+    'acc.posts': ['posts', 'منشور'],
+    'acc.following': ['following', 'يتابع'],
+    'acc.likes': ['likes', 'إعجاب'],
+    'acc.ig.follow': ['Follow on Instagram', 'تابع على Instagram'],
+    'acc.tt.follow': ['Follow on TikTok', 'تابع على TikTok'],
+    'acc.ig.view': ['View profile', 'عرض الحساب'],
 
     /* useful apps */
     'apps.doc': ['Useful Apps — Unisanda', 'برامج مفيدة — Unisanda'],
