@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-23T15:50:22.340Z",
+  "updated": "2026-11-24T02:27:16.149Z",
   "games": [
     {
       "appid": 4262460,
@@ -62,7 +62,7 @@
       "dlc": false,
       "gamePass": false,
       "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795446021",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
       "url": "https://store.steampowered.com/app/5185890/",
       "rank": 3
     },
@@ -140,7 +140,7 @@
       "dlc": false,
       "gamePass": false,
       "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795400954",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795469731",
       "url": "https://store.steampowered.com/app/3333850/",
       "rank": 7
     },
@@ -167,8 +167,7 @@
       "title": "Reshine",
       "date": "2026-11-26",
       "platforms": [
-        "pc",
-        "xbox"
+        "pc"
       ],
       "players": [
         "single"
@@ -201,24 +200,6 @@
       "rank": 10
     },
     {
-      "appid": 4738100,
-      "title": "10 Million Pixels",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc"
-      ],
-      "players": [
-        "single"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4738100/c6beba38878d8b7783cbb5186d90b6091cef6684/library_capsule_2x.jpg?t=1795100714",
-      "url": "https://store.steampowered.com/app/4738100/",
-      "rank": 11
-    },
-    {
       "appid": 4009490,
       "title": "Arctic Drive",
       "date": "2026-11-25",
@@ -237,6 +218,29 @@
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4009490/80d90302c71ced5542a2400e5936f941544ad41d/library_capsule_2x.jpg?t=1795165088",
       "url": "https://store.steampowered.com/app/4009490/",
+      "rank": 11
+    },
+    {
+      "appid": 5189950,
+      "title": "Winx Club - Moonlight Quest",
+      "date": "2026-11-29",
+      "platforms": [
+        "pc",
+        "ps",
+        "xbox",
+        "switch"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
+      "url": "https://store.steampowered.com/app/5189950/",
       "rank": 12
     }
   ],
