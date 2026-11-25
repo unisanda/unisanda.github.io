@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-25T08:56:22.907Z",
+  "updated": "2026-11-25T19:29:28.073Z",
   "games": [
     {
       "appid": 4262460,
@@ -104,25 +104,23 @@
       "rank": 5
     },
     {
-      "appid": 4530370,
-      "title": "Football Manager 27",
-      "date": "2026-11-10",
+      "appid": 3218230,
+      "title": "ArcheAge Chronicles",
+      "date": "2026-11-03",
       "platforms": [
         "pc",
-        "mac",
-        "ps",
         "xbox"
       ],
       "players": [
-        "single",
-        "multi"
+        "multi",
+        "coop"
       ],
-      "arabic": true,
+      "arabic": false,
       "dlc": false,
-      "gamePass": true,
+      "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4530370/7ed4ea902189db0f278ae069ff5bfde4f601de93/library_capsule_2x.jpg?t=1795582514",
-      "url": "https://store.steampowered.com/app/4530370/",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218230/library_600x900_2x.jpg?t=1795588110",
+      "url": "https://store.steampowered.com/app/3218230/",
       "rank": 6
     },
     {
@@ -140,7 +138,7 @@
       "dlc": false,
       "gamePass": false,
       "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795580929",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795629628",
       "url": "https://store.steampowered.com/app/3333850/",
       "rank": 7
     },
@@ -195,30 +193,9 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954970/ba4832f642365912b5ac1546822e985e1d192095/library_capsule_2x.jpg?t=1795596883",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954970/ba4832f642365912b5ac1546822e985e1d192095/library_capsule_2x.jpg?t=1795605106",
       "url": "https://store.steampowered.com/app/4954970/",
       "rank": 10
-    },
-    {
-      "appid": 4009490,
-      "title": "Arctic Drive",
-      "date": "2026-11-25",
-      "platforms": [
-        "pc",
-        "xbox"
-      ],
-      "players": [
-        "single",
-        "multi",
-        "coop"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4009490/80d90302c71ced5542a2400e5936f941544ad41d/library_capsule_2x.jpg?t=1795165088",
-      "url": "https://store.steampowered.com/app/4009490/",
-      "rank": 11
     },
     {
       "appid": 5189950,
@@ -241,6 +218,26 @@
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
       "url": "https://store.steampowered.com/app/5189950/",
+      "rank": 11
+    },
+    {
+      "appid": 4704000,
+      "title": "Shark Mart",
+      "date": "2026-11-26",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4704000/fb661207b1b2b89bb63ad0f9d33245ec5db3c991/library_capsule_2x.jpg?t=1795162593",
+      "url": "https://store.steampowered.com/app/4704000/",
       "rank": 12
     }
   ],
