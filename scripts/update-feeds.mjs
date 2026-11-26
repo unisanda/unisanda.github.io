@@ -5,7 +5,7 @@
 
     node scripts/update-feeds.mjs
 
-  1. Steam  -> test3/upcoming-games/steam.json
+  1. Steam  -> test3/upcoming-games-2/steam.json (the archived carousel page)
      The most popular Steam games releasing this calendar month (UTC), from
      the public IStoreQueryService/Query endpoint (no key needed):
      - already out this month: ranked by Steam's top-sellers order
@@ -28,7 +28,7 @@
      Name, bio, profile picture, banner and follower count for each handle
      in test3/accounts/accounts.json, from FxTwitter's public API (no key).
 
-  4. Upcoming games test 2 -> test3/upcoming-games-2/steam.json
+  4. Upcoming games -> test3/upcoming-games/steam.json
      The 12 most popular Steam games releasing this month (6 best-selling
      already out, 6 most-wishlisted still to come). For each: Arabic
      support and player modes from Steam, and the consoles it is also on,
@@ -41,11 +41,11 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const STEAM_FILE = new URL('test3/upcoming-games/steam.json', ROOT);
+const STEAM_FILE = new URL('test3/upcoming-games-2/steam.json', ROOT);
 const FREE_FILE = new URL('test3/free-games/live.json', ROOT);
 const ACCOUNTS_FILE = new URL('test3/accounts/accounts.json', ROOT);
 const PROFILES_FILE = new URL('test3/accounts/profiles.json', ROOT);
-const UP2_FILE = new URL('test3/upcoming-games-2/steam.json', ROOT);
+const UP2_FILE = new URL('test3/upcoming-games/steam.json', ROOT);
 const TIKTOK_FILE = new URL('test3/accounts/tiktok.json', ROOT);
 const AVATAR_DIR = new URL('test3/accounts/avatars/', ROOT);
 
@@ -425,11 +425,11 @@ async function gamePassCatalog() {
   return ids;
 }
 
-// titles of the hand-picked games in test3/upcoming-games-2/games.js
+// titles of the hand-picked games in test3/upcoming-games/games.js
 async function handPickedTitles() {
   try {
     const { runInNewContext } = await import('node:vm');
-    const src = await readFile(new URL('test3/upcoming-games-2/games.js', ROOT), 'utf8');
+    const src = await readFile(new URL('test3/upcoming-games/games.js', ROOT), 'utf8');
     const sandbox = { window: {} };
     runInNewContext(src, sandbox, { timeout: 1000 });
     return (sandbox.window.UPCOMING2?.games || []).map((g) => g.title);

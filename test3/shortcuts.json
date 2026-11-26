@@ -1,0 +1,6 @@
+{
+  "_note": "Search codes: when a visitor types a code into the search on the links page and presses Enter, they are sent to its link. Add one line per code; codes are not case-sensitive.",
+  "codes": {
+    "1": { "url": "https://ar.aliexpress.com/", "label": "AliExpress" }
+  }
+}
