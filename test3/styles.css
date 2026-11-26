@@ -836,14 +836,47 @@ html[dir="rtl"] .back-link svg { scale: -1 1; }
   flex-direction: column;
   gap: 6px;
   padding: 6px;
-  border: 1px solid var(--glass-line);
+  border: 1px solid rgba(255, 255, 255, .22);
   border-radius: 999px;
-  background: var(--glass);
-  transform: translateY(-50%);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 26px -14px rgba(0, 0, 0, .6);
+  /* solid enough to read on top of the tiles */
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: 0 14px 34px -10px rgba(0, 0, 0, .7), 0 0 0 4px rgba(255, 255, 255, .05);
+  /* tucked away off the edge until the visitor scrolls or touches the page */
+  transform: translate(calc(-100% - 24px), -50%);
+  opacity: 0;
+  transition: transform .55s cubic-bezier(.2, 1.3, .35, 1), opacity .35s ease;
 }
+html[dir="rtl"] .section-rail { transform: translate(calc(100% + 24px), -50%); }
+.section-rail.is-shown,
+html[dir="rtl"] .section-rail.is-shown { transform: translate(0, -50%); opacity: 1; }
+:root[data-theme="paper"] .section-rail { border-color: rgba(90, 37, 48, .2); }
+
+/* a thin handle stays on the edge so the rail can be found */
+.rail-handle {
+  position: fixed;
+  top: 50%;
+  inset-inline-start: 0;
+  z-index: 8;
+  width: 5px;
+  height: 46px;
+  border-radius: 0 6px 6px 0;
+  background: var(--ink);
+  opacity: .35;
+  transform: translateY(-50%);
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+html[dir="rtl"] .rail-handle { border-radius: 6px 0 0 6px; }
+.section-rail.is-shown + .rail-handle { opacity: 0; }
+
+/* the buttons drop in one after the other as the rail slides out */
+.section-rail .rail-btn { transform: scale(.6); opacity: 0; transition: transform .45s cubic-bezier(.2, 1.4, .4, 1), opacity .3s ease, background-color .35s, color .35s; }
+.section-rail.is-shown .rail-btn { transform: none; opacity: .7; }
+.section-rail.is-shown .rail-btn.is-active { opacity: 1; }
+.section-rail.is-shown .rail-btn:nth-child(2) { transition-delay: .06s; }
+.section-rail.is-shown .rail-btn:nth-child(3) { transition-delay: .12s; }
 .rail-btn {
   position: relative;
   display: grid;
@@ -856,7 +889,7 @@ html[dir="rtl"] .back-link svg { scale: -1 1; }
   transition: background-color .35s, color .35s, opacity .3s, transform .35s var(--ease);
 }
 .rail-btn svg { width: 20px; height: 20px; fill: currentColor; }
-.rail-btn:hover { opacity: 1; transform: scale(1.06); }
+.section-rail.is-shown .rail-btn:hover { opacity: 1; transform: scale(1.06); }
 .rail-btn.is-active { background: var(--ink); color: var(--bg); opacity: 1; }
 .rail-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 /* label pops out next to the icon on hover / keyboard focus */
@@ -882,8 +915,6 @@ html[dir="rtl"] .rail-tip { transform: translate(6px, -50%); }
 .rail-btn:hover .rail-tip, .rail-btn:focus-visible .rail-tip { opacity: 1; transform: translate(0, -50%); }
 html[lang="ar"] .rail-tip { font-size: 15px; line-height: 1.3; }
 
-/* keep the page content clear of the rail */
-.page { padding-inline-start: max(70px, clamp(16px, 3.1vw, 42px)); }
 
 /* ---------- search button + panel ---------- */
 
@@ -1020,7 +1051,6 @@ html[lang="ar"] .sr-name { line-height: 1.35; }
 /* ---------- phones: slimmer tiles so the rail fits ---------- */
 
 @media (max-width: 640px) {
-  .page { padding-inline-start: 62px; padding-inline-end: 12px; }
   .section-rail { padding: 5px; gap: 5px; inset-inline-start: 8px; }
   .rail-btn { width: 38px; height: 38px; }
   .rail-btn svg { width: 18px; height: 18px; }
