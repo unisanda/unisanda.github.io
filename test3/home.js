@@ -62,7 +62,7 @@
     clearTimeout(hideTimer);
     hideTimer = setTimeout(function () {
       if (!hovering && !rail.contains(document.activeElement)) rail.classList.remove('is-shown');
-    }, 2600);
+    }, 1200);   // hide 1.2 s after the last scroll, touch or mouse move
   }
   ['scroll', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) {
     window.addEventListener(ev, show, { passive: true });
