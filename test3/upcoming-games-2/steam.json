@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-25T19:29:28.073Z",
+  "updated": "2026-11-26T02:57:24.749Z",
   "games": [
     {
       "appid": 4262460,
@@ -124,6 +124,24 @@
       "rank": 6
     },
     {
+      "appid": 3224600,
+      "title": "Am I Nima",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
+      "url": "https://store.steampowered.com/app/3224600/",
+      "rank": 7
+    },
+    {
       "appid": 3333850,
       "title": "Arkheron",
       "date": "2026-11-27",
@@ -140,24 +158,6 @@
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795629628",
       "url": "https://store.steampowered.com/app/3333850/",
-      "rank": 7
-    },
-    {
-      "appid": 3224600,
-      "title": "Am I Nima",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc"
-      ],
-      "players": [
-        "single"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
-      "url": "https://store.steampowered.com/app/3224600/",
       "rank": 8
     },
     {
@@ -174,7 +174,7 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1795511942",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1795641281",
       "url": "https://store.steampowered.com/app/4253570/",
       "rank": 9
     },
