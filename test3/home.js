@@ -53,6 +53,31 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
+  // the rail slides in when the visitor scrolls, touches or moves over the
+  // page, and tucks away again after a short pause
+  var hideTimer = 0;
+  var hovering = false;
+  function show() {
+    rail.classList.add('is-shown');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      if (!hovering && !rail.contains(document.activeElement)) rail.classList.remove('is-shown');
+    }, 2600);
+  }
+  ['scroll', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, show, { passive: true });
+  });
+  var lastMove = 0;
+  window.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    var now = Date.now();
+    if (now - lastMove > 150) { lastMove = now; show(); }
+  }, { passive: true });
+  rail.addEventListener('pointerenter', function () { hovering = true; show(); });
+  rail.addEventListener('pointerleave', function () { hovering = false; show(); });
+  rail.addEventListener('focusin', show);
+  rail.addEventListener('focusout', show);
+
   /* ---------- 2. search ---------- */
 
   var toggle = document.getElementById('searchToggle');
