@@ -1,7 +1,7 @@
 {
   "source": "Steam store (IStoreQueryService/Query)",
   "month": "2026-11",
-  "updated": "2026-11-26T02:57:10.186Z",
+  "updated": "2026-11-26T22:28:24.236Z",
   "games": [
     {
       "appid": 4262460,
@@ -54,7 +54,7 @@
       "platforms": [
         "pc"
       ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795725483",
       "url": "https://store.steampowered.com/app/3224600/",
       "rank": 5
     },
@@ -70,14 +70,14 @@
       "rank": 6
     },
     {
-      "appid": 4253570,
-      "title": "Reshine",
-      "date": "2026-11-26",
+      "appid": 5189950,
+      "title": "Winx Club - Moonlight Quest",
+      "date": "2026-11-29",
       "platforms": [
         "pc"
       ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1795641281",
-      "url": "https://store.steampowered.com/app/4253570/",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
+      "url": "https://store.steampowered.com/app/5189950/",
       "rank": 7
     }
   ]

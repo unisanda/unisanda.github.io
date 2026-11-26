@@ -2,26 +2,8 @@
   "sources": [
     "GamerPower"
   ],
-  "updated": "2026-11-22T22:38:18.107Z",
+  "updated": "2026-11-26T22:28:24.374Z",
   "items": [
-    {
-      "id": "gp-3853",
-      "title": "Mark of the Deep",
-      "type": "keep",
-      "kind": "game",
-      "store": "epic",
-      "storeLabel": "Epic Games",
-      "until": 1795737540000,
-      "untilPrecision": "day",
-      "price": {
-        "currency": "USD",
-        "old": 1999
-      },
-      "image": "https://www.gamerpower.com/offers/1b/6aff1d0e4942d.jpg",
-      "url": "https://www.gamerpower.com/open/mark-of-the-deep-epic-games-giveaway",
-      "published": 1795086014000,
-      "source": "gamerpower"
-    },
     {
       "id": "gp-3852",
       "title": "Contractor: The Clean Up Part 2",
@@ -38,6 +20,24 @@
       "image": "https://www.gamerpower.com/offers/1b/6afc554f06761.jpg",
       "url": "https://www.gamerpower.com/open/contractor-the-clean-up-part-2-epic-games-giveaway",
       "published": 1794903807000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3857",
+      "title": "Bread and Fred",
+      "type": "keep",
+      "kind": "game",
+      "store": "epic",
+      "storeLabel": "Epic Games",
+      "until": 1796342340000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 1499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0857f437cbd.jpg",
+      "url": "https://www.gamerpower.com/open/bread-and-fred-epic-games-giveaway",
+      "published": 1795690916000,
       "source": "gamerpower"
     },
     {
