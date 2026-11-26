@@ -1,44 +1,112 @@
 /*
-  Upcoming games — layout test 2 (static grid, like the social posts)
+  Upcoming games — November 2026
+  ------------------------------------------------------------
+  Edit this list to change the month. One entry per game:
 
-  month      YYYY-MM, used for the heading and the "NOV" labels
-  hero       the round month artwork shown at the top
-  games      one entry per game, any order (the page sorts by date):
-    title      game name
-    date       YYYY-MM-DD
-    platforms  any of: switch, xbox, pc, ps, mac, android
-    players    any of: single, multi, coop   (icons on the poster)
-    arabic     true when the game supports Arabic (green "ع"), false = red
-    hot        true for a fire badge on the most anticipated games
-    dlc        true to add a "DLC" tag
-    gamePass   true/false to force the Game Pass badge (normally found
-               automatically in Microsoft's Game Pass catalog)
-    poster     image in ./posters (2:3 works best)
-    url        store or official page (optional)
+    title      shown above the centre poster
+    date       release date, YYYY-MM-DD
+    platforms  any of: ps5, xbox, switch2, switch, pc
+    poster     image in ./posters (600x900 works best)
+    accent     glow colour behind the poster
+    url        page opened when the centre poster is clicked (optional)
 
-  The page also loads steam.json (refreshed hourly by a GitHub Action):
-  the month's 12 most popular Steam games, with Arabic support, player
-  modes and the consoles each one is also on. Games listed here win over
-  the same game from Steam.
-
-  Games, platforms and badges follow Unisanda's November 2026 posts;
-  release dates follow Steam (checked 23 Nov 2026). UnderMire was taken
-  out: Steam now lists it for December 2026.
+  Dates and platforms checked on 16 Nov 2026 against
+  gamescomingout.com (November 2026 list), VGC's release schedule,
+  Steam store data and Wikipedia. Edge of Memories and
+  Warhammer 40,000: Dawn of War IV were left out: Steam now lists
+  both for 3 December 2026.
 */
-window.UPCOMING2 = {
-  month: '2026-11',
-  hero: 'hero-2026-11.webp',
+window.UPCOMING = {
+  month: 'November 2026',
+  month_ar: 'نوفمبر 2026',
   games: [
-    { title: 'Gravhounds', date: '2026-11-02', platforms: ['xbox', 'pc'], players: ['multi'], arabic: false, poster: 'posters/gravhounds.jpg', url: 'https://store.steampowered.com/app/2440760/' },
-    { title: 'Wilderdark', date: '2026-11-10', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/wilderdark.jpg', url: 'https://store.steampowered.com/app/2735850/' },
-    { title: 'Brotato: Primal Dread', date: '2026-11-02', platforms: ['pc'], players: ['single'], arabic: false, dlc: true, poster: 'posters/brotato-primal-dread.jpg', url: 'https://store.steampowered.com/app/4498220/' },
-    { title: 'Death at Fleming Manor', date: '2026-11-03', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/death-at-fleming-manor.jpg', url: 'https://store.steampowered.com/app/3758950/' },
-    { title: 'Kick', date: '2026-11-03', platforms: ['pc'], players: ['single'], arabic: false, poster: 'posters/kick.jpg' },
-    { title: 'Godzilla: Destroy All Monsters Melee Remastered', date: '2026-11-03', platforms: ['switch', 'xbox', 'pc', 'ps'], players: ['single'], arabic: false, poster: 'posters/godzilla-dam-melee.jpg', url: 'https://store.steampowered.com/app/4251460/' },
-    { title: "Tanuki: Pon's Summer", date: '2026-11-10', platforms: ['switch', 'xbox', 'pc', 'ps'], players: ['single'], arabic: false, poster: 'posters/tanuki.jpg', url: 'https://store.steampowered.com/app/3218570/' },
-    { title: 'Warhammer Survivors', date: '2026-11-10', platforms: ['mac', 'switch', 'pc', 'xbox', 'ps', 'android'], players: ['single'], arabic: false, hot: true, poster: 'posters/warhammer-survivors.jpg', url: 'https://store.steampowered.com/app/3669620/' },
-    { title: 'Barbie Rewind', date: '2026-11-12', platforms: ['switch', 'xbox', 'pc', 'ps'], players: ['single'], arabic: false, hot: true, poster: 'posters/barbie-rewind.jpg', url: 'https://store.steampowered.com/app/4082030/' },
-    { title: 'Fat Goblins', date: '2026-11-12', platforms: ['pc'], players: ['single', 'multi'], arabic: false, poster: 'posters/fat-goblins.jpg', url: 'https://store.steampowered.com/app/2450350/' },
-    { title: 'Grand Theft Auto VI', date: '2026-11-19', platforms: ['xbox', 'ps'], players: ['single'], arabic: false, hot: true, poster: 'posters/gta6.jpg', url: 'https://www.rockstargames.com/VI' }
+    {
+      title: 'ArcheAge Chronicles',
+      date: '2026-11-03',
+      platforms: ['pc'],
+      poster: 'posters/archeage.jpg',
+      accent: '#8fc7a8',
+      url: 'https://store.steampowered.com/app/3218230/'
+    },
+    {
+      title: 'Void/Breaker',
+      date: '2026-11-04',
+      platforms: ['ps5', 'xbox', 'pc'],
+      poster: 'posters/voidbreaker.jpg',
+      accent: '#ff7a3d',
+      url: 'https://store.steampowered.com/app/2615540/'
+    },
+    {
+      title: 'The Legend of Zelda: Ocarina of Time',
+      date: '2026-11-05',
+      platforms: ['switch2'],
+      poster: 'posters/zelda-oot.jpg',
+      accent: '#86d66e',
+      url: 'https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Ocarina_of_Time_(2026_video_game)'
+    },
+    {
+      title: 'Airframe Ultra',
+      date: '2026-11-05',
+      platforms: ['pc'],
+      poster: 'posters/airframe.jpg',
+      accent: '#ff4d3d',
+      url: 'https://store.steampowered.com/app/2522120/'
+    },
+    {
+      title: 'Stellar Blade',
+      date: '2026-11-06',
+      platforms: ['switch2'],
+      poster: 'posters/stellar.jpg',
+      accent: '#6fa8ff',
+      url: 'https://en.wikipedia.org/wiki/Stellar_Blade'
+    },
+    {
+      title: "Tanuki: Pon's Summer",
+      date: '2026-11-10',
+      platforms: ['ps5', 'xbox', 'switch', 'pc'],
+      poster: 'posters/tanuki.jpg',
+      accent: '#ffb547',
+      url: 'https://store.steampowered.com/app/3218570/'
+    },
+    {
+      title: 'Warhammer Survivors',
+      date: '2026-11-10',
+      platforms: ['ps5', 'xbox', 'switch', 'pc'],
+      poster: 'posters/warhammer-survivors.jpg',
+      accent: '#d9a441',
+      url: 'https://store.steampowered.com/app/3669620/'
+    },
+    {
+      title: 'Metaphor: ReFantazio',
+      date: '2026-11-12',
+      platforms: ['switch2'],
+      poster: 'posters/metaphor.jpg',
+      accent: '#ff5a4a',
+      url: 'https://en.wikipedia.org/wiki/Metaphor:_ReFantazio'
+    },
+    {
+      title: 'Sonic Pico Park',
+      date: '2026-11-12',
+      platforms: ['ps5', 'xbox', 'switch2', 'switch', 'pc'],
+      poster: 'posters/sonic-pico-park.jpg',
+      accent: '#3d8bff',
+      url: 'https://store.steampowered.com/app/4304060/'
+    },
+    {
+      title: 'Grand Theft Auto VI',
+      date: '2026-11-19',
+      platforms: ['ps5', 'xbox'],
+      poster: 'posters/gta6.jpg',
+      accent: '#ff5fa2',
+      url: 'https://www.rockstargames.com/VI'
+    },
+    {
+      title: 'Arkheron',
+      date: '2026-11-27',
+      platforms: ['xbox', 'pc'],
+      poster: 'posters/arkheron.jpg',
+      accent: '#3fd6c6',
+      url: 'https://store.steampowered.com/app/3333850/'
+    }
   ]
 };

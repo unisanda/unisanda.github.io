@@ -62,7 +62,7 @@ window.FREE_GAMES = {
       sub_ar: 'Game Pass وألعاب مجانية',
       direction: -1,
       games: [
-        { title: 'Arkheron', poster: '../upcoming-games/posters/arkheron.jpg', tag: 'gamepass', label: 'Game Pass', note: 'Day one · 27 Nov', note_ar: 'من يوم الإصدار · 27 نوفمبر', url: 'https://www.xbox.com/en-US/xbox-game-pass/games' },
+        { title: 'Arkheron', poster: '../upcoming-games-2/posters/arkheron.jpg', tag: 'gamepass', label: 'Game Pass', note: 'Day one · 27 Nov', note_ar: 'من يوم الإصدار · 27 نوفمبر', url: 'https://www.xbox.com/en-US/xbox-game-pass/games' },
         { title: 'High On Life 2', poster: 'posters/high-on-life-2.jpg', tag: 'gamepass', label: 'Game Pass', note: 'Premium · from 18 Nov', note_ar: 'Premium · من 18 نوفمبر', url: 'https://www.xbox.com/en-US/games/store/_/9NF6XPSBTTGB' },
         { title: 'Gravhounds', poster: 'posters/gravhounds.jpg', tag: 'gamepass', label: 'Game Pass', note: 'Game Preview', note_ar: 'نسخة Game Preview', url: 'https://www.xbox.com/en-US/xbox-game-pass/games' },
         { title: 'Halo Infinite', poster: 'posters/halo-infinite.jpg', tag: 'free', label: 'Free to play', label_ar: 'مجانية', note: 'Multiplayer', note_ar: 'اللعب الجماعي', url: 'https://www.xbox.com/en-US/games/halo-infinite' },

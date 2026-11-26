@@ -1,7 +1,7 @@
 {
-  "source": "Steam store (IStoreQueryService/Query)",
+  "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-26T02:57:10.186Z",
+  "updated": "2026-11-26T12:56:48.144Z",
   "games": [
     {
       "appid": 4262460,
@@ -10,6 +10,14 @@
       "platforms": [
         "pc"
       ],
+      "players": [
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/69a7d94807fcdea67f649ecfa3da0aab369bd767/library_capsule_2x.jpg?t=1795595062",
       "url": "https://store.steampowered.com/app/4262460/",
       "rank": 1
@@ -19,8 +27,20 @@
       "title": "Godzilla: Destroy All Monsters Melee Remastered",
       "date": "2026-11-03",
       "platforms": [
-        "pc"
+        "pc",
+        "ps",
+        "xbox",
+        "switch"
       ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
       "url": "https://store.steampowered.com/app/4251460/",
       "rank": 2
@@ -30,8 +50,18 @@
       "title": "Zombies Aren't Real",
       "date": "2026-11-13",
       "platforms": [
-        "pc"
+        "pc",
+        "mac"
       ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
       "url": "https://store.steampowered.com/app/5185890/",
       "rank": 3
@@ -43,9 +73,55 @@
       "platforms": [
         "pc"
       ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4576490/2876bd25f1c82af501ba6e1befa7c8cc5178ce07/library_capsule_2x.jpg?t=1794232782",
       "url": "https://store.steampowered.com/app/4576490/",
       "rank": 4
+    },
+    {
+      "appid": 3218350,
+      "title": "Melvor Idle 2: A RuneScape Adventure",
+      "date": "2026-11-17",
+      "platforms": [
+        "pc",
+        "mac"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218350/4b8c5ecdbd2acfb8f0dfc4f005047f817034be2b/library_capsule_2x.jpg?t=1794955439",
+      "url": "https://store.steampowered.com/app/3218350/",
+      "rank": 5
+    },
+    {
+      "appid": 3218230,
+      "title": "ArcheAge Chronicles",
+      "date": "2026-11-03",
+      "platforms": [
+        "pc",
+        "xbox"
+      ],
+      "players": [
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218230/library_600x900_2x.jpg?t=1795588110",
+      "url": "https://store.steampowered.com/app/3218230/",
+      "rank": 6
     },
     {
       "appid": 3224600,
@@ -54,20 +130,35 @@
       "platforms": [
         "pc"
       ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795309203",
       "url": "https://store.steampowered.com/app/3224600/",
-      "rank": 5
+      "rank": 7
     },
     {
       "appid": 3333850,
       "title": "Arkheron",
       "date": "2026-11-27",
       "platforms": [
-        "pc"
+        "pc",
+        "xbox"
       ],
+      "players": [
+        "multi"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795629628",
       "url": "https://store.steampowered.com/app/3333850/",
-      "rank": 6
+      "rank": 8
     },
     {
       "appid": 4253570,
@@ -76,9 +167,81 @@
       "platforms": [
         "pc"
       ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4253570/10dd348bc5eaee876a01f125e3840ab3fc93d47a/library_capsule_2x.jpg?t=1795641281",
       "url": "https://store.steampowered.com/app/4253570/",
-      "rank": 7
+      "rank": 9
+    },
+    {
+      "appid": 5189950,
+      "title": "Winx Club - Moonlight Quest",
+      "date": "2026-11-29",
+      "platforms": [
+        "pc",
+        "ps",
+        "xbox",
+        "switch"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
+      "url": "https://store.steampowered.com/app/5189950/",
+      "rank": 10
+    },
+    {
+      "appid": 4704000,
+      "title": "Shark Mart",
+      "date": "2026-11-26",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4704000/fb661207b1b2b89bb63ad0f9d33245ec5db3c991/library_capsule_2x.jpg?t=1795681249",
+      "url": "https://store.steampowered.com/app/4704000/",
+      "rank": 11
+    },
+    {
+      "appid": 1622130,
+      "title": "Our Life: Now & Forever",
+      "date": "2026-11-27",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1622130/library_600x900_2x.jpg?t=1795225846",
+      "url": "https://store.steampowered.com/app/1622130/",
+      "rank": 12
     }
+  ],
+  "gamePassTitles": [
+    "Gravhounds",
+    "Warhammer Survivors"
   ]
 }

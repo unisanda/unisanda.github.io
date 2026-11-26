@@ -1,25 +1,29 @@
-# Upcoming games — layout test 2
+# Upcoming games — test page (archive)
 
-A second, static take on the monthly releases page, styled after Unisanda's monthly posts. It is not linked from the links page; open it at `/test3/upcoming-games-2/`.
+Archived first version of the upcoming games page; the live one is now `../upcoming-games/`. Still kept up to date by the feed workflow, but not linked from the links page.
 
-- Top: the round month artwork (`hero-2026-11.webp`, cut out of the November post with a transparent background).
-- Below: one framed poster per game in date order (1st → end of month, same-day games by name). The date sits above each card, platform icons below. Badges on the poster: Arabic support (green ع = supported, red ع = not), single/multiplayer, a fire on the most anticipated games, and a DLC tag. Cards tilt slightly under the mouse; nothing scrolls on its own.
-- English/Arabic and the background switch work as on the other pages.
+A 3D ring of game posters for the month's notable releases. Drag, swipe, use the arrow buttons or the keyboard arrows to turn it. The centre poster shows its release date and name above it and its platforms below it. Clicking the centre poster opens the game's page. The background and colour switch come from `../styles.css` and `../app.js`.
 
-To make a new month, replace `hero` and the `games` list in `games.js` and add posters to `posters/` (2:3 works best).
+## Changing the month
 
-Posters: Steam library art for most games. Brotato: Primal Dread (a DLC with no portrait art on Steam), Kick (not found on Steam) and Grand Theft Auto VI are cropped from the November post.
+Edit `games.js`: each game has a title, a `YYYY-MM-DD` date, its platforms (`ps5`, `xbox`, `switch2`, `switch`, `pc`), a poster in `posters/` (600×900), a glow colour and an optional link. The list is sorted by date, and the ring opens on the next game still to come out. The "In 3 days" / "Out now" label is worked out from the visitor's date.
 
-Release dates follow Steam where the game is listed there (checked 23 November 2026): Wilderdark moved from 3 to 10 November, and UnderMire was removed because Steam now lists it for December 2026.
+## Sources (checked 16 November 2026)
+
+- Release list: https://gamescomingout.com/games-coming-out-november-2026 and https://www.videogameschronicle.com/guide/upcoming-game-release-dates-schedule/
+- PC dates and store pages: Steam store data for each app.
+- Grand Theft Auto VI (19 Nov, PS5/Xbox), The Legend of Zelda: Ocarina of Time (5 Nov, Switch 2) and Sonic Pico Park (12 Nov): their English Wikipedia articles.
+- Left out: Edge of Memories and Warhammer 40,000: Dawn of War IV. Some lists still show them in November, but Steam lists both for 3 December 2026.
+- IGDB and releases.com block automated requests, so they were not used.
+
+## Posters
+
+All artwork belongs to its publishers. Local copies are used so the page works offline.
+
+- Steam library art (600×900): ArcheAge Chronicles, Airframe Ultra, Tanuki: Pon's Summer, Arkheron, Metaphor: ReFantazio, Stellar Blade.
+- Cropped from Steam screenshots (those games have no portrait art at the standard path): Void/Breaker, Warhammer Survivors, Sonic Pico Park.
+- From the Wikipedia cover images, placed on a blurred copy of themselves to fill the 2:3 frame: Grand Theft Auto VI, The Legend of Zelda: Ocarina of Time. These are low resolution and look soft on large screens; swap them for official art when you can.
 
 ## Top Steam games (live)
 
-The page also loads `steam.json`, refreshed every hour by the "Update game feeds" GitHub Action (`scripts/update-feeds.mjs`): this month's 6 best-selling released and 6 most-wishlisted upcoming Steam games. For each one the script reads Arabic support and single/multiplayer/co-op from Steam, and checks whether the same game is also on PlayStation, Xbox and Switch through the public PlayStation Store, Microsoft Store and Nintendo (Europe) searches. A console is only marked when the store has a game with the same name (store labels like "Console" or "Deluxe Edition" are allowed). The top 3 sellers and top 2 wishlisted get the fire badge.
-
-Games in `games.js` win over the same game from Steam, so hand-set badges stay. Everything is shown in date order. When the month changes, the page switches to the new month; until a round artwork for it is added to `games.js`, the month name is shown as a heading instead.
-
-SteamDB was tried but blocks automated requests with a browser check, so Steam's own store API is used.
-
-## Game Pass
-
-A small Xbox-green square joins the badges when a game is on Game Pass. The feed script loads Microsoft's public Game Pass lists (`catalog.gamepass.com`: PC, console, all games and "coming to Game Pass") and marks a game when one of its Microsoft Store products with the same name is in them. This is checked for the Steam games and for the hand-picked games in `games.js`; add `gamePass: true` or `false` to a hand-picked game to override it. Day-one games only show once Microsoft adds them to one of these lists.
+On top of the hand-picked list in `games.js`, the page loads `steam.json`: the most popular Steam games releasing this month, refreshed every 3 hours by the "Update game feeds" GitHub Action (`scripts/update-feeds.mjs`) from Steam's public `IStoreQueryService/Query` endpoint (no key needed). It takes the 4 best-selling games already out this month and the 3 most-wishlisted games still to come, skips adult-only titles, and drops any game already in `games.js`. Everything is then shown in release-date order. When the month changes, the page switches to the new month automatically.
