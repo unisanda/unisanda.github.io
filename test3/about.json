@@ -1,0 +1,30 @@
+{
+  "_note": "Text for the 'About me' panel on the links page (the i button next to the logo). Edit freely; every text has an English (en) and Arabic (ar) version. Follower numbers for X and TikTok are read live from accounts/profiles.json and accounts/tiktok.json; the others are written here.",
+  "name": "MOHD",
+  "brand": "Unisanda",
+  "role": { "en": "Gamer · Graphic designer · Content creator", "ar": "لاعب · مصمم جرافيك · صانع محتوى" },
+  "intro": {
+    "en": "I play, review and talk about games — from big releases to small indie gems — in Arabic, English and Urdu. I also design, so everything you see here is made with care.",
+    "ar": "ألعب وأراجع وأتكلم عن الألعاب، من الإصدارات الكبيرة إلى الألعاب المستقلة الصغيرة، بالعربي والإنجليزي والأردو. وأنا مصمم بعد، فكل شي تشوفه هنا مسوّى باهتمام."
+  },
+  "goal": {
+    "en": "One place for gamers: honest reviews, this month's releases, free games and useful tools — less time searching, more time playing. And a bigger spotlight for indie developers.",
+    "ar": "مكان واحد للاعبين: مراجعات صادقة، وإصدارات الشهر، والألعاب المجانية، وأدوات مفيدة — وقت أقل في البحث ووقت أكثر في اللعب. وإبراز أكبر لمطوري الألعاب المستقلة."
+  },
+  "loves": [
+    { "en": "Gaming", "ar": "الألعاب", "icon": "🎮" },
+    { "en": "Indie games", "ar": "الألعاب المستقلة", "icon": "🕹️" },
+    { "en": "Graphic design", "ar": "التصميم", "icon": "🎨" },
+    { "en": "Reviews", "ar": "المراجعات", "icon": "⭐" },
+    { "en": "Music", "ar": "الموسيقى", "icon": "🎧" },
+    { "en": "Movies", "ar": "الأفلام", "icon": "🎬" }
+  ],
+  "languages": ["EN", "AR", "URD"],
+  "flags": "🇸🇦 🇵🇰",
+  "email": "mohd@unisanda.com",
+  "platforms": [
+    { "id": "x", "icon": "i-x", "label": "X", "url": "https://x.com/UniMohdx", "from": "x:UniMohdx" },
+    { "id": "tiktok", "icon": "i-tiktok", "label": "TikTok", "url": "https://www.tiktok.com/@iunisanda", "from": "tiktok:iunisanda" },
+    { "id": "instagram", "icon": "i-instagram", "label": "Instagram", "url": "https://www.instagram.com/unisanda/", "followers": 26100 }
+  ]
+}
