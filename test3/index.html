@@ -84,6 +84,57 @@
   </div>
 </div>
 
+<div class="about" id="aboutPanel" role="dialog" aria-modal="true" aria-labelledby="aboutName" hidden>
+  <div class="about-sheet">
+    <svg class="about-wires" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M40 120 V470 H90"/>
+      <path d="M960 520 V760 H930"/>
+    </svg>
+
+    <section class="ab-card ab-hero">
+      <button class="ab-close" id="aboutClose" type="button" data-i18n-attr="aria-label:about.close" aria-label="Close">
+        <svg aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+      <div class="ab-hero-text">
+        <p class="ab-kicker" data-i18n="about.kicker">About me</p>
+        <h2 class="ab-name" id="aboutName"></h2>
+        <p class="ab-role" id="aboutRole"></p>
+        <p class="ab-intro" id="aboutIntro"></p>
+      </div>
+      <figure class="ab-portrait">
+        <img src="assets/logo.png" alt="" width="161" height="161">
+        <figcaption id="aboutBrand"></figcaption>
+      </figure>
+    </section>
+
+    <div class="ab-strip">
+      <span class="ab-strip-label" data-i18n="about.speaks">I speak</span>
+      <span class="ab-strip-field" id="aboutLangs"></span>
+      <span class="ab-strip-flags" id="aboutFlags"></span>
+    </div>
+
+    <div class="ab-row">
+      <section class="ab-card ab-goal">
+        <h3 class="ab-title" data-i18n="about.goal">My goal</h3>
+        <p id="aboutGoal"></p>
+      </section>
+      <section class="ab-card ab-loves">
+        <h3 class="ab-title" data-i18n="about.loves">What I love</h3>
+        <ul class="ab-chips" id="aboutLoves"></ul>
+      </section>
+    </div>
+
+    <section class="ab-card ab-stats">
+      <div class="ab-stats-head">
+        <h3 class="ab-title" data-i18n="about.community">The community</h3>
+        <p class="ab-total"><b id="aboutTotal">—</b> <span data-i18n="about.followers">followers across platforms</span></p>
+      </div>
+      <ul class="ab-platforms" id="aboutPlatforms"></ul>
+      <a class="ab-mail" id="aboutMail" href="#"><svg aria-hidden="true"><use href="#i-mail"/></svg><span></span></a>
+    </section>
+  </div>
+</div>
+
 <nav class="section-rail" id="sectionRail" data-i18n-attr="aria-label:rail.label" aria-label="Page sections">
   <a class="rail-btn" href="#sec-links" data-target="sec-links">
     <svg aria-hidden="true"><use href="#i-link2"/></svg>
@@ -113,6 +164,9 @@
       </svg>
       <img src="assets/logo.png" width="161" height="161" alt="Unisanda logo">
     </div>
+      <button class="info-btn" id="infoBtn" type="button" aria-haspopup="dialog" aria-controls="aboutPanel" data-i18n-attr="aria-label:about.open;title:about.open" aria-label="About me" title="About me">
+        <span aria-hidden="true">i</span>
+      </button>
   </header>
 
   <main>
@@ -254,5 +308,6 @@
 <script src="app.js"></script>
 <script src="tile-waves.js"></script>
 <script src="home.js"></script>
+<script src="about.js"></script>
 </body>
 </html>
