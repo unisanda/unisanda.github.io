@@ -2,8 +2,44 @@
   "sources": [
     "GamerPower"
   ],
-  "updated": "2026-11-26T22:28:24.374Z",
+  "updated": "2026-11-27T15:24:46.121Z",
   "items": [
+    {
+      "id": "gp-3859",
+      "title": "Vertical Drop Heroes HD Steam",
+      "type": "keep",
+      "kind": "game",
+      "store": "steam",
+      "storeLabel": null,
+      "until": 1795910340000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 699
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0967296e680.jpg",
+      "url": "https://www.gamerpower.com/open/vertical-drop-heroes-hd-steam-key-giveaway",
+      "published": 1795760345000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3860",
+      "title": "Dead Age 2",
+      "type": "keep",
+      "kind": "game",
+      "store": "gog",
+      "storeLabel": "GOG",
+      "until": 1796049609000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 1799
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0969de22e37.jpg",
+      "url": "https://www.gamerpower.com/open/dead-age-2-gog-giveaway",
+      "published": 1795761038000,
+      "source": "gamerpower"
+    },
     {
       "id": "gp-3852",
       "title": "Contractor: The Clean Up Part 2",
@@ -38,6 +74,24 @@
       "image": "https://www.gamerpower.com/offers/1b/6b0857f437cbd.jpg",
       "url": "https://www.gamerpower.com/open/bread-and-fred-epic-games-giveaway",
       "published": 1795690916000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3334",
+      "title": "Mysterious House",
+      "type": "keep",
+      "kind": "game",
+      "store": "indiegala",
+      "storeLabel": "IndieGala",
+      "until": null,
+      "untilPrecision": null,
+      "price": {
+        "currency": "USD",
+        "old": 99
+      },
+      "image": "https://www.gamerpower.com/offers/1b/68fcca241e9d0.jpg",
+      "url": "https://www.gamerpower.com/open/mysterious-house-pc-giveaway",
+      "published": 1795769632000,
       "source": "gamerpower"
     },
     {
@@ -110,24 +164,6 @@
       "image": "https://www.gamerpower.com/offers/1b/68f40b259de93.jpg",
       "url": "https://www.gamerpower.com/open/best-plumber-pc-giveaway",
       "published": 1790343661000,
-      "source": "gamerpower"
-    },
-    {
-      "id": "gp-3322",
-      "title": "Sausage Hunter",
-      "type": "keep",
-      "kind": "game",
-      "store": "indiegala",
-      "storeLabel": "Indiegala",
-      "until": null,
-      "untilPrecision": null,
-      "price": {
-        "currency": "USD",
-        "old": 2999
-      },
-      "image": "https://www.gamerpower.com/offers/1b/68eadb2d6f0c4.jpg",
-      "url": "https://www.gamerpower.com/open/sausage-hunter-pc-giveaway",
-      "published": 1789809350000,
       "source": "gamerpower"
     },
     {

@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-27T05:12:52.644Z",
+  "updated": "2026-11-27T15:26:12.268Z",
   "games": [
     {
       "appid": 4262460,
@@ -21,6 +21,27 @@
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262460/69a7d94807fcdea67f649ecfa3da0aab369bd767/library_capsule_2x.jpg?t=1795595062",
       "url": "https://store.steampowered.com/app/4262460/",
       "rank": 1
+    },
+    {
+      "appid": 5185890,
+      "title": "Zombies Aren't Real",
+      "date": "2026-11-13",
+      "platforms": [
+        "pc",
+        "mac"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": true,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
+      "url": "https://store.steampowered.com/app/5185890/",
+      "rank": 2
     },
     {
       "appid": 4251460,
@@ -43,27 +64,6 @@
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
       "url": "https://store.steampowered.com/app/4251460/",
-      "rank": 2
-    },
-    {
-      "appid": 5185890,
-      "title": "Zombies Aren't Real",
-      "date": "2026-11-13",
-      "platforms": [
-        "pc",
-        "mac"
-      ],
-      "players": [
-        "single",
-        "multi",
-        "coop"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
-      "url": "https://store.steampowered.com/app/5185890/",
       "rank": 3
     },
     {
@@ -99,7 +99,7 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218350/4b8c5ecdbd2acfb8f0dfc4f005047f817034be2b/library_capsule_2x.jpg?t=1794955439",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3218350/4b8c5ecdbd2acfb8f0dfc4f005047f817034be2b/library_capsule_2x.jpg?t=1795791551",
       "url": "https://store.steampowered.com/app/3218350/",
       "rank": 5
     },
@@ -137,28 +137,9 @@
       "dlc": false,
       "gamePass": false,
       "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795725483",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795780349",
       "url": "https://store.steampowered.com/app/3224600/",
       "rank": 7
-    },
-    {
-      "appid": 3333850,
-      "title": "Arkheron",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc",
-        "xbox"
-      ],
-      "players": [
-        "multi"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3333850/391c53e09d21c0fef25cf7bc1b65a0e999dd1086/library_capsule_2x.jpg?t=1795629628",
-      "url": "https://store.steampowered.com/app/3333850/",
-      "rank": 8
     },
     {
       "appid": 5189950,
@@ -178,28 +159,10 @@
       "arabic": false,
       "dlc": false,
       "gamePass": false,
-      "hot": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
       "url": "https://store.steampowered.com/app/5189950/",
-      "rank": 9
-    },
-    {
-      "appid": 1622130,
-      "title": "Our Life: Now & Forever",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc"
-      ],
-      "players": [
-        "single"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1622130/library_600x900_2x.jpg?t=1795225846",
-      "url": "https://store.steampowered.com/app/1622130/",
-      "rank": 10
+      "rank": 8
     },
     {
       "appid": 3509380,
@@ -216,13 +179,51 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795618583",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795776351",
       "url": "https://store.steampowered.com/app/3509380/",
+      "rank": 9
+    },
+    {
+      "appid": 4653750,
+      "title": "The Brave Few",
+      "date": "2026-11-30",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single",
+        "multi",
+        "coop"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4653750/074c886c03a2a8257af4bceb04c49b6a90a60414/library_capsule_2x.jpg?t=1795739608",
+      "url": "https://store.steampowered.com/app/4653750/",
+      "rank": 10
+    },
+    {
+      "appid": 4264000,
+      "title": "Orion Blue",
+      "date": "2026-11-29",
+      "platforms": [
+        "pc"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4264000/bf36c41eb3f735da45c5d83a8e37abe8a0637219/library_capsule_2x.jpg?t=1791900572",
+      "url": "https://store.steampowered.com/app/4264000/",
       "rank": 11
     },
     {
-      "appid": 4776500,
-      "title": "Carry On Together",
+      "appid": 5165390,
+      "title": "HOOD",
       "date": "2026-11-27",
       "platforms": [
         "pc"
@@ -236,8 +237,8 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4776500/3a0ef49e07435b0684c229a11544f3292dfbee64/library_capsule_2x.jpg?t=1795676306",
-      "url": "https://store.steampowered.com/app/4776500/",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5165390/1f6a5fc5b1b14d227db4301de8bb64dfab77b4f4/library_capsule_2x.jpg?t=1795668207",
+      "url": "https://store.steampowered.com/app/5165390/",
       "rank": 12
     }
   ],
