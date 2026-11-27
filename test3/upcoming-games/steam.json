@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-26T22:28:42.485Z",
+  "updated": "2026-11-27T05:12:52.644Z",
   "games": [
     {
       "appid": 4262460,
@@ -202,6 +202,25 @@
       "rank": 10
     },
     {
+      "appid": 3509380,
+      "title": "GrimKeep",
+      "date": "2026-11-30",
+      "platforms": [
+        "pc",
+        "mac"
+      ],
+      "players": [
+        "single"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795618583",
+      "url": "https://store.steampowered.com/app/3509380/",
+      "rank": 11
+    },
+    {
       "appid": 4776500,
       "title": "Carry On Together",
       "date": "2026-11-27",
@@ -219,25 +238,6 @@
       "hot": false,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4776500/3a0ef49e07435b0684c229a11544f3292dfbee64/library_capsule_2x.jpg?t=1795676306",
       "url": "https://store.steampowered.com/app/4776500/",
-      "rank": 11
-    },
-    {
-      "appid": 3509380,
-      "title": "GrimKeep",
-      "date": "2026-11-30",
-      "platforms": [
-        "pc",
-        "mac"
-      ],
-      "players": [
-        "single"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795618583",
-      "url": "https://store.steampowered.com/app/3509380/",
       "rank": 12
     }
   ],
