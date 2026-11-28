@@ -128,6 +128,36 @@
   }
 
   btn.addEventListener('click', open);
+
+  /* ---------- the Bitmoji sits on the first tile's top edge ---------- */
+
+  var section = btn.parentNode;
+  var tile = section.querySelector('.tile');
+  function place() {
+    if (!tile) return;
+    var sr = section.getBoundingClientRect();
+    var tr = tile.getBoundingClientRect();
+    var w = btn.offsetWidth, h = btn.offsetHeight;
+    var inset = Math.min(40, tr.width * 0.08);
+    // at the tile's end corner: left side in Arabic, right side in English
+    var x = I.isAr() ? tr.left - sr.left + inset : tr.right - sr.left - inset - w;
+    btn.style.left = Math.round(x) + 'px';
+    btn.style.top = Math.round(tr.top - sr.top - h) + 'px';
+    btn.classList.add('is-placed');
+  }
+  // wait for the tiles' entrance animation before measuring
+  setTimeout(place, 900);
+  window.addEventListener('resize', function () { clearTimeout(place._t); place._t = setTimeout(place, 80); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+
+  // now and then it pops up by itself, so phone visitors notice it too
+  function tease() {
+    if (!panel.hidden || window.scrollY > 300 || reduceMotion.matches) return;
+    btn.classList.add('is-up');
+    setTimeout(function () { btn.classList.remove('is-up'); }, 2400);
+  }
+  setTimeout(tease, 1800);
+  setInterval(tease, 14000);
   closeBtn.addEventListener('click', close);
   panel.addEventListener('click', function (e) { if (e.target === panel) close(); });
   document.addEventListener('keydown', function (e) {
@@ -143,5 +173,5 @@
     }
   });
 
-  I.onChange(render);
+  I.onChange(function () { render(); place(); });
 })();

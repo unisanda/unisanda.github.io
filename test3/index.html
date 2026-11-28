@@ -164,14 +164,17 @@
       </svg>
       <img src="assets/logo.png" width="161" height="161" alt="Unisanda logo">
     </div>
-      <button class="info-btn" id="infoBtn" type="button" aria-haspopup="dialog" aria-controls="aboutPanel" data-i18n-attr="aria-label:about.open;title:about.open" aria-label="About me" title="About me">
-        <span aria-hidden="true">i</span>
-      </button>
   </header>
 
   <main>
     <section class="links" id="sec-links" aria-labelledby="links-title">
       <h1 class="visually-hidden" id="links-title" data-i18n="home.h1">Unisanda links</h1>
+
+      <!-- Bitmoji peeking over the first tile; opens the About me panel -->
+      <button class="peeker" id="infoBtn" type="button" aria-haspopup="dialog" aria-controls="aboutPanel" data-i18n-attr="aria-label:about.more" aria-label="More about me">
+        <span class="peeker-bubble" aria-hidden="true" data-i18n="about.more">More about me</span>
+        <span class="peeker-win"><img class="peeker-img" src="assets/bitmoji/mohd.webp" alt="" width="395" height="555" draggable="false"></span>
+      </button>
 
       <div class="grid">
 

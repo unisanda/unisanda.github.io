@@ -40,6 +40,7 @@
     'rev.doc': ['My Reviews — Unisanda', 'مراجعاتي — Unisanda'],
     'rail.label': ['Page sections', 'أقسام الصفحة'],
     'about.open': ['About me', 'من أنا'],
+    'about.more': ['More about me', 'معلومات عني'],
     'about.close': ['Close', 'إغلاق'],
     'about.kicker': ['About me', 'من أنا'],
     'about.speaks': ['I speak', 'أتكلم'],
