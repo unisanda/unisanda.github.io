@@ -1,7 +1,7 @@
 {
   "source": "Steam store (IStoreQueryService/Query)",
   "month": "2026-11",
-  "updated": "2026-11-27T15:24:45.452Z",
+  "updated": "2026-11-28T00:08:42.932Z",
   "games": [
     {
       "appid": 4262460,
@@ -48,17 +48,6 @@
       "rank": 4
     },
     {
-      "appid": 3224600,
-      "title": "Am I Nima",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc"
-      ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795780349",
-      "url": "https://store.steampowered.com/app/3224600/",
-      "rank": 5
-    },
-    {
       "appid": 5189950,
       "title": "Winx Club - Moonlight Quest",
       "date": "2026-11-29",
@@ -67,7 +56,7 @@
       ],
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
       "url": "https://store.steampowered.com/app/5189950/",
-      "rank": 6
+      "rank": 5
     },
     {
       "appid": 3509380,
@@ -78,6 +67,17 @@
       ],
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795776351",
       "url": "https://store.steampowered.com/app/3509380/",
+      "rank": 6
+    },
+    {
+      "appid": 4653750,
+      "title": "The Brave Few",
+      "date": "2026-11-30",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4653750/074c886c03a2a8257af4bceb04c49b6a90a60414/library_capsule_2x.jpg?t=1795816227",
+      "url": "https://store.steampowered.com/app/4653750/",
       "rank": 7
     }
   ]

@@ -2,7 +2,7 @@
   "sources": [
     "GamerPower"
   ],
-  "updated": "2026-11-27T15:24:46.121Z",
+  "updated": "2026-11-28T00:08:43.054Z",
   "items": [
     {
       "id": "gp-3859",
@@ -41,6 +41,24 @@
       "source": "gamerpower"
     },
     {
+      "id": "gp-2478",
+      "title": "Boots Quest DX",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": 1796083199000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 999
+      },
+      "image": "https://www.gamerpower.com/offers/1b/64cd77c7ac5fe.jpg",
+      "url": "https://www.gamerpower.com/open/boots-quest-dx-itch-io-giveaway",
+      "published": 1785499825000,
+      "source": "gamerpower"
+    },
+    {
       "id": "gp-3852",
       "title": "Contractor: The Clean Up Part 2",
       "type": "keep",
@@ -59,6 +77,24 @@
       "source": "gamerpower"
     },
     {
+      "id": "gp-2109",
+      "title": "Tim-Tim 2: The Almighty Gnome",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": 1796255941000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 399
+      },
+      "image": "https://www.gamerpower.com/offers/1b/63a7d58806279.jpg",
+      "url": "https://www.gamerpower.com/open/tim-tim-2-the-almighty-gnome-itch-io-giveaway",
+      "published": 1782983614000,
+      "source": "gamerpower"
+    },
+    {
       "id": "gp-3857",
       "title": "Bread and Fred",
       "type": "keep",
@@ -74,6 +110,60 @@
       "image": "https://www.gamerpower.com/offers/1b/6b0857f437cbd.jpg",
       "url": "https://www.gamerpower.com/open/bread-and-fred-epic-games-giveaway",
       "published": 1795690916000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3862",
+      "title": "Ba Bị",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": 1796428740000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 499
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0a1024d09c7.jpg",
+      "url": "https://www.gamerpower.com/open/n-a",
+      "published": 1795803604000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3863",
+      "title": "Lonely in the Winter",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": 1796601540000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 299
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0a113ba497d.jpg",
+      "url": "https://www.gamerpower.com/open/lonely-in-the-winter-itch-io-giveaway",
+      "published": 1795803883000,
+      "source": "gamerpower"
+    },
+    {
+      "id": "gp-3861",
+      "title": "Rulebound",
+      "type": "keep",
+      "kind": "game",
+      "store": "itch",
+      "storeLabel": "itch.io",
+      "until": 1798761540000,
+      "untilPrecision": "day",
+      "price": {
+        "currency": "USD",
+        "old": 699
+      },
+      "image": "https://www.gamerpower.com/offers/1b/6b0a0de4276dc.jpg",
+      "url": "https://www.gamerpower.com/open/rulebound-itch-io-giveaway",
+      "published": 1795803028000,
       "source": "gamerpower"
     },
     {

@@ -1,7 +1,7 @@
 {
   "source": "Steam + PlayStation / Microsoft / Nintendo store search + Game Pass catalog",
   "month": "2026-11",
-  "updated": "2026-11-27T15:26:12.268Z",
+  "updated": "2026-11-28T00:09:01.173Z",
   "games": [
     {
       "appid": 4262460,
@@ -124,24 +124,6 @@
       "rank": 6
     },
     {
-      "appid": 3224600,
-      "title": "Am I Nima",
-      "date": "2026-11-27",
-      "platforms": [
-        "pc"
-      ],
-      "players": [
-        "single"
-      ],
-      "arabic": false,
-      "dlc": false,
-      "gamePass": false,
-      "hot": true,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224600/7bb93e4546e529bf95742337c6f3ca8085c4d4ea/library_capsule_2x.jpg?t=1795780349",
-      "url": "https://store.steampowered.com/app/3224600/",
-      "rank": 7
-    },
-    {
       "appid": 5189950,
       "title": "Winx Club - Moonlight Quest",
       "date": "2026-11-29",
@@ -162,7 +144,7 @@
       "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5189950/24f629103ab4874c79f1daff305045a034a77a09/library_capsule_2x.jpg?t=1794891439",
       "url": "https://store.steampowered.com/app/5189950/",
-      "rank": 8
+      "rank": 7
     },
     {
       "appid": 3509380,
@@ -178,10 +160,10 @@
       "arabic": false,
       "dlc": false,
       "gamePass": false,
-      "hot": false,
+      "hot": true,
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3509380/1705a792055eb2273704e643bad4dc895fdeb2ea/library_capsule_2x.jpg?t=1795776351",
       "url": "https://store.steampowered.com/app/3509380/",
-      "rank": 9
+      "rank": 8
     },
     {
       "appid": 4653750,
@@ -199,9 +181,9 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4653750/074c886c03a2a8257af4bceb04c49b6a90a60414/library_capsule_2x.jpg?t=1795739608",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4653750/074c886c03a2a8257af4bceb04c49b6a90a60414/library_capsule_2x.jpg?t=1795816227",
       "url": "https://store.steampowered.com/app/4653750/",
-      "rank": 10
+      "rank": 9
     },
     {
       "appid": 4264000,
@@ -217,14 +199,14 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4264000/bf36c41eb3f735da45c5d83a8e37abe8a0637219/library_capsule_2x.jpg?t=1791900572",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4264000/bf36c41eb3f735da45c5d83a8e37abe8a0637219/library_capsule_2x.jpg?t=1795806282",
       "url": "https://store.steampowered.com/app/4264000/",
-      "rank": 11
+      "rank": 10
     },
     {
-      "appid": 5165390,
-      "title": "HOOD",
-      "date": "2026-11-27",
+      "appid": 4787480,
+      "title": "STATE Z",
+      "date": "2026-11-30",
       "platforms": [
         "pc"
       ],
@@ -237,8 +219,28 @@
       "dlc": false,
       "gamePass": false,
       "hot": false,
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5165390/1f6a5fc5b1b14d227db4301de8bb64dfab77b4f4/library_capsule_2x.jpg?t=1795668207",
-      "url": "https://store.steampowered.com/app/5165390/",
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4787480/f2eebee39039ec8e9a8be331e19254e873279484/library_capsule_2x.jpg?t=1794937930",
+      "url": "https://store.steampowered.com/app/4787480/",
+      "rank": 11
+    },
+    {
+      "appid": 3446770,
+      "title": "Sakura Arms ~Radiant Duels~ ",
+      "date": "2026-11-29",
+      "platforms": [
+        "pc",
+        "mac"
+      ],
+      "players": [
+        "single",
+        "multi"
+      ],
+      "arabic": false,
+      "dlc": false,
+      "gamePass": false,
+      "hot": false,
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3446770/78ccb3ba904ec29cbef5f2c5dd8f0cc77c3bf091/library_capsule_2x.jpg?t=1795420926",
+      "url": "https://store.steampowered.com/app/3446770/",
       "rank": 12
     }
   ],
