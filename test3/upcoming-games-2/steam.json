@@ -1,7 +1,7 @@
 {
   "source": "Steam store (IStoreQueryService/Query)",
   "month": "2026-11",
-  "updated": "2026-11-28T00:08:42.932Z",
+  "updated": "2026-11-28T17:02:13.980Z",
   "games": [
     {
       "appid": 4262460,
@@ -15,17 +15,6 @@
       "rank": 1
     },
     {
-      "appid": 5185890,
-      "title": "Zombies Aren't Real",
-      "date": "2026-11-13",
-      "platforms": [
-        "pc"
-      ],
-      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
-      "url": "https://store.steampowered.com/app/5185890/",
-      "rank": 2
-    },
-    {
       "appid": 4251460,
       "title": "Godzilla: Destroy All Monsters Melee Remastered",
       "date": "2026-11-03",
@@ -34,6 +23,17 @@
       ],
       "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4251460/8fd6eaacdaacab18c8967c59d05efb0e5363c936/library_capsule_2x.jpg?t=1793714569",
       "url": "https://store.steampowered.com/app/4251460/",
+      "rank": 2
+    },
+    {
+      "appid": 5185890,
+      "title": "Zombies Aren't Real",
+      "date": "2026-11-13",
+      "platforms": [
+        "pc"
+      ],
+      "poster": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5185890/332f6bf08b537454fcdb0c6c4d431334074ac013/library_capsule_2x.jpg?t=1795454637",
+      "url": "https://store.steampowered.com/app/5185890/",
       "rank": 3
     },
     {
