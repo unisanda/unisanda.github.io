@@ -1072,7 +1072,7 @@ html[lang="ar"] .sr-name { line-height: 1.35; }
 .links { position: relative; }
 
 .peeker {
-  --pw: 104px;                 /* character width */
+  --pw: 80px;                  /* character width */
   position: absolute;
   z-index: 3;
   width: var(--pw);
@@ -1125,7 +1125,7 @@ html[lang="ar"] .sr-name { line-height: 1.35; }
 
 .peeker-bubble {
   position: absolute;
-  bottom: calc(100% - 2px);
+  bottom: calc(100% - 4px);
   left: 50%;
   z-index: 1;
   padding: 7px 14px 6px;
@@ -1166,9 +1166,9 @@ html[lang="ar"] .peeker-bubble { font-size: 16px; line-height: 1.3; padding: 5px
 .peeker:focus-visible .peeker-win { outline: 3px solid var(--ink); outline-offset: 2px; }
 
 @media (max-width: 640px) {
-  .peeker { --pw: 84px; }
-  .peeker-bubble { font-size: 13px; }
-  html[lang="ar"] .peeker-bubble { font-size: 14px; }
+  .peeker { --pw: 64px; }
+  .peeker-bubble { font-size: 12px; padding: 6px 11px 5px; }
+  html[lang="ar"] .peeker-bubble { font-size: 13px; padding: 4px 11px 3px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
